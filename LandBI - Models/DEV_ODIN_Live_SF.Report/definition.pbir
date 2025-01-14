@@ -1,0 +1,9 @@
+{
+  "version": "4.0",
+  "datasetReference": {
+    "byPath": {
+      "path": "../DEV_ODIN_Live_SF.SemanticModel"
+    },
+    "byConnection": null
+  }
+}
