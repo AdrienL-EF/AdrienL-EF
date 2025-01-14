@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "POC - Allocatedcost and Quality"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "f692bc7b-92df-4eca-a1cf-e4fa605e2180"
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "config": "{\"version\":\"5.59\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU10\",\"version\":\"5.60\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"linguisticSchemaSyncVersion\":0,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU10",
+            "path": "BaseThemes/CY24SU10.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{\"objects\":{\"outspacePane\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"216L\"}}}}}]}}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "8ad43336a0e58a5ade2e",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"03c0646640064bc029c9\",\"layouts\":[{\"id\":0,\"position\":{\"x\":437.0084301320871,\"y\":352.0687634303575,\"z\":2000,\"width\":486.2488166258434,\"height\":366.8408793784844,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"pieChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Fact Change Impact Tracking.Description\",\"active\":true}],\"Y\":[{\"queryRef\":\"Fact Change Impact Tracking.Change cost impact\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fact Change Impact Tracking\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Description\"},\"Name\":\"Fact Change Impact Tracking.Description\",\"NativeReferenceName\":\"Description\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Change cost impact\"},\"Name\":\"Fact Change Impact Tracking.Change cost impact\",\"NativeReferenceName\":\"Change cost impact\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Change cost impact\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 366.84,
+          "width": 486.25,
+          "x": 437.01,
+          "y": 352.07,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"0cdd38fa86132777dc0e\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10.469774150554125,\"y\":351.485275054317,\"z\":1000,\"width\":426.26937612970363,\"height\":367.9377772909021,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Values\":[{\"queryRef\":\"Fact Change Impact Tracking.Total unique actions\"},{\"queryRef\":\"Fact Change Impact Tracking.Change cost impact\"}],\"Rows\":[{\"queryRef\":\"Fact Change Impact Tracking.Description\",\"active\":true},{\"queryRef\":\"Dim Salestour.salestour_id\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"Fact Change Impact Tracking\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"Dim Salestour\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total unique actions\"},\"Name\":\"Fact Change Impact Tracking.Total unique actions\",\"NativeReferenceName\":\"Total unique actions\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Description\"},\"Name\":\"Fact Change Impact Tracking.Description\",\"NativeReferenceName\":\"Description\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"salestour_id\"},\"Name\":\"Dim Salestour.salestour_id\",\"NativeReferenceName\":\"salestour_id\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Change cost impact\"},\"Name\":\"Fact Change Impact Tracking.Change cost impact\",\"NativeReferenceName\":\"Change cost impact\"}]},\"expansionStates\":[{\"roles\":[\"Rows\"],\"levels\":[{\"queryRefs\":[\"Fact Change Impact Tracking.Description\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Fact Change Impact Tracking\"}},\"Property\":\"Description\"}}],\"isPinned\":true},{\"queryRefs\":[\"Dim Salestour.salestour_id\"],\"isCollapsed\":true,\"isPinned\":true}],\"root\":{\"identityValues\":null,\"children\":[{\"identityValues\":[{\"Literal\":{\"Value\":\"'Late Adds'\"}}],\"isToggled\":true},{\"identityValues\":[{\"Literal\":{\"Value\":\"'Change of Supplier'\"}}],\"isToggled\":true}]}}],\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 367.94,
+          "width": 426.27,
+          "x": 10.47,
+          "y": 351.49,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"2a17542c8db7db4da591\",\"layouts\":[{\"id\":0,\"position\":{\"x\":923,\"y\":535,\"width\":357,\"height\":184,\"z\":3001,\"tabOrder\":3001}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"Dim Supplier.SupplierName\"},{\"queryRef\":\"Sum(Fact Component Survey.Rating)\"},{\"queryRef\":\"Fact Allocated History Cost.Total Cost\"},{\"queryRef\":\"Fact Allocated History Cost.Total allocations\"},{\"queryRef\":\"Dim Salestour.salestour_id\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dim Supplier\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"Fact Component Survey\",\"Type\":0},{\"Name\":\"f1\",\"Entity\":\"Fact Allocated History Cost\",\"Type\":0},{\"Name\":\"d1\",\"Entity\":\"Dim Salestour\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"SupplierName\"},\"Name\":\"Dim Supplier.SupplierName\",\"NativeReferenceName\":\"Supplier\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Rating\"}},\"Function\":1},\"Name\":\"Sum(Fact Component Survey.Rating)\",\"NativeReferenceName\":\"Rating\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f1\"}},\"Property\":\"Total Cost\"},\"Name\":\"Fact Allocated History Cost.Total Cost\",\"NativeReferenceName\":\"Cost\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f1\"}},\"Property\":\"Total allocations\"},\"Name\":\"Fact Allocated History Cost.Total allocations\",\"NativeReferenceName\":\"Total alloc\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d1\"}},\"Property\":\"salestour_id\"}},\"Function\":2},\"Name\":\"Dim Salestour.salestour_id\",\"NativeReferenceName\":\"Total ST\"}]},\"columnProperties\":{\"Dim Supplier.SupplierName\":{\"displayName\":\"Supplier\"},\"Sum(Fact Component Survey.Rating)\":{\"displayName\":\"Rating\"},\"Fact Allocated History Cost.Total Cost\":{\"displayName\":\"Cost\"},\"Fact Allocated History Cost.Total allocations\":{\"displayName\":\"Total alloc\"},\"Dim Salestour.salestour_id\":{\"displayName\":\"Total ST\"}},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[{\"name\":\"b69a72376a0037e5c955\",\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dim Supplier\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"SupplierName\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'Cosy little BnB'\"}}]]}}}]},\"type\":\"Include\",\"howCreated\":3,\"filterExpressionMetadata\":{\"expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Dim Supplier\"}},\"Property\":\"SupplierName\"}}],\"cachedValueItems\":[{\"identities\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Dim Supplier\"}},\"Property\":\"SupplierName\"}},\"Right\":{\"Literal\":{\"Value\":\"'Cosy little BnB'\"}}}}}],\"valueMap\":{\"0\":\"Cosy little BnB\"}}]}},{\"name\":\"2f77797051c510a744c5\",\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Dim Month (date)\"}},\"Property\":\"month\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dim Month (date)\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"month\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"2412L\"}}]]}}}]},\"type\":\"Categorical\",\"howCreated\":1,\"objects\":{}}]",
+          "height": 184.00,
+          "width": 357.00,
+          "x": 923.00,
+          "y": 535.00,
+          "z": 3001.00
+        },
+        {
+          "config": "{\"name\":\"65f1549d8c8582e80741\",\"layouts\":[{\"id\":0,\"position\":{\"x\":923.2572467579305,\"y\":353.2997730927014,\"z\":3000,\"width\":356.9928020797331,\"height\":182.1894300268983,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"pieChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Dim Customer.CustomerName\",\"active\":true}],\"Y\":[{\"queryRef\":\"CountNonNull(Fact Component Survey.Rating)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dim Customer\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"Fact Component Survey\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"CustomerName\"},\"Name\":\"Dim Customer.CustomerName\",\"NativeReferenceName\":\"CustomerName\"},{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Rating\"}},\"Function\":1},\"Name\":\"CountNonNull(Fact Component Survey.Rating)\",\"NativeReferenceName\":\"Average of Rating\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Aggregation\":{\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Rating\"}},\"Function\":1}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 182.19,
+          "width": 356.99,
+          "x": 923.26,
+          "y": 353.30,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"7cc357c2cca8de17e4a9\",\"layouts\":[{\"id\":0,\"position\":{\"x\":10.277623442960838,\"y\":0,\"z\":0,\"width\":1270.0206111658752,\"height\":340.62980553813065,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"lineStackedColumnComboChart\",\"projections\":{\"Category\":[{\"queryRef\":\"Dim Month (date).monthname\",\"active\":true}],\"Y\":[{\"queryRef\":\"Fact Change Impact Tracking.Total unique actions\"}],\"Y2\":[{\"queryRef\":\"Fact Allocated History Cost.Total Cost\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"Dim Month (date)\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"Fact Change Impact Tracking\",\"Type\":0},{\"Name\":\"f1\",\"Entity\":\"Fact Allocated History Cost\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"monthname\"},\"Name\":\"Dim Month (date).monthname\",\"NativeReferenceName\":\"monthname\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total unique actions\"},\"Name\":\"Fact Change Impact Tracking.Total unique actions\",\"NativeReferenceName\":\"Total unique actions\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f1\"}},\"Property\":\"Total Cost\"},\"Name\":\"Fact Allocated History Cost.Total Cost\",\"NativeReferenceName\":\"Total Cost\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"valueAxis\":[{\"properties\":{\"secStart\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}}}}],\"labels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"seriesLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 340.63,
+          "width": 1270.02,
+          "x": 10.28,
+          "y": 0.00,
+          "z": 0.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

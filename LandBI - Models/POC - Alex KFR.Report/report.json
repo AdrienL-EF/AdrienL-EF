@@ -1,0 +1,358 @@
+{
+  "config": "{\"version\":\"5.60\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU08\",\"version\":\"5.58\",\"type\":2}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"slowDataSourceSettings\":{\"isCrossHighlightingDisabled\":false,\"isSlicerSelectionsButtonEnabled\":false,\"isFilterSelectionsButtonEnabled\":false,\"isFieldWellButtonEnabled\":false,\"isApplyAllButtonEnabled\":false},\"linguisticSchemaSyncVersion\":0,\"settings\":{\"isPersistentUserStateDisabled\":false,\"hideVisualContainerHeader\":false,\"useStylableVisualContainerHeader\":false,\"exportDataMode\":0,\"useNewFilterPaneExperience\":false,\"optOutNewFilterPaneExperience\":false,\"defaultFilterActionIsDataFilter\":false,\"useCrossReportDrillthrough\":false,\"allowChangeFilterTypes\":true,\"allowInlineExploration\":false,\"disableFilterPaneSearch\":false,\"enableDeveloperMode\":false,\"useEnhancedTooltips\":false,\"useScaledTooltips\":true,\"useDefaultAggregateDisplayName\":true,\"queryLimitOption\":0,\"customMemoryLimit\":\"1048576\",\"customTimeoutLimit\":\"225\"},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU08",
+            "path": "BaseThemes/CY24SU08.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    },
+    {
+      "resourcePackage": {
+        "items": [
+          {
+            "name": "KFR___What_If37071944649874133.png",
+            "path": "KFR___What_If37071944649874133.png",
+            "type": 100
+          }
+        ],
+        "name": "RegisteredResources",
+        "type": 1
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{\"relationships\":[{\"source\":\"ccdef06cdaac9be2bc86\",\"target\":\"71b7b9870c7c783a3a8c\",\"type\":1}],\"objects\":{\"outspacePane\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"195L\"}}}}}]},\"visibility\":1}",
+      "displayName": "Page 1",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "4691cddde621275428e2",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"00f3f15fc2b2bddd0599\",\"layouts\":[{\"id\":0,\"position\":{\"x\":970.5008635578585,\"y\":240.9671848013817,\"z\":5000,\"width\":309.4991364421416,\"height\":119.37823834196891,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"if_average_bus_size.if_average_bus_size Value\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"if_average_bus_size\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"if_average_bus_size Value\"},\"Name\":\"if_average_bus_size.if_average_bus_size Value\",\"NativeReferenceName\":\"if_average_bus_size Value\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"if_average_bus_size Value\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 119.38,
+          "width": 309.50,
+          "x": 970.50,
+          "y": 240.97,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"633f6525d7a703518d7d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":871.7837837837837,\"y\":208.95135135135135,\"z\":6000,\"width\":153.6,\"height\":127.30810810810812,\"tabOrder\":9000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Calculation group.diff average\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"Calculation group\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"diff average\"},\"Name\":\"Calculation group.diff average\",\"NativeReferenceName\":\"diff average\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"diff average\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 127.31,
+          "width": 153.60,
+          "x": 871.78,
+          "y": 208.95,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"71b7b9870c7c783a3a8c\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":241.0318142734308,\"z\":9000,\"width\":848.5640584694755,\"height\":292.7601031814273,\"tabOrder\":8000}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"product.product\",\"active\":true},{\"queryRef\":\"dim_geography.Abbreviation\",\"active\":true},{\"queryRef\":\"dim_geography.city\",\"active\":true}],\"Values\":[{\"queryRef\":\"fact.average bus size\"},{\"queryRef\":\"fact.if bus size adjustement\"},{\"queryRef\":\"fact.Total cost ($)\"},{\"queryRef\":\"fact.if total cost ($)\"},{\"queryRef\":\"fact.Cost per passenger ($)\"},{\"queryRef\":\"fact.If region Cost per passenger ($)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"product\",\"Type\":0},{\"Name\":\"d\",\"Entity\":\"dim_geography\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"fact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"product\"},\"Name\":\"product.product\",\"NativeReferenceName\":\"product\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"average bus size\"},\"Name\":\"fact.average bus size\",\"NativeReferenceName\":\"average bus size\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"if bus size adjustement\"},\"Name\":\"fact.if bus size adjustement\",\"NativeReferenceName\":\"if bus size adjustement\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total cost ($)\"},\"Name\":\"fact.Total cost ($)\",\"NativeReferenceName\":\"Total cost ($)\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"if total cost ($)\"},\"Name\":\"fact.if total cost ($)\",\"NativeReferenceName\":\"if total cost ($)\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Cost per passenger ($)\"},\"Name\":\"fact.Cost per passenger ($)\",\"NativeReferenceName\":\"Cost per passenger ($)\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"city\"},\"Name\":\"dim_geography.city\",\"NativeReferenceName\":\"city\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Abbreviation\"},\"Name\":\"dim_geography.Abbreviation\",\"NativeReferenceName\":\"Abbreviation\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"If region Cost per passenger ($)\"},\"Name\":\"fact.If region Cost per passenger ($)\",\"NativeReferenceName\":\"If region Cost per passenger ($)\"}]},\"expansionStates\":[{\"roles\":[\"Rows\"],\"levels\":[{\"queryRefs\":[\"product.product\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"product\"}},\"Property\":\"product\"}}],\"isPinned\":true},{\"queryRefs\":[\"dim_geography.Abbreviation\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"dim_geography\"}},\"Property\":\"Abbreviation\"}}],\"isPinned\":true},{\"queryRefs\":[\"dim_geography.city\"],\"isCollapsed\":true,\"isPinned\":true}],\"root\":{\"identityValues\":null,\"children\":[{\"identityValues\":[{\"Literal\":{\"Value\":\"'etca'\"}}],\"isToggled\":true,\"children\":[{\"identityValues\":[{\"Literal\":{\"Value\":\"'FR'\"}}],\"isToggled\":true},{\"identityValues\":[{\"Literal\":{\"Value\":\"'JP'\"}}],\"isToggled\":true},{\"identityValues\":[{\"Literal\":{\"Value\":\"'ES'\"}}],\"isToggled\":true}]}]}}],\"drillFilterOtherVisuals\":true,\"objects\":{\"columnWidth\":[{\"properties\":{\"value\":{\"expr\":{\"Literal\":{\"Value\":\"97.68201879396341D\"}}}},\"selector\":{\"metadata\":\"fact.If region Cost per passenger ($)\"}}],\"values\":[{\"properties\":{\"wordWrap\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"columnHeaders\":[{\"properties\":{\"wordWrap\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 292.76,
+          "width": 848.56,
+          "x": 0.00,
+          "y": 241.03,
+          "z": 9000.00
+        },
+        {
+          "config": "{\"name\":\"7cf0d0a00232dd0a0e06\",\"layouts\":[{\"id\":0,\"position\":{\"x\":564.6141348497157,\"y\":619.7238017871649,\"z\":3000,\"width\":309.86190089358246,\"height\":81.10479285134038,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"fact.average bus size\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"fact\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"average bus size\"},\"Name\":\"fact.average bus size\",\"NativeReferenceName\":\"average bus size\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"average bus size\"}}}]},\"autoSelectVisualType\":false,\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 81.10,
+          "width": 309.86,
+          "x": 564.61,
+          "y": 619.72,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"8355cc08ae4e9906b00d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":277.6279447603574,\"y\":0,\"z\":7000,\"width\":882.7944760357433,\"height\":61.348497156783104,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Region parameter 1.Region parameter 1\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"Region parameter 1\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Region parameter 1\"},\"Name\":\"Region parameter 1.Region parameter 1\",\"NativeReferenceName\":\"Region parameter 1\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Basic'\"}}}}}],\"general\":[{\"properties\":{\"orientation\":{\"expr\":{\"Literal\":{\"Value\":\"1D\"}}},\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"Region parameter 1\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Region parameter 1\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"0.14999999999999994D\"}}]]}}}]}}}}]}}}",
+          "filters": "[]",
+          "height": 61.35,
+          "width": 882.79,
+          "x": 277.63,
+          "y": 0.00,
+          "z": 7000.00
+        },
+        {
+          "config": "{\"name\":\"867157c98e7b004b80ce\",\"layouts\":[{\"id\":0,\"position\":{\"x\":924.3866774979691,\"y\":599.9675060926077,\"z\":2000,\"width\":309.86190089358246,\"height\":119.57757920389928,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"fact.Cost per passenger\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"fact\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Cost per passenger ($)\"},\"Name\":\"fact.Cost per passenger\",\"NativeReferenceName\":\"Cost per passenger ($)\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Cost per passenger ($)\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 119.58,
+          "width": 309.86,
+          "x": 924.39,
+          "y": 599.97,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"98d0be13a9780e23977b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1080.1049868766404,\"y\":416.58792650918633,\"z\":10000,\"width\":156.2204724409449,\"height\":139.42257217847768,\"tabOrder\":10000}}],\"singleVisual\":{\"visualType\":\"clusteredColumnChart\",\"projections\":{\"Y\":[{\"queryRef\":\"fact.if cost per passenger ($)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"fact\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"if cost per passenger ($)\"},\"Name\":\"fact.if cost per passenger ($)\",\"NativeReferenceName\":\"if cost per passenger ($)\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 139.42,
+          "width": 156.22,
+          "x": 1080.10,
+          "y": 416.59,
+          "z": 10000.00
+        },
+        {
+          "config": "{\"name\":\"b420edbf0b34300009c0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":556.9045571797077,\"z\":1000,\"width\":733.0008598452279,\"height\":162.8890799656062,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"product.product\"},{\"queryRef\":\"fact.avg bus size\"},{\"queryRef\":\"fact.if bus size adjustement\"},{\"queryRef\":\"fact.Total cost ($)\"},{\"queryRef\":\"fact.if total cost ($)\"},{\"queryRef\":\"fact.Cost per passenger ($)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"product\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"fact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"product\"},\"Name\":\"product.product\",\"NativeReferenceName\":\"product\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"average bus size\"},\"Name\":\"fact.avg bus size\",\"NativeReferenceName\":\"average bus size\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total cost ($)\"},\"Name\":\"fact.Total cost ($)\",\"NativeReferenceName\":\"Total cost ($)\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Cost per passenger ($)\"},\"Name\":\"fact.Cost per passenger ($)\",\"NativeReferenceName\":\"Cost per passenger ($)\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"if total cost ($)\"},\"Name\":\"fact.if total cost ($)\",\"NativeReferenceName\":\"if total cost ($)\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"if bus size adjustement\"},\"Name\":\"fact.if bus size adjustement\",\"NativeReferenceName\":\"if bus size adjustement\"}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 162.89,
+          "width": 733.00,
+          "x": 0.00,
+          "y": 556.90,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"ccb08c682996a689c616\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":84.96350364963504,\"z\":0,\"width\":280.2919708029197,\"height\":90.21897810218978,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"if_average_bus_size.if_average_bus_size\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"if_average_bus_size\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"if_average_bus_size\"},\"Name\":\"if_average_bus_size.if_average_bus_size\",\"NativeReferenceName\":\"if_average_bus_size\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"numericStart\":{\"expr\":{\"Literal\":{\"Value\":\"50D\"}}}}}],\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"i\",\"Entity\":\"if_average_bus_size\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"i\"}},\"Property\":\"if_average_bus_size\"}},\"Right\":{\"Literal\":{\"Value\":\"50D\"}}}}}]}}}}]}}}",
+          "filters": "[]",
+          "height": 90.22,
+          "width": 280.29,
+          "x": 0.00,
+          "y": 84.96,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"ccdef06cdaac9be2bc86\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"z\":8000,\"width\":285.9463850528026,\"height\":61.348497156783104,\"tabOrder\":7000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"Region slicer.Abbreviation\",\"active\":true},{\"queryRef\":\"Region slicer.city\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"Region slicer\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Abbreviation\"},\"Name\":\"Region slicer.Abbreviation\",\"NativeReferenceName\":\"Abbreviation\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"city\"},\"Name\":\"Region slicer.city\",\"NativeReferenceName\":\"city\"}]},\"expansionStates\":[{\"roles\":[\"Values\"],\"levels\":[{\"queryRefs\":[\"Region slicer.Abbreviation\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Region slicer\"}},\"Property\":\"Abbreviation\"}}],\"isPinned\":true},{\"queryRefs\":[\"Region slicer.city\"],\"isCollapsed\":true,\"isPinned\":true}],\"root\":{\"identityValues\":null,\"children\":[{\"identityValues\":[{\"Literal\":{\"Value\":\"'ES'\"}}],\"isToggled\":true}]}}],\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"r\",\"Entity\":\"Region slicer\",\"Type\":0}],\"Where\":[{\"Condition\":{\"And\":{\"Left\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Abbreviation\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'ES'\"}}]]}},\"Right\":{\"Not\":{\"Expression\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"Abbreviation\"}},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"r\"}},\"Property\":\"city\"}}],\"Values\":[[{\"Literal\":{\"Value\":\"'ES'\"}},{\"Literal\":{\"Value\":\"'barcelona'\"}}]]}}}}}}}]}}}}]},\"filterExpressionMetadata\":{\"expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Region slicer\"}},\"Property\":\"Abbreviation\"}},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Region slicer\"}},\"Property\":\"city\"}}],\"cachedValueItems\":[{\"identities\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Region slicer\"}},\"Property\":\"Abbreviation\"}},\"Right\":{\"Literal\":{\"Value\":\"'ES'\"}}}}}],\"valueMap\":{\"0\":\"ES\"}},{\"identities\":[{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Region slicer\"}},\"Property\":\"Abbreviation\"}},\"Right\":{\"Literal\":{\"Value\":\"'ES'\"}}}}},{\"scopeId\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Region slicer\"}},\"Property\":\"city\"}},\"Right\":{\"Literal\":{\"Value\":\"'barcelona'\"}}}}}],\"valueMap\":{\"0\":\"ES\",\"1\":\"barcelona\"}}]}}}",
+          "filters": "[]",
+          "height": 61.35,
+          "width": 285.95,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 8000.00
+        },
+        {
+          "config": "{\"name\":\"df6600d8d05b60c35a02\",\"layouts\":[{\"id\":0,\"position\":{\"x\":836.4963503649635,\"y\":495.7664233576643,\"z\":4000,\"width\":223.35766423357666,\"height\":120,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"fact.Total cost ($)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"fact\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total cost ($)\"},\"Name\":\"fact.Total cost ($)\",\"NativeReferenceName\":\"Total cost ($)\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total cost ($)\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 120.00,
+          "width": 223.36,
+          "x": 836.50,
+          "y": 495.77,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"f45be1d2285426605007\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1018.0310880829015,\"y\":85.11226252158895,\"z\":11000,\"width\":261.96891191709847,\"height\":123.79965457685665,\"tabOrder\":11000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"fact.If region Cost per passenger ($)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"fact\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"If region Cost per passenger ($)\"},\"Name\":\"fact.If region Cost per passenger ($)\",\"NativeReferenceName\":\"If region Cost per passenger ($)\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"If region Cost per passenger ($)\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true}}",
+          "filters": "[]",
+          "height": 123.80,
+          "width": 261.97,
+          "x": 1018.03,
+          "y": 85.11,
+          "z": 11000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{\"objects\":{\"background\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#FFFFFF'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"60L\"}}}}}]},\"visibility\":1,\"howCreated\":\"Copilot\"}",
+      "displayName": "Impact of 5% Increase in Cost per Passenger for Paris",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "5bf8f87600e9172c6094",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"033340600321e3053600\",\"layouts\":[{\"id\":0,\"position\":{\"x\":20.134831460674157,\"y\":84.85393258426966,\"z\":11000,\"width\":251.68539325842696,\"height\":371.0561797752809,\"tabOrder\":10000}}],\"singleVisual\":{\"visualType\":\"aiNarratives\",\"drillFilterOtherVisuals\":true,\"objects\":{\"narrativeSelection\":[{\"properties\":{\"dismissSelectionScreen\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 371.06,
+          "width": 251.69,
+          "x": 20.13,
+          "y": 84.85,
+          "z": 11000.00
+        },
+        {
+          "config": "{\"name\":\"17057f38c1c8794abb29\",\"layouts\":[{\"id\":0,\"position\":{\"x\":644,\"y\":72,\"height\":92,\"width\":576,\"tabOrder\":4000,\"z\":5000}}],\"singleVisual\":{\"visualType\":\"cardVisual\",\"projections\":{\"Data\":[{\"queryRef\":\"fact.Total cost ($)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"fact\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total cost ($)\"},\"Name\":\"fact.Total cost ($)\",\"NativeReferenceName\":\"Total cost ($)\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total cost ($)\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"accentBar\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#118DFF'\"}}}}}},\"selector\":{\"metadata\":\"fact.Total cost ($)\"}}],\"layout\":[{\"properties\":{\"maxTiles\":{\"expr\":{\"Literal\":{\"Value\":\"10L\"}}},\"cellPadding\":{\"expr\":{\"Literal\":{\"Value\":\"4L\"}}}}}],\"label\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"10L\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'Segoe UI Semibold'\"}}}},\"selector\":{\"id\":\"default\"}}],\"spacing\":[{\"properties\":{\"verticalSpacing\":{\"expr\":{\"Literal\":{\"Value\":\"4L\"}}}},\"selector\":{\"id\":\"default\"}}],\"value\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"20L\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'Segoe UI Semibold'\"}}}},\"selector\":{\"id\":\"default\"}}],\"padding\":[{\"properties\":{\"paddingSelection\":{\"expr\":{\"Literal\":{\"Value\":\"'Custom'\"}}},\"topMargin\":{\"expr\":{\"Literal\":{\"Value\":\"12L\"}}},\"leftMargin\":{\"expr\":{\"Literal\":{\"Value\":\"12L\"}}},\"rightMargin\":{\"expr\":{\"Literal\":{\"Value\":\"12L\"}}},\"bottomMargin\":{\"expr\":{\"Literal\":{\"Value\":\"12L\"}}}},\"selector\":{\"id\":\"default\"}}]},\"vcObjects\":{\"padding\":[{\"properties\":{\"top\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}},\"bottom\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}},\"left\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}},\"right\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}}}}],\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Total Cost ($)'\"}}}}}]}},\"howCreated\":\"Copilot\"}",
+          "filters": "[]",
+          "height": 92.00,
+          "width": 576.00,
+          "x": 644.00,
+          "y": 72.00,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"2cca0bb18bcc51ac1591\",\"layouts\":[{\"id\":0,\"position\":{\"x\":20,\"y\":10,\"height\":28,\"width\":28,\"tabOrder\":9000,\"z\":10000}}],\"singleVisual\":{\"visualType\":\"image\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"imageUrl\":{\"expr\":{\"Literal\":{\"Value\":\"'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMjAnIGhlaWdodD0nMjAnIHZpZXdCb3g9JzAgMCAyMCAyMCcgZmlsbD0nbm9uZScgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48cGF0aCBkPSdNMTIgNC41QzEyIDMuNjcxNTcgMTEuMzI4NCAzIDEwLjUgM0g5LjVDOC42NzE1NyAzIDggMy42NzE1NyA4IDQuNVYxN0gxMlY0LjVaTTEzIDZWMTdIMTYuNUMxNi43NzYxIDE3IDE3IDE2Ljc3NjEgMTcgMTYuNVY4QzE3IDYuODk1NDMgMTYuMTA0NiA2IDE1IDZIMTNaTTUgOUg3VjE3SDMuNUMzLjIyMzg2IDE3IDMgMTYuNzc2MSAzIDE2LjVWMTFDMyA5Ljg5NTQzIDMuODk1NDMgOSA1IDlaJyBmaWxsPSd3aGl0ZScvPjwvc3ZnPgo='\"}}}}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#118DFF'\"}}}}}}}],\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#118DFF'\"}}}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"4L\"}}}}}],\"padding\":[{\"properties\":{\"top\":{\"expr\":{\"Literal\":{\"Value\":\"2L\"}}},\"bottom\":{\"expr\":{\"Literal\":{\"Value\":\"4L\"}}},\"left\":{\"expr\":{\"Literal\":{\"Value\":\"3L\"}}},\"right\":{\"expr\":{\"Literal\":{\"Value\":\"5L\"}}}}}]}},\"howCreated\":\"Copilot\"}",
+          "filters": "[]",
+          "height": 28.00,
+          "width": 28.00,
+          "x": 20.00,
+          "y": 10.00,
+          "z": 10000.00
+        },
+        {
+          "config": "{\"name\":\"39e7eb1aac8a8a9c7676\",\"layouts\":[{\"id\":0,\"position\":{\"height\":32,\"width\":68,\"x\":1032,\"y\":10,\"tabOrder\":6000,\"z\":7000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"city\",\"textStyle\":{\"fontSize\":\"10pt\"}}],\"horizontalTextAlignment\":\"right\"}]}}]},\"vcObjects\":{}},\"howCreated\":\"Copilot\"}",
+          "filters": "[]",
+          "height": 32.00,
+          "width": 68.00,
+          "x": 1032.00,
+          "y": 10.00,
+          "z": 7000.00
+        },
+        {
+          "config": "{\"name\":\"588705650e97a066ed7d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":60,\"y\":6,\"height\":40,\"width\":500,\"tabOrder\":8000,\"z\":9000}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"Impact of 5% Increase in Cost per Passenger for Paris\",\"textStyle\":{\"fontWeight\":\"bold\",\"fontFamily\":\"Segoe UI\",\"fontSize\":\"14pt\"}}]}]}}]},\"vcObjects\":{}},\"howCreated\":\"Copilot\"}",
+          "filters": "[]",
+          "height": 40.00,
+          "width": 500.00,
+          "x": 60.00,
+          "y": 6.00,
+          "z": 9000.00
+        },
+        {
+          "config": "{\"name\":\"69e80dfa504c9ac428be\",\"layouts\":[{\"id\":0,\"position\":{\"x\":47.04864864864865,\"y\":480.17297297297296,\"z\":3000,\"width\":381.92432432432435,\"height\":239.3945945945946,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"barChart\",\"projections\":{\"Category\":[{\"queryRef\":\"dim_geography.city\",\"active\":true}],\"Y\":[{\"queryRef\":\"fact.Cost per passenger ($)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dim_geography\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"fact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"city\"},\"Name\":\"dim_geography.city\",\"NativeReferenceName\":\"city\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Cost per passenger ($)\"},\"Name\":\"fact.Cost per passenger ($)\",\"NativeReferenceName\":\"Cost per passenger ($)\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Cost per passenger ($)\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"dataPoint\":[{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0}}}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Cost per Passenger ($) by City'\"}}}}}]}},\"howCreated\":\"Copilot\"}",
+          "filters": "[]",
+          "height": 239.39,
+          "width": 381.92,
+          "x": 47.05,
+          "y": 480.17,
+          "z": 3000.00
+        },
+        {
+          "config": "{\"name\":\"9ea7c4822073419d178e\",\"layouts\":[{\"id\":0,\"position\":{\"width\":381,\"height\":240,\"x\":449,\"y\":420,\"tabOrder\":1000,\"z\":2000}}],\"singleVisual\":{\"visualType\":\"areaChart\",\"projections\":{\"Category\":[{\"queryRef\":\"fact.forecast_date_key\",\"active\":true}],\"Y\":[{\"queryRef\":\"fact.Total cost ($)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"fact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"forecast_date_key\"},\"Name\":\"fact.forecast_date_key\",\"NativeReferenceName\":\"forecast_date_key\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total cost ($)\"},\"Name\":\"fact.Total cost ($)\",\"NativeReferenceName\":\"Total cost ($)\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total cost ($)\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"dataPoint\":[{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0}}}}}},\"selector\":{\"metadata\":\"fact.Total cost ($)\"}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Trend of Total Cost ($)'\"}}}}}]}},\"howCreated\":\"Copilot\"}",
+          "filters": "[]",
+          "height": 240.00,
+          "width": 381.00,
+          "x": 449.00,
+          "y": 420.00,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"a2f9ead0e53714a3718d\",\"layouts\":[{\"id\":0,\"position\":{\"x\":293.3621621621622,\"y\":232.4756756756757,\"z\":4000,\"width\":927.1351351351351,\"height\":179.8918918918919,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"areaChart\",\"projections\":{\"Category\":[{\"queryRef\":\"fact.forecast_date_key\",\"active\":true}],\"Y\":[{\"queryRef\":\"fact.Cost per passenger ($)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"fact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"forecast_date_key\"},\"Name\":\"fact.forecast_date_key\",\"NativeReferenceName\":\"forecast_date_key\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Cost per passenger ($)\"},\"Name\":\"fact.Cost per passenger ($)\",\"NativeReferenceName\":\"Cost per passenger ($)\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Cost per passenger ($)\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"dataPoint\":[{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0}}}}}},\"selector\":{\"metadata\":\"fact.Cost per passenger ($)\"}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Trend of Cost per Passenger ($)'\"}}}}}]}},\"howCreated\":\"Copilot\"}",
+          "filters": "[]",
+          "height": 179.89,
+          "width": 927.14,
+          "x": 293.36,
+          "y": 232.48,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"ae62c487d87eb1982a33\",\"layouts\":[{\"id\":0,\"position\":{\"x\":293.3621621621622,\"y\":71.95675675675676,\"z\":6000,\"width\":347.3297297297297,\"height\":92.71351351351352,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"cardVisual\",\"projections\":{\"Data\":[{\"queryRef\":\"fact.Cost per passenger ($)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"fact\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Cost per passenger ($)\"},\"Name\":\"fact.Cost per passenger ($)\",\"NativeReferenceName\":\"Cost per passenger ($)\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Cost per passenger ($)\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"accentBar\":[{\"properties\":{\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#118DFF'\"}}}}}},\"selector\":{\"metadata\":\"fact.Cost per passenger ($)\"}}],\"layout\":[{\"properties\":{\"maxTiles\":{\"expr\":{\"Literal\":{\"Value\":\"10L\"}}},\"cellPadding\":{\"expr\":{\"Literal\":{\"Value\":\"4L\"}}}}}],\"label\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"10L\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'Segoe UI Semibold'\"}}}},\"selector\":{\"id\":\"default\"}}],\"spacing\":[{\"properties\":{\"verticalSpacing\":{\"expr\":{\"Literal\":{\"Value\":\"4L\"}}}},\"selector\":{\"id\":\"default\"}}],\"value\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"20L\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'Segoe UI Semibold'\"}}}},\"selector\":{\"id\":\"default\"}}],\"padding\":[{\"properties\":{\"paddingSelection\":{\"expr\":{\"Literal\":{\"Value\":\"'Custom'\"}}},\"topMargin\":{\"expr\":{\"Literal\":{\"Value\":\"12L\"}}},\"leftMargin\":{\"expr\":{\"Literal\":{\"Value\":\"12L\"}}},\"rightMargin\":{\"expr\":{\"Literal\":{\"Value\":\"12L\"}}},\"bottomMargin\":{\"expr\":{\"Literal\":{\"Value\":\"12L\"}}}},\"selector\":{\"id\":\"default\"}}]},\"vcObjects\":{\"padding\":[{\"properties\":{\"top\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}},\"bottom\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}},\"left\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}},\"right\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}}}}],\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Current Cost per Passenger ($)'\"}}}}}]}},\"howCreated\":\"Copilot\"}",
+          "filters": "[]",
+          "height": 92.71,
+          "width": 347.33,
+          "x": 293.36,
+          "y": 71.96,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"df3162cadc4be37c4755\",\"layouts\":[{\"id\":0,\"position\":{\"width\":381,\"height\":240,\"x\":838,\"y\":420,\"tabOrder\":0,\"z\":1000}}],\"singleVisual\":{\"visualType\":\"barChart\",\"projections\":{\"Category\":[{\"queryRef\":\"dim_geography.city\",\"active\":true}],\"Y\":[{\"queryRef\":\"fact.Total cost ($)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dim_geography\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"fact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"city\"},\"Name\":\"dim_geography.city\",\"NativeReferenceName\":\"city\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total cost ($)\"},\"Name\":\"fact.Total cost ($)\",\"NativeReferenceName\":\"Total cost ($)\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total cost ($)\"}}}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"dataPoint\":[{\"properties\":{\"fill\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":2,\"Percent\":0}}}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Total Cost ($) by City'\"}}}}}]}},\"howCreated\":\"Copilot\"}",
+          "filters": "[]",
+          "height": 240.00,
+          "width": 381.00,
+          "x": 838.00,
+          "y": 420.00,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"f41e3c642b22e780c404\",\"layouts\":[{\"id\":0,\"position\":{\"x\":0,\"y\":0,\"height\":48,\"width\":1280,\"tabOrder\":-1000,\"z\":0}}],\"singleVisual\":{\"visualType\":\"shape\",\"drillFilterOtherVisuals\":true,\"objects\":{\"fill\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"outline\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"dropShadow\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#A6ADC6'\"}}}}},\"preset\":{\"expr\":{\"Literal\":{\"Value\":\"'Custom'\"}}},\"shadowSpread\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}},\"shadowBlur\":{\"expr\":{\"Literal\":{\"Value\":\"5L\"}}},\"angle\":{\"expr\":{\"Literal\":{\"Value\":\"90L\"}}},\"shadowDistance\":{\"expr\":{\"Literal\":{\"Value\":\"4L\"}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"85L\"}}}}}],\"background\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"border\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#E0E0E0'\"}}}}},\"radius\":{\"expr\":{\"Literal\":{\"Value\":\"4L\"}}}}}]}},\"howCreated\":\"Copilot\"}",
+          "filters": "[]",
+          "height": 48.00,
+          "width": 1280.00,
+          "x": 0.00,
+          "y": 0.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"f8dc88a008888d924380\",\"layouts\":[{\"id\":0,\"position\":{\"height\":36,\"width\":160,\"x\":1100,\"y\":6,\"tabOrder\":7000,\"z\":8000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"dim_geography.city\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dim_geography\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"city\"},\"Name\":\"dim_geography.city\",\"NativeReferenceName\":\"city\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"header\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"selection\":[{\"properties\":{\"selectAllCheckboxEnabled\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"items\":[{\"properties\":{\"textSize\":{\"expr\":{\"Literal\":{\"Value\":\"9L\"}}}}}],\"general\":[{\"properties\":{}}]},\"vcObjects\":{\"padding\":[{\"properties\":{\"top\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}},\"bottom\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}},\"left\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}},\"right\":{\"expr\":{\"Literal\":{\"Value\":\"0L\"}}}}}]}},\"howCreated\":\"Copilot\"}",
+          "filters": "[]",
+          "height": 36.00,
+          "width": 160.00,
+          "x": 1100.00,
+          "y": 6.00,
+          "z": 8000.00
+        }
+      ],
+      "width": 1280.00
+    },
+    {
+      "config": "{\"objects\":{\"outspacePane\":[{\"properties\":{\"width\":{\"expr\":{\"Literal\":{\"Value\":\"195L\"}}}}}],\"outspace\":[{\"properties\":{\"image\":{\"image\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'KFR – What If.png'\"}}},\"url\":{\"expr\":{\"ResourcePackageItem\":{\"PackageName\":\"RegisteredResources\",\"PackageType\":1,\"ItemName\":\"KFR___What_If37071944649874133.png\"}}},\"scaling\":{\"expr\":{\"Literal\":{\"Value\":\"'Normal'\"}}}}},\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}}}}],\"displayArea\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Middle'\"}}}}}]}}",
+      "displayName": "What IF - Currency",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "c63dd9095ced3f87f0d9",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"4e2567146ea5d1fa4539\",\"layouts\":[{\"id\":0,\"position\":{\"x\":754.1401273885351,\"y\":524.8407643312103,\"z\":4000,\"width\":419.87261146496814,\"height\":111.08280254777071,\"tabOrder\":4000}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"product.product\"},{\"queryRef\":\"fact.Total cost ($)\"},{\"queryRef\":\"fact.Cost per passenger ($)\"},{\"queryRef\":\"Calculation group.KFR Currency Comparison ($)\"},{\"queryRef\":\"Calculation group.IF Currency Comparaison (%)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"p\",\"Entity\":\"product\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"fact\",\"Type\":0},{\"Name\":\"c\",\"Entity\":\"Calculation group\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"p\"}},\"Property\":\"product\"},\"Name\":\"product.product\",\"NativeReferenceName\":\"Product\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total cost ($)\"},\"Name\":\"fact.Total cost ($)\",\"NativeReferenceName\":\"Total cost \"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Cost per passenger ($)\"},\"Name\":\"fact.Cost per passenger ($)\",\"NativeReferenceName\":\"Cost per Pax\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"KFR Currency Comparison ($)\"},\"Name\":\"Calculation group.KFR Currency Comparison ($)\",\"NativeReferenceName\":\"IF Currency\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"IF Currency Comparaison (%)\"},\"Name\":\"Calculation group.IF Currency Comparaison (%)\",\"NativeReferenceName\":\"Diff (%)\"}]},\"columnProperties\":{\"fact.Cost per passenger ($)\":{\"displayName\":\"Cost per Pax\"},\"Calculation group.KFR Evaluation\":{\"displayName\":\"IF Currency ($)\"},\"Calculation group.IF Currency Comparaison (%)\":{\"displayName\":\"Diff (%)\"},\"product.product\":{\"displayName\":\"Product\"},\"Calculation group.KFR Currency Comparison ($)\":{\"displayName\":\"IF Currency\"},\"fact.Total cost ($)\":{\"displayName\":\"Total cost \"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"values\":[{\"properties\":{\"wordWrap\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'wf_standard-font, helvetica, arial, sans-serif'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}},\"fontColorPrimary\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"fontColorSecondary\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":-0.1}}}}}}},{\"properties\":{\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"FillRule\":{\"Input\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Calculation group\"}},\"Property\":\"IF Currency Comparaison (%)\"}},\"FillRule\":{\"linearGradient3\":{\"min\":{\"color\":{\"Literal\":{\"Value\":\"'#D64550'\"}},\"value\":{\"Literal\":{\"Value\":\"-1D\"}}},\"mid\":{\"color\":{\"Literal\":{\"Value\":\"'midColor'\"}},\"value\":{\"Literal\":{\"Value\":\"0D\"}}},\"max\":{\"color\":{\"Literal\":{\"Value\":\"'#00DA2F'\"}},\"value\":{\"Literal\":{\"Value\":\"1D\"}}},\"nullColoringStrategy\":{\"strategy\":{\"Literal\":{\"Value\":\"'asZero'\"}}}}}}}}}}},\"selector\":{\"data\":[{\"dataViewWildcard\":{\"matchingOption\":1}}],\"metadata\":\"Calculation group.IF Currency Comparaison (%)\"}},{\"properties\":{},\"selector\":{\"data\":[{\"dataViewWildcard\":{\"matchingOption\":1}}],\"metadata\":\"fact.Total cost ($)\"}}],\"columnHeaders\":[{\"properties\":{\"wordWrap\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Center'\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'wf_standard-font, helvetica, arial, sans-serif'\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}}}}],\"general\":[{\"properties\":{}}],\"total\":[{\"properties\":{\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"100D\"}}}}}],\"stylePreset\":[{\"properties\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'None'\"}}}}}],\"visualHeader\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 111.08,
+          "width": 419.87,
+          "x": 754.14,
+          "y": 524.84,
+          "z": 4000.00
+        },
+        {
+          "config": "{\"name\":\"771c8f43b74ba6013822\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1108.7898089171974,\"y\":220.12738853503186,\"z\":5000,\"width\":127.38853503184714,\"height\":139.61783439490446,\"tabOrder\":5000}}],\"singleVisual\":{\"visualType\":\"columnChart\",\"projections\":{\"Series\":[{\"queryRef\":\"currency.currency\"}],\"Y\":[{\"queryRef\":\"fact.Cost per passenger ($)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"currency\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"fact\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"currency\"},\"Name\":\"currency.currency\",\"NativeReferenceName\":\"currency\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Cost per passenger ($)\"},\"Name\":\"fact.Cost per passenger ($)\",\"NativeReferenceName\":\"Cost per passenger ($)\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Cost per passenger ($)\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"legend\":[{\"properties\":{\"showGradientLegend\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"100D\"}}}}}],\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 139.62,
+          "width": 127.39,
+          "x": 1108.79,
+          "y": 220.13,
+          "z": 5000.00
+        },
+        {
+          "config": "{\"name\":\"79a897ef7e3fafbd1194\",\"layouts\":[{\"id\":0,\"position\":{\"x\":694.0127388535033,\"y\":227.2611464968153,\"z\":6000,\"width\":382.1656050955414,\"height\":274.14012738853506,\"tabOrder\":6000}}],\"singleVisual\":{\"visualType\":\"aiNarratives\",\"drillFilterOtherVisuals\":true,\"objects\":{\"narrativeSelection\":[{\"properties\":{\"dismissSelectionScreen\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}],\"text\":[{\"properties\":{\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'wf_standard-font, helvetica, arial, sans-serif'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}}}}]},\"vcObjects\":{\"visualHeader\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"visualTooltip\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"background\":[{\"properties\":{\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"100D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 274.14,
+          "width": 382.17,
+          "x": 694.01,
+          "y": 227.26,
+          "z": 6000.00
+        },
+        {
+          "config": "{\"name\":\"ab4613afb6a0d8834305\",\"layouts\":[{\"id\":0,\"position\":{\"x\":93.21149739173056,\"y\":121.89195812764765,\"z\":1000,\"width\":252.38805447607044,\"height\":60.228967545425895,\"tabOrder\":1000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"dim_kfr.kfr_rate_code\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dim_kfr\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"kfr_rate_code\"},\"Name\":\"dim_kfr.kfr_rate_code\",\"NativeReferenceName\":\"kfr_rate_code\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{}}],\"header\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"items\":[{\"properties\":{\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'wf_standard-font, helvetica, arial, sans-serif'\"}}},\"textSize\":{\"expr\":{\"Literal\":{\"Value\":\"15D\"}}},\"background\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'KFR Rate Season'\"}}}}}],\"background\":[{\"properties\":{\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"100D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 60.23,
+          "width": 252.39,
+          "x": 93.21,
+          "y": 121.89,
+          "z": 1000.00
+        },
+        {
+          "config": "{\"name\":\"d8e959a3a1cb3bf84240\",\"layouts\":[{\"id\":0,\"position\":{\"x\":85.60509554140128,\"y\":236.43312101910828,\"z\":0,\"width\":572.7388535031847,\"height\":399.49044585987264,\"tabOrder\":0}}],\"singleVisual\":{\"visualType\":\"pivotTable\",\"projections\":{\"Rows\":[{\"queryRef\":\"dim_geography.Abbreviation\",\"active\":true},{\"queryRef\":\"dim_geography.city\",\"active\":true}],\"Values\":[{\"queryRef\":\"fact.Total cost ($)\"},{\"queryRef\":\"fact.Cost per passenger ($)\"},{\"queryRef\":\"Calculation group.KFR Evaluation\"},{\"queryRef\":\"Calculation group.IF Currency Comparaison (%)\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dim_geography\",\"Type\":0},{\"Name\":\"f\",\"Entity\":\"fact\",\"Type\":0},{\"Name\":\"c\",\"Entity\":\"Calculation group\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Total cost ($)\"},\"Name\":\"fact.Total cost ($)\",\"NativeReferenceName\":\"Total cost ($)\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"Cost per passenger ($)\"},\"Name\":\"fact.Cost per passenger ($)\",\"NativeReferenceName\":\"Cost per pax ($)\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"city\"},\"Name\":\"dim_geography.city\",\"NativeReferenceName\":\"City\"},{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Abbreviation\"},\"Name\":\"dim_geography.Abbreviation\",\"NativeReferenceName\":\"Country\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"KFR Currency Comparison ($)\"},\"Name\":\"Calculation group.KFR Evaluation\",\"NativeReferenceName\":\"IF Currency ($)\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"IF Currency Comparaison (%)\"},\"Name\":\"Calculation group.IF Currency Comparaison (%)\",\"NativeReferenceName\":\"Diff (%)\"}]},\"expansionStates\":[{\"roles\":[\"Rows\"],\"levels\":[{\"queryRefs\":[\"dim_geography.Abbreviation\"],\"isCollapsed\":true,\"identityKeys\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"dim_geography\"}},\"Property\":\"Abbreviation\"}}],\"isPinned\":true},{\"queryRefs\":[\"dim_geography.city\"],\"isCollapsed\":true,\"isPinned\":true}],\"root\":{\"identityValues\":null,\"children\":[{\"identityValues\":[{\"Literal\":{\"Value\":\"'JP'\"}}],\"isToggled\":true},{\"identityValues\":[{\"Literal\":{\"Value\":\"'ES'\"}}],\"isToggled\":true},{\"identityValues\":[{\"Literal\":{\"Value\":\"'FR'\"}}],\"isToggled\":true}]}}],\"columnProperties\":{\"dim_geography.Abbreviation\":{\"displayName\":\"Country\"},\"dim_geography.city\":{\"displayName\":\"City\"},\"fact.Cost per passenger ($)\":{\"displayName\":\"Cost per pax ($)\"},\"Calculation group.KFR Evaluation\":{\"displayName\":\"IF Currency ($)\"},\"Calculation group.IF Currency Comparaison (%)\":{\"displayName\":\"Diff (%)\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"values\":[{\"properties\":{\"wordWrap\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'wf_standard-font, helvetica, arial, sans-serif'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}}}},{\"properties\":{\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"FillRule\":{\"Input\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"Calculation group\"}},\"Property\":\"IF Currency Comparaison (%)\"}},\"FillRule\":{\"linearGradient3\":{\"min\":{\"color\":{\"Literal\":{\"Value\":\"'#D64550'\"}},\"value\":{\"Literal\":{\"Value\":\"-1D\"}}},\"mid\":{\"color\":{\"Literal\":{\"Value\":\"'#FFFFFF'\"}},\"value\":{\"Literal\":{\"Value\":\"0D\"}}},\"max\":{\"color\":{\"Literal\":{\"Value\":\"'#00DA2F'\"}},\"value\":{\"Literal\":{\"Value\":\"1D\"}}},\"nullColoringStrategy\":{\"strategy\":{\"Literal\":{\"Value\":\"'asZero'\"}}}}}}}}}}},\"selector\":{\"data\":[{\"dataViewWildcard\":{\"matchingOption\":1}}],\"metadata\":\"Calculation group.IF Currency Comparaison (%)\"}},{\"properties\":{},\"selector\":{\"data\":[{\"dataViewWildcard\":{\"matchingOption\":1}}],\"metadata\":\"fact.Total cost ($)\"}}],\"columnHeaders\":[{\"properties\":{\"wordWrap\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Center'\"}}},\"titleAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Center'\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'wf_standard-font, helvetica, arial, sans-serif'\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}}}}],\"rowHeaders\":[{\"properties\":{\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Center'\"}}},\"expandCollapseButtonsColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'wf_standard-font, helvetica, arial, sans-serif'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}}}}],\"general\":[{\"properties\":{\"layout\":{\"expr\":{\"Literal\":{\"Value\":\"'Outline'\"}}}}}],\"subTotals\":[{\"properties\":{\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}},\"selector\":{\"id\":\"Column\"}},{\"properties\":{\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":-0.1}}}}}},\"selector\":{\"id\":\"Row\"}}],\"columnTotal\":[{\"properties\":{\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'wf_standard-font, helvetica, arial, sans-serif'\"}}},\"bold\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"12D\"}}}}}],\"rowTotal\":[{\"properties\":{\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"Literal\":{\"Value\":\"'#DDEEFF'\"}}}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"11D\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'wf_standard-font, helvetica, arial, sans-serif'\"}}}}}]},\"vcObjects\":{\"background\":[{\"properties\":{\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"100D\"}}}}}],\"stylePreset\":[{\"properties\":{\"name\":{\"expr\":{\"Literal\":{\"Value\":\"'None'\"}}}}}],\"visualHeader\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 399.49,
+          "width": 572.74,
+          "x": 85.61,
+          "y": 236.43,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"dde560e0d6b1bb776200\",\"layouts\":[{\"id\":0,\"position\":{\"x\":404.394496376431,\"y\":121.89195812764765,\"z\":2000,\"width\":228.0096628505409,\"height\":60.228967545425895,\"tabOrder\":3000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"currency_param.currency_parameters_selector\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"c1\",\"Entity\":\"currency_param\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c1\"}},\"Property\":\"currency_parameters_selector\"},\"Name\":\"currency_param.currency_parameters_selector\",\"NativeReferenceName\":\"currency_parameters_selector\"}]},\"columnProperties\":{\"currency_param.currency_parameters_selector\":{\"formatString\":\"G\"}},\"drillFilterOtherVisuals\":true,\"objects\":{\"data\":[{\"properties\":{\"mode\":{\"expr\":{\"Literal\":{\"Value\":\"'Dropdown'\"}}}}}],\"general\":[{\"properties\":{}}],\"header\":[{\"properties\":{\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Currency to increase'\"}}},\"outlineStyle\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}},\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"items\":[{\"properties\":{\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":-0.6}}}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'wf_standard-font, helvetica, arial, sans-serif'\"}}},\"textSize\":{\"expr\":{\"Literal\":{\"Value\":\"15D\"}}},\"background\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Currency to Increase'\"}}}}}],\"background\":[{\"properties\":{\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"100D\"}}}}}],\"visualHeader\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 60.23,
+          "width": 228.01,
+          "x": 404.39,
+          "y": 121.89,
+          "z": 2000.00
+        },
+        {
+          "config": "{\"name\":\"ede31edd6ed4476ccf51\",\"layouts\":[{\"id\":0,\"position\":{\"x\":1108.7898089171974,\"y\":383.1847133757962,\"z\":7000,\"width\":127.38853503184714,\"height\":118.21656050955414,\"tabOrder\":7000}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Calculation group.Difference in Value\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"Calculation group\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Difference in Value\"},\"Name\":\"Calculation group.Difference in Value\",\"NativeReferenceName\":\"Difference in Value\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"Difference in Value\"}}}]},\"drillFilterOtherVisuals\":true,\"hasDefaultSort\":true,\"objects\":{\"categoryLabels\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"labels\":[{\"properties\":{\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"20D\"}}},\"color\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'IF Difference'\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"17D\"}}},\"alignment\":{\"expr\":{\"Literal\":{\"Value\":\"'center'\"}}}}}],\"visualHeader\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"background\":[{\"properties\":{\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"100D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 118.22,
+          "width": 127.39,
+          "x": 1108.79,
+          "y": 383.18,
+          "z": 7000.00
+        },
+        {
+          "config": "{\"name\":\"fdb2728c01c3a1585a10\",\"layouts\":[{\"id\":0,\"position\":{\"x\":679.7269194412352,\"y\":113.28781990687251,\"z\":3000,\"width\":192.15908693064452,\"height\":68.83310576620103,\"tabOrder\":2000}}],\"singleVisual\":{\"visualType\":\"slicer\",\"projections\":{\"Values\":[{\"queryRef\":\"currency_increase.currency_increase\",\"active\":true}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"currency_increase\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"currency_increase\"},\"Name\":\"currency_increase.currency_increase\",\"NativeReferenceName\":\"currency_increase\"}]},\"drillFilterOtherVisuals\":true,\"objects\":{\"slider\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"header\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Currency Increase (%)'\"}}}}}],\"data\":[{\"properties\":{\"numericStart\":{\"expr\":{\"Literal\":{\"Value\":\"0D\"}}}}}],\"general\":[{\"properties\":{\"filter\":{\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"c\",\"Entity\":\"currency_increase\",\"Type\":0}],\"Where\":[{\"Condition\":{\"Comparison\":{\"ComparisonKind\":0,\"Left\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"c\"}},\"Property\":\"currency_increase\"}},\"Right\":{\"Literal\":{\"Value\":\"0D\"}}}}}]}}}}],\"numericInputStyle\":[{\"properties\":{\"textSize\":{\"expr\":{\"Literal\":{\"Value\":\"15D\"}}},\"fontFamily\":{\"expr\":{\"Literal\":{\"Value\":\"'wf_standard-font, helvetica, arial, sans-serif'\"}}},\"fontColor\":{\"solid\":{\"color\":{\"expr\":{\"ThemeDataColor\":{\"ColorId\":0,\"Percent\":0}}}}}}}]},\"vcObjects\":{\"title\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"text\":{\"expr\":{\"Literal\":{\"Value\":\"'Currency Increase (%)'\"}}},\"heading\":{\"expr\":{\"Literal\":{\"Value\":\"'Heading4'\"}}},\"fontSize\":{\"expr\":{\"Literal\":{\"Value\":\"13D\"}}}}}],\"visualHeader\":[{\"properties\":{\"show\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}}}}],\"background\":[{\"properties\":{\"transparency\":{\"expr\":{\"Literal\":{\"Value\":\"100D\"}}}}}]}}}",
+          "filters": "[]",
+          "height": 68.83,
+          "width": 192.16,
+          "x": 679.73,
+          "y": 113.29,
+          "z": 3000.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ]
+}

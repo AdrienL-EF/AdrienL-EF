@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "POC - Alex KFR"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a16af69e-e414-4022-b3b3-c26245295d69"
+  }
+}
