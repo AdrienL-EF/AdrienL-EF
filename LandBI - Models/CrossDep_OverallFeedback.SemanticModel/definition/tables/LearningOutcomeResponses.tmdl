@@ -1,0 +1,125 @@
+table LearningOutcomeResponses
+
+	column GroupTrip_id
+		dataType: int64
+		sourceProviderType: Integer
+		summarizeBy: none
+		sourceColumn: GroupTrip_id
+
+	column QuestionType
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: QuestionType
+
+	column QuestionText
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: QuestionText
+
+	column MaxAnswerValue
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: MaxAnswerValue
+
+	column LearningOutcomeResponse
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: LearningOutcomeResponse
+
+	column LearningOutcomeComment
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: LearningOutcomeComment
+
+	column AnswerDate
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		sourceProviderType: Date
+		sourceColumn: AnswerDate
+
+		annotation Format = <Format Format="DateTimeCustom"><DateTimes><DateTime LCID="1033" Group="ShortDate" FormatString="yyyy-MM-dd" /></DateTimes></Format>
+
+	column AnswerDate_Short
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		sourceProviderType: Date
+		sourceColumn: AnswerDate_Short
+
+		annotation Format = <Format Format="DateTimeCustom"><DateTimes><DateTime LCID="1033" Group="ShortDate" FormatString="yyyy-MM-dd" /></DateTimes></Format>
+
+	column AnswerMonth_Name
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: AnswerMonth_Name
+		sortByColumn: AnswerMonth_Sort
+
+	column AnswerMonth_Sort
+		dataType: int64
+		isHidden
+		sourceProviderType: Integer
+		sourceColumn: AnswerMonth_Sort
+
+	column IsLearningOutcome
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: Boolean
+		sourceColumn: IsLearningOutcome
+
+	column IsCurrentYear
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: Boolean
+		sourceColumn: IsCurrentYear
+
+	column IsPreviousYear
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: Boolean
+		sourceColumn: IsPreviousYear
+
+	column IsPrevious2Years
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: Boolean
+		sourceColumn: IsPrevious2Years
+
+	column IsYearToDate
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: Boolean
+		sourceColumn: IsYearToDate
+
+	column EvalLink
+		dataType: string
+		sourceProviderType: VarChar
+		dataCategory: WebUrl
+		sourceColumn: EvalLink
+
+	column TourDate
+		dataType: dateTime
+		sourceColumn: TourDate
+
+	column TourMonth_Name
+		dataType: string
+		sourceColumn: TourMonth_Name
+		sortByColumn: TourMonth_Sort
+
+	column TourMonth_Sort
+		dataType: int64
+		isHidden
+		sourceColumn: TourMonth_Sort
+
+	partition LearningOutcomeResponses = query
+		dataView: full
+		source
+			query = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_LearningOutcomeResponses
+			dataSource: 'SqlServer ToursBI martEvaluation'
+
+		annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_LearningOutcomeResponses</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_LearningOutcomeResponses
+
+	annotation _TM_ExtProp_DbTableName = LearningOutcomeResponses
+
+	annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_LearningOutcomeResponses</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+

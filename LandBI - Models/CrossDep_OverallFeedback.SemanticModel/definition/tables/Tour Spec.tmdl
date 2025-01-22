@@ -1,0 +1,123 @@
+table 'Tour Spec'
+
+	column TourSpec_id
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: TourSpec_id
+
+	column TourRegionCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: TourRegionCode
+
+	column TourName
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: TourName
+
+	column BaseTourCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: BaseTourCode
+
+	column TourFamilyCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: TourFamilyCode
+
+	column ExtendedFamilyCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: ExtendedFamilyCode
+
+	column TourTypeCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: TourTypeCode
+
+	column TourTypeName
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: TourTypeName
+
+	column TourRegionName
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: TourRegionName
+
+	column TourDestinationName
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: TourDestinationName
+
+	column IsReversal
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: Boolean
+		sourceColumn: IsReversal
+
+	column IsExtension
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: Boolean
+		sourceColumn: IsExtension
+
+	column MinPax
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: MinPax
+
+	column MaxPax
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: MaxPax
+
+	column MinBusSize
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: MinBusSize
+
+	column MaxBusSize
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: MaxBusSize
+
+	column StdBusSize
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: StdBusSize
+
+	column MinPpaxBaseExt
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: MinPpaxBaseExt
+
+	column MinExtPax
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: MinExtPax
+
+	column ProdGroupCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: ProdGroupCode
+
+	column TourFocusName
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: TourFocusName
+
+	partition Query = query
+		dataView: full
+		source
+			query = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_TourSpec
+			dataSource: 'SqlServer ToursBI martEvaluation'
+
+		annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_TourSpec</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_TourSpec
+
+	annotation _TM_ExtProp_DbTableName = Query
+
+	annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_TourSpec</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+

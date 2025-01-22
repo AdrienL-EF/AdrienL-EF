@@ -1,0 +1,121 @@
+table 'Market Area Office Mapping'
+
+	column ProdTour_id
+		dataType: string
+		sourceProviderType: Integer
+		sourceColumn: ProdTour_id
+
+	column TourFiscalYear
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: TourFiscalYear
+
+	column TourOperator
+		dataType: string
+		sourceProviderType: Char
+		sourceColumn: TourOperator
+
+	column TourTypeName
+		dataType: string
+		sourceProviderType: Char
+		sourceColumn: TourTypeName
+
+	column TourSpec_id
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: TourSpec_id
+
+	column TourFamilyCode
+		dataType: string
+		sourceProviderType: Char
+		sourceColumn: TourFamilyCode
+
+	column TourCode
+		dataType: string
+		sourceProviderType: Char
+		sourceColumn: TourCode
+
+	column ProductionMarketCode
+		dataType: string
+		sourceProviderType: Char
+		sourceColumn: ProductionMarketCode
+
+	column ProductionMarketCategory
+		dataType: string
+		sourceProviderType: Char
+		sourceColumn: ProductionMarketCategory
+
+	column TourRegionCode
+		dataType: string
+		sourceProviderType: Char
+		sourceColumn: TourRegionCode
+
+	column AreaMapping
+		dataType: string
+		sourceProviderType: Char
+		sourceColumn: AreaMapping
+
+	column Office
+		dataType: string
+		sourceProviderType: Char
+		sourceColumn: Office
+
+	column OfficeMapping
+		dataType: string
+		sourceProviderType: Char
+		sourceColumn: OfficeMapping
+
+	column EmployeeName
+		dataType: string
+		sourceColumn: EmployeeName
+
+	column Manager
+		dataType: string
+		sourceColumn: Manager
+
+	column TourDestinationName
+		dataType: string
+		sourceColumn: TourDestinationName
+
+	column EmployeeEmail
+		dataType: string
+		sourceColumn: EmployeeEmail
+
+	column ManagerEmail
+		dataType: string
+		sourceColumn: ManagerEmail
+
+	column TEM_UserID
+		dataType: int64
+		sourceColumn: TEM_UserID
+
+	hierarchy ProductionMarket
+
+		level ProductionMarketCategory
+			column: ProductionMarketCategory
+
+		level ProductionMarketCode
+			column: ProductionMarketCode
+
+		level AreaMapping
+			column: AreaMapping
+
+		level OfficeMapping
+			column: OfficeMapping
+
+	partition LU_LandOps_MarketAreaOfficeMapping = query
+		dataView: full
+		source
+			query = SELECT [dbo].[LU_LandOps_MarketAreaOfficeMapping].* FROM [dbo].[LU_LandOps_MarketAreaOfficeMapping]
+			dataSource: 'SqlServer BIStaging'
+
+		annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[LU_LandOps_MarketAreaOfficeMapping].* FROM [dbo].[LU_LandOps_MarketAreaOfficeMapping]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT [dbo].[LU_LandOps_MarketAreaOfficeMapping].* FROM [dbo].[LU_LandOps_MarketAreaOfficeMapping]
+
+	annotation _TM_ExtProp_DbTableName = LU_LandOps_MarketAreaOfficeMapping
+
+	annotation _TM_ExtProp_DbSchemaName = dbo
+
+	annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[LU_LandOps_MarketAreaOfficeMapping].* FROM [dbo].[LU_LandOps_MarketAreaOfficeMapping]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+

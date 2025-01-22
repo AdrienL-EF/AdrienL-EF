@@ -1,0 +1,109 @@
+table 'Tour Experience Response'
+
+	column GroupTrip_id
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: GroupTrip_id
+
+	column QuestionType
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: QuestionType
+
+	column QuestionText
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: QuestionText
+
+	column MaxAnswerValue
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: MaxAnswerValue
+
+	column AnswerDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: Date
+		sourceColumn: AnswerDate
+
+	column IsTour
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: Boolean
+		sourceColumn: IsTour
+
+	column IsYearToDate
+		dataType: boolean
+		sourceColumn: IsYearToDate
+
+	column IsCurrentYear
+		dataType: boolean
+		sourceColumn: IsCurrentYear
+
+	column TourExpResponse
+		dataType: int64
+		sourceColumn: TourExpResponse
+
+	column TourExpComment
+		dataType: string
+		sourceColumn: TourExpComment
+
+	column EvalLink
+		dataType: string
+		dataCategory: WebUrl
+		sourceColumn: EvalLink
+
+	column IsPreviousYear
+		dataType: boolean
+		sourceColumn: IsPreviousYear
+
+	column IsPrevious2Years
+		dataType: boolean
+		sourceColumn: IsPrevious2Years
+
+	column AnswerMonth_Name
+		dataType: string
+		sourceColumn: AnswerMonth_Name
+		sortByColumn: AnswerMonth_Sort
+
+	column AnswerMonth_Sort
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: AnswerMonth_Sort
+
+	column AnswerDate_Short
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		sourceColumn: AnswerDate_Short
+
+		annotation Format = <Format Format="DateTimeCustom"><DateTimes><DateTime LCID="1033" Group="ShortDate" FormatString="yyyy-MM-dd" /></DateTimes></Format>
+
+	column TourDate
+		dataType: dateTime
+		sourceColumn: TourDate
+
+	column TourMonth_Name
+		dataType: string
+		sourceColumn: TourMonth_Name
+		sortByColumn: TourMonth_Sort
+
+	column TourMonth_Sort
+		dataType: int64
+		isHidden
+		sourceColumn: TourMonth_Sort
+
+	partition 'Tour Experience Response' = query
+		dataView: full
+		source
+			query = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_TourExperienceResponse
+			dataSource: 'SqlServer ToursBI martEvaluation'
+
+		annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_TourExperienceResponse</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_TourExperienceResponse
+
+	annotation _TM_ExtProp_DbTableName = Tour Experience Response
+
+	annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_TourExperienceResponse</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
