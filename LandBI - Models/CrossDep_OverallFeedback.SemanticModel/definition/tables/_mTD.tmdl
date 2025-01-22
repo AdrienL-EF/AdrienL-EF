@@ -1,0 +1,142 @@
+table _mTD
+
+	measure 'Count Total TD Responses' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				CALCULATE(COUNT('TD Response'[TDResponse]), OR(
+					'TD Response'[IsCurrentYear] = TRUE(), 
+					'TD Response'[IsYearToDate] = TRUE())), 
+			COUNT('TD Response'[TDResponse]))
+			```
+		formatString: #,0
+
+	measure 'Count Total TD Responses Comparison' = ```
+			 CALCULATE(
+				[Count Total TD Responses], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+		formatString: #,0
+
+	measure 'TD Score' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+			CALCULATE(DIVIDE(
+				SUMX('TD Response', 'TD Response'[TDResponse] * [Count Total TD Responses]), 
+				[Count Total TD Responses]), 
+				OR(
+					'TD Response'[IsCurrentYear] = TRUE(), 
+					'TD Response'[IsYearToDate] = TRUE())), 
+			DIVIDE(
+				SUMX('TD Response', 'TD Response'[TDResponse] * [Count Total TD Responses]), 
+				[Count Total TD Responses]))
+			```
+
+	measure 'TD Score Comparison' = ```
+			 CALCULATE(
+				[TD Score], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+
+	measure 'TD Score Δ' = ```
+			 IF(
+				OR([Count Total TD Responses] = 0, [Count Total TD Responses Comparison] = 0), 
+				BLANK(), 
+				ROUND([TD Score], 2) - ROUND([TD Score Comparison], 2))
+			```
+
+	measure 'TD Score Δ %' = ```
+			 DIVIDE([TD Score Δ], [TD Score Comparison])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure '% Perfect TD Scores' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+			CALCULATE(DIVIDE(
+				SUMX('TD Response', IF('TD Response'[TDResponse] = 'TD Response'[MaxAnswerValue], 1, 0)), 
+				[Count Total TD Responses]), 
+				OR(
+					'TD Response'[IsCurrentYear] = TRUE(), 
+					'TD Response'[IsYearToDate] = TRUE())), 
+			DIVIDE(
+				SUMX('TD Response', IF('TD Response'[TDResponse] = 'TD Response'[MaxAnswerValue], 1, 0)), 
+				[Count Total TD Responses]))
+				
+			/* This is necessary because products are still using different scales (4 or 5), so a numeric score can be misleading. */
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure '% Perfect TD Scores Comparison' = ```
+			 CALCULATE(
+				[% Perfect TD Scores], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure '% Perfect TD Scores Δ' = ```
+			 IF(
+				OR([Count Total TD Responses] = 0, [Count Total TD Responses Comparison] = 0), 
+				BLANK(), 
+				ROUND([% Perfect TD Scores], 3) - ROUND([% Perfect TD Scores Comparison], 3))
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Formatting_% Perfect Scores' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				SELECTEDVALUE(OverallQuestionGroups[SalesYearNumber]) & " YTD % Perfect TD Scores", 
+				SELECTEDVALUE(OverallQuestionGroups[SalesYearNumber]) & " EOY % Perfect TD Scores")
+			```
+
+	measure 'Formatting_% Perfect Scores Comparison' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				SELECTEDVALUE('Sales Years'[SalesYear_Compare]) & " YTD % Perfect TD Scores", 
+				SELECTEDVALUE('Sales Years'[SalesYear_Compare]) & " EOY % Perfect TD Scores")
+			```
+
+	measure 'Formatting_TD Rating Responses' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				SELECTEDVALUE(OverallQuestionGroups[SalesYearNumber]) & " YTD TD Rating Responses", 
+				SELECTEDVALUE(OverallQuestionGroups[SalesYearNumber]) & " EOY TD Rating Responses")
+			```
+
+	measure 'Formatting_TD Rating Responses Comparison' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				SELECTEDVALUE('Sales Years'[SalesYear_Compare]) & " YTD TD Rating Responses", 
+				SELECTEDVALUE('Sales Years'[SalesYear_Compare]) & " EOY TD Rating Responses")
+			```
+
+	measure 'Formatting_TD Score Δ' = ```
+			 
+			IF([Count Total TD Responses] = 0 || [Count Total TD Responses Comparison] = 0, BLANK(), 
+			IF([TD Score Δ] >= 0.005, 1, 
+			IF([TD Score Δ] <= -0.005, -1, 
+			0)))
+			```
+
+	measure 'Formatting_% Perfect Scores Δ' = ```
+			
+			IF([Count Total TD Responses] = 0 || [Count Total TD Responses Comparison] = 0, BLANK(), 
+			IF([% Perfect TD Scores Δ] >= 0.0005, 1, 
+			IF([% Perfect TD Scores Δ] <= -0.0005, -1, 
+			0)))
+			```
+
+	column dummy
+		isHidden
+		isNameInferred
+		sourceColumn: [dummy]
+
+	partition 'CalculatedTable 1' = calculated
+		source = SELECTCOLUMNS( {"dummy"}, "dummy", [Value])
+

@@ -1,0 +1,158 @@
+table 'NPS Measures'
+
+	measure 'NPS 2017 Measure' = ```
+			 CALCULATE(
+				DIVIDE(SUM('NPS Response'[NPSCalculate]), COUNT('NPS Response'[NPSCalculate]))*100
+				,'NPS Response'[SalesYearNumber]=2017
+			)
+			```
+
+	measure 'NPS Measure' = ```
+			 DIVIDE(SUM('NPS Response'[NPSCalculate]),COUNT('NPS Response'[NPSCalculate]))*100
+			```
+
+	measure 'NPS Current Year Measure' = ```
+			 CALCULATE(
+				DIVIDE(SUM('NPS Response'[NPSCalculate]), COUNT('NPS Response'[NPSCalculate]))*100
+				,'NPS Response'[IsCurrentYear]=TRUE()
+			)
+			```
+
+	measure 'Eval Submissions Current Year' = ```
+			 CALCULATE(COUNT('NPS Response'[GroupTrip_id]),'NPS Response'[NPSResponse] <> BLANK(), 'NPS Response'[IsCurrentYear]=TRUE())
+			```
+		formatString: #,0
+
+	measure 'Eval Submissions 2017' = ```
+			 CALCULATE(COUNT('NPS Response'[GroupTrip_id]), 'NPS Response'[NPSResponse] <> BLANK(),  'NPS Response'[SalesYearNumber]=2017)
+			```
+		formatString: #,0
+
+	measure 'NPS Difference YTD Measure' = ```
+			 IF([NPS Current Year Measure] = BLANK()
+				,BLANK()
+				,IF([NPS Previous YTD Measure] = BLANK()
+					,BLANK()
+					,[NPS Current Year Measure] - [NPS Previous YTD Measure])
+			)
+			```
+
+	measure 'NPS 2018 Measure' = ```
+			 CALCULATE(
+				DIVIDE(SUM('NPS Response'[NPSCalculate]), COUNT('NPS Response'[NPSCalculate]))*100
+				,'NPS Response'[SalesYearNumber]=2018
+			)
+			```
+
+	measure 'NPS 2019 Measure' = ```
+			 CALCULATE(
+				DIVIDE(SUM('NPS Response'[NPSCalculate]), COUNT('NPS Response'[NPSCalculate]))*100
+				, 'NPS Response'[SalesYearNumber]=2019
+			)
+			```
+		formatString: 0.00
+
+	measure 'Eval Submissions 2019' = ```
+			 CALCULATE(COUNT('NPS Response'[GroupTrip_id]),'NPS Response'[NPSResponse] <> BLANK(),  'NPS Response'[SalesYearNumber]=2019)
+			```
+		formatString: #,0
+
+	measure 'NPS Previous YTD Measure' = ```
+			 CALCULATE(
+				DIVIDE(SUM('NPS Response'[NPSCalculate]), COUNT('NPS Response'[NPSCalculate]))*100
+				, 'NPS Response'[IsPreviousYear]=TRUE()
+				, 'NPS Response'[IsYearToDate] = TRUE()
+			)
+			```
+
+	measure 'Eval Submissions Previous YTD' = ```
+			 CALCULATE(COUNT('NPS Response'[GroupTrip_id]), 'NPS Response'[NPSResponse] <> BLANK(),  'NPS Response'[IsPreviousYear]=TRUE(), 'NPS Response'[IsYearToDate]=TRUE())
+			```
+		formatString: #,0
+
+	measure 'Eval Submissions 2018' = ```
+			 CALCULATE(COUNT('NPS Response'[GroupTrip_id]), 'NPS Response'[NPSResponse] <> BLANK(),  'NPS Response'[SalesYearNumber]=2018)
+			```
+		formatString: #,0
+
+	measure 'NPS 2016 Measure' = ```
+			 CALCULATE(
+				DIVIDE(SUM('NPS Response'[NPSCalculate]), COUNT('NPS Response'[NPSCalculate]))*100
+				,'NPS Response'[SalesYearNumber]=2016
+			)
+			```
+
+	measure 'NPS Difference YTD Ratio Measure' = ```
+			 DIVIDE([NPS Difference YTD Measure], [NPS Previous YTD Measure])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'NPS Previous Year Measure' = ```
+			 CALCULATE(
+				DIVIDE(SUM('NPS Response'[NPSCalculate]), COUNT('NPS Response'[NPSCalculate]))*100
+				,'NPS Response'[IsPreviousYear]=TRUE()
+			)
+			```
+		formatString: 0.00
+
+	measure 'Eval Submissions Previous Year' = ```
+			 CALCULATE(COUNT('NPS Response'[GroupTrip_id]),'NPS Response'[NPSResponse] <> BLANK(),  'NPS Response'[IsPreviousYear]=TRUE())
+			```
+		formatString: #,0
+
+	measure 'NPS Previous 2 Years Measure' = ```
+			 CALCULATE(
+				DIVIDE(SUM('NPS Response'[NPSCalculate]), COUNT('NPS Response'[NPSCalculate]))*100
+				,'NPS Response'[IsPrevious2Years]=TRUE()
+			)
+			```
+		formatString: 0.00
+
+	measure 'Eval Submissions Previous 2 Years' = ```
+			 CALCULATE(COUNT('NPS Response'[GroupTrip_id]),'NPS Response'[NPSResponse] <> BLANK(),  'NPS Response'[IsPrevious2Years]=TRUE())
+			```
+		formatString: #,0
+
+	measure 'Count of Detractors' = CALCULATE(COUNT('OverallQuestionGroups'[GroupTrip_id]), 'NPS Response'[NPSCategory]="Detractor")
+		formatString: #,0
+
+	measure 'Count of Passives' = CALCULATE(COUNT('OverallQuestionGroups'[GroupTrip_id]), 'NPS Response'[NPSCategory]="Passive")
+		formatString: #,0
+
+	measure 'Count of Promoters' = CALCULATE(COUNT('OverallQuestionGroups'[GroupTrip_id]), 'NPS Response'[NPSCategory]="Promoter")
+		formatString: #,0
+
+	measure 'Total NPS Eval Submissions' = [Count of Detractors]+[Count of Passives] + [Count of Promoters]
+		formatString: #,0
+
+	measure '% of Detractors' = ```
+			 DIVIDE([Count of Detractors],[Total NPS Eval Submissions])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure '% of Passives' = ```
+			 DIVIDE([Count of Passives],[Total NPS Eval Submissions])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure '% of Promoters' = ```
+			 DIVIDE([Count of Promoters],[Total NPS Eval Submissions])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'NPS 2019 YTD Measure' = ```
+			 CALCULATE(
+				DIVIDE(SUM('NPS Response'[NPSCalculate]),COUNT('NPS Response'[NPSCalculate]))*100
+				, 'NPS Response'[SalesYearNumber]=2019
+				, 'NPS Response'[IsYearToDate] = TRUE()
+			)
+			```
+
+	column 'NPS Measures'
+		isHidden
+		isNameInferred
+		sourceColumn: [NPS Measures]
+
+	partition 'CalculatedTable 1' = calculated
+		source = DATATABLE("NPS Measures",INTEGER,{{}})
+

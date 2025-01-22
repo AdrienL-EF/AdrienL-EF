@@ -1,0 +1,93 @@
+table OverallQuestionCurrentYearGroups
+
+	column GroupTrip_id
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: GroupTrip_id
+
+	column TravelStatus
+		dataType: string
+		sourceProviderType: Char
+		sourceColumn: TravelStatus
+
+	column NetPayingPax
+		dataType: int64
+		sourceProviderType: SmallInt
+		sourceColumn: NetPayingPax
+
+	column IsPostTourFeedbackDue
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: Boolean
+		sourceColumn: IsPostTourFeedbackDue
+
+	column GL_Loyalty
+		dataType: string
+		sourceProviderType: Char
+		sourceColumn: GL_Loyalty
+
+	column GL_NextYearHighest_SalesOp_id
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: GL_NextYearHighest_SalesOp_id
+
+	column GL_NextYearHighest_StatusCode
+		dataType: string
+		sourceProviderType: Char
+		sourceColumn: GL_NextYearHighest_StatusCode
+
+	column GL_NextYearHighest_NetPayingPax
+		dataType: int64
+		sourceProviderType: SmallInt
+		sourceColumn: GL_NextYearHighest_NetPayingPax
+
+	column GL_NextYearHighest_EstTotalPax
+		dataType: int64
+		sourceProviderType: SmallInt
+		sourceColumn: GL_NextYearHighest_EstTotalPax
+
+	column Org_Loyalty
+		dataType: string
+		sourceProviderType: Char
+		sourceColumn: Org_Loyalty
+
+	column Org_NextYearHighest_SalesOp_id
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: Org_NextYearHighest_SalesOp_id
+
+	column Org_NextYearHighest_StatusCode
+		dataType: string
+		sourceProviderType: Char
+		sourceColumn: Org_NextYearHighest_StatusCode
+
+	column Org_NextYearHighest_NetPayingPax
+		dataType: int64
+		sourceProviderType: SmallInt
+		sourceColumn: Org_NextYearHighest_NetPayingPax
+
+	column Org_NextYearHighest_EstTotalPax
+		dataType: int64
+		sourceProviderType: SmallInt
+		sourceColumn: Org_NextYearHighest_EstTotalPax
+
+	column PostTourFeedbackDue
+		dataType: string
+		sourceColumn: PostTourFeedbackDue
+
+	partition OverallQuestionCurrentYearGroups_v = query
+		dataView: full
+		source
+			query = SELECT [dbo].[OverallQuestionCurrentYearGroups_v].* FROM [dbo].[OverallQuestionCurrentYearGroups_v]
+			dataSource: 'SqlServer ToursBI martEvaluation'
+
+		annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[OverallQuestionCurrentYearGroups_v].* FROM [dbo].[OverallQuestionCurrentYearGroups_v]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT [dbo].[OverallQuestionCurrentYearGroups_v].* FROM [dbo].[OverallQuestionCurrentYearGroups_v]
+
+	annotation _TM_ExtProp_DbTableName = OverallQuestionCurrentYearGroups_v
+
+	annotation _TM_ExtProp_DbSchemaName = dbo
+
+	annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT [dbo].[OverallQuestionCurrentYearGroups_v].* FROM [dbo].[OverallQuestionCurrentYearGroups_v]</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+

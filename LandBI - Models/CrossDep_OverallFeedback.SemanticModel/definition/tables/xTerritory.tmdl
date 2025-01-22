@@ -1,0 +1,22 @@
+table xTerritory
+	isHidden
+
+	column Territory_id
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: Territory_id
+
+	partition xTerritory = query
+		dataView: full
+		source
+			query = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_xTerritory
+			dataSource: 'SqlServer ToursBI martEvaluation'
+
+		annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_xTerritory</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_xTerritory
+
+	annotation _TM_ExtProp_DbTableName = xTerritory
+
+	annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_xTerritory</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+

@@ -1,0 +1,89 @@
+table 'Tour Experience Measures'
+
+	measure 'Tour Exp Average - Current Year' = CALCULATE(AVERAGE('Tour Experience Response'[TourExpResponse]),'Tour Experience Response'[IsYearToDate]=TRUE(), 'Tour Experience Response'[IsCurrentYear]=TRUE())
+		formatString: 0.00
+
+	measure 'Tour Exp Average - 2018 Year End' = CALCULATE(AVERAGE('Tour Experience Response'[TourExpResponse]), 'OverallQuestionGroups'[SalesYearNumber]=2018)
+		formatString: 0.00
+
+	measure 'Tour Exp Average - Previous YTD' = CALCULATE(AVERAGE('Tour Experience Response'[TourExpResponse]),'Tour Experience Response'[IsYearToDate]=TRUE(), 'OverallQuestionGroups'[IsPreviousYear]=TRUE())
+		formatString: 0.00
+
+	measure 'Tour Exp Difference YTD Measure' = ```
+			 IF([Tour Exp Average - Current Year]= BLANK(), BLANK(), IF([Tour Exp Average - Previous YTD] = BLANK(), BLANK(), [Tour Exp Average - Current Year]-[Tour Exp Average - Previous YTD]))
+			
+			
+			```
+		formatString: 0.00
+
+	measure 'Tour Exp Difference YTD Ratio' = DIVIDE([Tour Exp Difference YTD Measure], [Tour Exp Average - Previous YTD])
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Tour Exp Average - Previous Year End' = CALCULATE(AVERAGE('Tour Experience Response'[TourExpResponse]), 'OverallQuestionGroups'[IsPreviousYear]=TRUE())
+		formatString: 0.00
+
+	measure 'Tour Exp Average - Previous 2 Years' = CALCULATE(AVERAGE('Tour Experience Response'[TourExpResponse]), 'OverallQuestionGroups'[IsPrevious2Years]=TRUE())
+		formatString: 0.00
+
+	measure 'Total - 5 Star Rating' = ```
+			 CALCULATE(COUNT('Tour Experience Response'[TourExpResponse]),'Tour Experience Response'[TourExpResponse]=5)
+			```
+		formatString: #,0
+
+	measure 'Total Tour Experience Ratings' = COUNT('Tour Experience Response'[TourExpResponse])
+		formatString: #,0
+
+	measure '%5 Star Ratings' = ```
+			 DIVIDE([Total - 5 Star Rating],[Total Tour Experience Ratings])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure '%5 Star Ratings - Current Year' = ```
+			 CALCULATE(
+				DIVIDE([Total - 5 Star Rating], [Total Tour Experience Ratings])
+				, 'OverallQuestionGroups'[IsCurrentYear]=TRUE()
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Tour Exp Average' = CALCULATE(AVERAGE('Tour Experience Response'[TourExpResponse]))
+		formatString: 0.00
+
+	measure 'Tour Exp Average - 2019 Year End' = CALCULATE(AVERAGE('Tour Experience Response'[TourExpResponse]), 'OverallQuestionGroups'[SalesYearNumber]=2019)
+		formatString: 0.00
+
+	measure 'Tour Exp Average - 2019 YTD' = CALCULATE(AVERAGE('Tour Experience Response'[TourExpResponse]),'Tour Experience Response'[IsYearToDate]=TRUE(), 'OverallQuestionGroups'[SalesYearNumber]=2019)
+		formatString: 0.00
+
+	measure '%5 Star Ratings - Previous Year End' = ```
+			 CALCULATE(
+				DIVIDE([Total - 5 Star Rating], [Total Tour Experience Ratings])
+				,'OverallQuestionGroups'[IsPreviousYear]=TRUE()
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure '%5 Star Ratings - Previous 2 Years' = ```
+			 CALCULATE(
+				DIVIDE([Total - 5 Star Rating],[Total Tour Experience Ratings])
+				, 'OverallQuestionGroups'[IsPrevious2Years]=TRUE()
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure '%5 Star Ratings - Previous Year YTD' = ```
+			 CALCULATE(
+				DIVIDE([Total - 5 Star Rating], [Total Tour Experience Ratings])
+				,'Tour Experience Response'[IsYearToDate] = TRUE()
+				,'OverallQuestionGroups'[IsPreviousYear]=TRUE()
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	column 'Tour Experience Measures'
+		isNameInferred
+		sourceColumn: [Tour Experience Measures]
+
+	partition 'CalculatedTable 1' = calculated
+		source = DATATABLE("Tour Experience Measures",INTEGER,{{}})
+

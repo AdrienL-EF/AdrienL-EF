@@ -1,0 +1,94 @@
+table _mTC
+
+	measure 'Count Total TC Responses' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				CALCULATE(COUNT('TC Response'[TCResponse]), OR(
+					'TC Response'[IsCurrentYear] = TRUE(), 
+					'TC Response'[IsYearToDate] = TRUE())), 
+			COUNT('TC Response'[TCResponse]))
+			```
+		formatString: #,0
+
+	measure 'Count Total TC Responses Comparison' = ```
+			 CALCULATE(
+				[Count Total TC Responses], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+		formatString: #,0
+
+	measure 'TC Score' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+			CALCULATE(DIVIDE(
+				SUMX('TC Response', 'TC Response'[TCResponse] * [Count Total TC Responses]), 
+				[Count Total TC Responses]), 
+				OR(
+					'TC Response'[IsCurrentYear] = TRUE(), 
+					'TC Response'[IsYearToDate] = TRUE())), 
+			DIVIDE(
+				SUMX('TC Response', 'TC Response'[TCResponse] * [Count Total TC Responses]), 
+				[Count Total TC Responses]))
+			```
+
+	measure 'TC Score Comparison' = ```
+			 CALCULATE(
+				[TC Score],  
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+
+	measure 'TC Score Δ' = ```
+			 IF(
+				OR([Count Total TC Responses] = 0, [Count Total TC Responses Comparison] = 0), 
+				BLANK(), 
+				ROUND([TC Score], 2) - ROUND([TC Score Comparison], 2))
+			```
+
+	measure 'TC Score Δ %' = ```
+			 DIVIDE([TC Score Δ], [TC Score Comparison])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure '% Perfect TC Scores' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+			CALCULATE(DIVIDE(
+				SUMX('TC Response', IF('TC Response'[TCResponse] = 'TC Response'[MaxAnswerValue], 1, 0)), 
+				[Count Total TC Responses]), 
+				OR(
+					'TC Response'[IsCurrentYear] = TRUE(), 
+					'TC Response'[IsYearToDate] = TRUE())), 
+			DIVIDE(
+				SUMX('TC Response', IF('TC Response'[TCResponse] = 'TC Response'[MaxAnswerValue], 1, 0)), 
+				[Count Total TC Responses]))
+				
+			/* This is necessary because products are still using different scales (4 or 5), so a numeric score can be misleading. */
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure '% Perfect TC Scores Comparison' = ```
+			 CALCULATE(
+				[% Perfect TC Scores], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure '% Perfect TC Scores Δ' = ```
+			 IF(
+				OR([Count Total TC Responses] = 0, [Count Total TC Responses Comparison] = 0), 
+				BLANK(), 
+				ROUND([% Perfect TC Scores], 3) - ROUND([% Perfect TC Scores Comparison], 3))
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	column dummy
+		isHidden
+		isNameInferred
+		sourceColumn: [dummy]
+
+	partition 'CalculatedTable 1' = calculated
+		source = SELECTCOLUMNS( {"dummy"}, "dummy", [Value])
+

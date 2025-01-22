@@ -1,0 +1,81 @@
+table 'Stay Rating Measures'
+
+	measure 'Stay Rating Average' = CALCULATE(AVERAGE(StayRatingResponses[AnswerValue]))
+		formatString: 0.00
+
+	measure 'Stay Rating General' = CALCULATE(AVERAGE(StayRatingResponses[StayAverage]))
+		formatString: 0.00
+
+	measure 'Stay Rating Average - Current Year' = CALCULATE(AVERAGE(StayRatingResponses[AnswerValue]),StayRatingResponses[IsYearToDate]=TRUE(), StayRatingResponses[IsCurrentYear]=TRUE())
+		formatString: 0.00
+
+	measure 'Stay Rating Submission - Current Year' = CALCULATE(COUNT('StayRatingResponses'[AnswerValue]),StayRatingResponses[IsYearToDate]=TRUE(), StayRatingResponses[IsCurrentYear]=TRUE())
+		formatString: 0
+
+	measure 'Stay Rating General - Current Year' = ```
+			 CALCULATE(AVERAGE('StayRatingResponses'[StayAverage]),StayRatingResponses[IsYearToDate]=TRUE(), StayRatingResponses[IsCurrentYear]=TRUE())
+			```
+		formatString: 0.00
+
+	measure 'Stay Rating Difference - Current Year' = ```
+			  IF('Stay Rating Measures'[Stay Rating Average - Current Year] = BLANK(), BLANK(), 
+			                                         IF('Stay Rating Measures'[Stay Rating Average - Previous YTD] = BLANK(), BLANK(), 
+			                                         'Stay Rating Measures'[Stay Rating Average - Current Year] - 'Stay Rating Measures'[Stay Rating Average - Previous YTD] ))
+			```
+		formatString: 0.00
+
+	measure 'ET Stay Rating Average - Current Year' = ```
+			 CALCULATE(AVERAGE(StayRatingResponses[StayAverage]), BusinessUnit[ProductCode] = "ET",StayRatingResponses[IsYearToDate]=TRUE(), StayRatingResponses[IsCurrentYear]=TRUE())
+			```
+		formatString: 0.00
+
+	measure 'EA Stay Rating Average - Current Year' = ```
+			 CALCULATE(AVERAGE(StayRatingResponses[StayAverage]), BusinessUnit[ProductCode] = "EA",StayRatingResponses[IsYearToDate]=TRUE(), StayRatingResponses[IsCurrentYear]=TRUE())
+			```
+		formatString: 0.00
+
+	measure 'Stay Rating Average - 2018 Year End' = CALCULATE(AVERAGE(StayRatingResponses[AnswerValue]), StayRatingResponses[SalesYearNumber]=2018)
+		formatString: 0.00
+
+	measure 'Stay Rating General - 2018 Year End' = ```
+			 CALCULATE(AVERAGE('StayRatingResponses'[StayAverage]), StayRatingResponses[SalesYearNumber]=2018)
+			```
+		formatString: 0.00
+
+	measure 'Stay Rating Average - Previous YTD' = CALCULATE(AVERAGE(StayRatingResponses[AnswerValue]),StayRatingResponses[IsYearToDate]=TRUE(), StayRatingResponses[IsPreviousYear]=TRUE())
+		formatString: 0.00
+
+	measure 'Stay Rating Submission - Previous YTD' = CALCULATE(COUNT('StayRatingResponses'[AnswerValue]),StayRatingResponses[IsYearToDate]=TRUE(), StayRatingResponses[IsPreviousYear]=TRUE())
+
+	measure 'Stay Rating Average - Previous Year' = CALCULATE(AVERAGE(StayRatingResponses[AnswerValue]), StayRatingResponses[IsPreviousYear]=TRUE())
+		formatString: 0.00
+
+	measure 'Stay Rating Average - Previous 2 Years' = CALCULATE(AVERAGE(StayRatingResponses[AnswerValue]), StayRatingResponses[IsPrevious2Years]=TRUE())
+		formatString: 0.00
+
+	measure 'Stay Rating Difference - PY vs P2Y' = ```
+			  IF('Stay Rating Measures'[Stay Rating Average - Previous Year] = BLANK(), BLANK(), 
+			                                         IF('Stay Rating Measures'[Stay Rating Average - Previous Year] = BLANK(), BLANK(), 
+			                                         'Stay Rating Measures'[Stay Rating Average - Previous Year] - 'Stay Rating Measures'[Stay Rating Average - Previous 2 Years] ))
+			```
+		formatString: 0.00
+
+	measure 'Count of 5-Star Stay Ratings' = CALCULATE(COUNT('StayRatingResponses'[StaySubmissionAnswerId]),'StayRatingResponses'[AnswerValue]=5)
+		formatString: #,0
+
+	measure 'Count of Stay Ratings' = CALCULATE(COUNT('StayRatingResponses'[StaySubmissionAnswerId]))
+		formatString: #,0
+
+	measure '% of 5-Star Stay Ratings' = DIVIDE([Count of 5-Star Stay Ratings],[Count of Stay Ratings])
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Stay Rating Average - 2019 YTD' = CALCULATE(AVERAGE(StayRatingResponses[AnswerValue]), StayRatingResponses[IsYearToDate]=TRUE(), StayRatingResponses[SalesYearNumber]=2019)
+
+	column 'Stay Rating Measures'
+		isHidden
+		isNameInferred
+		sourceColumn: [Stay Rating Measures]
+
+	partition 'CalculatedTable 1' = calculated
+		source = DATATABLE("Stay Rating Measures",INTEGER,{{}})
+

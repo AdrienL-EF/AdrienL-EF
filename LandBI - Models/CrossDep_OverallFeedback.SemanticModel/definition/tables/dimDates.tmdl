@@ -1,0 +1,149 @@
+table dimDates
+	dataCategory: Time
+
+	column Date_key
+		dataType: int64
+		sourceProviderType: SmallInt
+		sourceColumn: Date_key
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: yyyy-MM-dd
+		sourceProviderType: Date
+		sourceColumn: Date
+
+		annotation Format = <Format Format="DateTimeCustom"><DateTimes><DateTime LCID="1033" Group="ShortDate" FormatString="yyyy-MM-dd" /></DateTimes></Format>
+
+	column Year
+		dataType: int64
+		sourceProviderType: SmallInt
+		sourceColumn: Year
+
+	column Month
+		dataType: int64
+		sourceProviderType: UnsignedTinyInt
+		sourceColumn: Month
+
+	column Day
+		dataType: int64
+		sourceProviderType: UnsignedTinyInt
+		sourceColumn: Day
+
+	column QuarterNumber
+		dataType: int64
+		sourceProviderType: UnsignedTinyInt
+		sourceColumn: QuarterNumber
+
+	column YoYWeek_1YearBack
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: Date
+		sourceColumn: YoYWeek_1YearBack
+
+	column YoYWeek_2YearsBack
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: Date
+		sourceColumn: YoYWeek_2YearsBack
+
+	column YoYWeek_3YearsBack
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: Date
+		sourceColumn: YoYWeek_3YearsBack
+
+	column YoYWeek_4YearsBack
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: Date
+		sourceColumn: YoYWeek_4YearsBack
+
+	column YoYWeek_5YearsBack
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: Date
+		sourceColumn: YoYWeek_5YearsBack
+
+	column FiscalYear
+		dataType: int64
+		sourceProviderType: SmallInt
+		sourceColumn: FiscalYear
+
+	column ReportingDate
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		sourceProviderType: Date
+		sourceColumn: ReportingDate
+
+		annotation Format = <Format Format="DateTimeCustom"><DateTimes><DateTime LCID="1033" Group="ShortDate" FormatString="yyyy-MM-dd" /></DateTimes></Format>
+
+	column FiscalQuarter
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: FiscalQuarter
+
+	column WeekNumber
+		dataType: int64
+		sourceProviderType: UnsignedTinyInt
+		sourceColumn: WeekNumber
+
+	column IsoYear
+		dataType: int64
+		sourceProviderType: SmallInt
+		sourceColumn: IsoYear
+
+	column IsoWeekNumber
+		dataType: int64
+		sourceProviderType: UnsignedTinyInt
+		sourceColumn: IsoWeekNumber
+
+	column IsoWeekDay
+		dataType: int64
+		sourceProviderType: UnsignedTinyInt
+		sourceColumn: IsoWeekDay
+
+	column dayName
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: dayName
+
+	column dayNumber
+		dataType: int64
+		sourceProviderType: UnsignedTinyInt
+		sourceColumn: dayNumber
+
+	column FiscalMonth
+		dataType: int64
+		sourceProviderType: UnsignedTinyInt
+		sourceColumn: FiscalMonth
+
+	column FiscalWeek
+		dataType: int64
+		sourceProviderType: UnsignedTinyInt
+		sourceColumn: FiscalWeek
+
+	column ET_BudgetSeasonNum
+		dataType: int64
+		sourceProviderType: UnsignedTinyInt
+		sourceColumn: ET_BudgetSeasonNum
+
+	column GAT_BudgetSeasonNum
+		dataType: int64
+		sourceProviderType: UnsignedTinyInt
+		sourceColumn: GAT_BudgetSeasonNum
+
+	partition dimDates = query
+		dataView: full
+		source
+			query = SELECT * FROM ProcessedReports_LandOps.dbo.dimDates
+			dataSource: 'SqlServer BIStaging'
+
+		annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM ProcessedReports_LandOps.dbo.dimDates</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT * FROM ProcessedReports_LandOps.dbo.dimDates
+
+	annotation _TM_ExtProp_DbTableName = dimDates
+
+	annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM ProcessedReports_LandOps.dbo.dimDates</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+

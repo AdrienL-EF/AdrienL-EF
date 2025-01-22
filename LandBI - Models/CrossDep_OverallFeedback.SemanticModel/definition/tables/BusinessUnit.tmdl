@@ -1,0 +1,79 @@
+table BusinessUnit
+
+	column BusinessUnit_Key
+		dataType: int64
+		sourceProviderType: SmallInt
+		sourceColumn: BusinessUnit_Key
+
+	column BusinessUnit_id
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: BusinessUnit_id
+
+	column ProductCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: ProductCode
+
+	column ProductMarketCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: ProductMarketCode
+
+	column BusinessUnitGroup_id
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: BusinessUnitGroup_id
+
+	column BusinessUnitGroupCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: BusinessUnitGroupCode
+
+	column BusinessUnitGroupName
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: BusinessUnitGroupName
+
+	column BusinessUnitCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: BusinessUnitCode
+
+	column BusinessUnitName
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: BusinessUnitName
+
+	column SubdivisionCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: SubdivisionCode
+
+	column SubdivisionName
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: SubdivisionName
+
+	column Product
+		dataType: string
+		sourceColumn: Product
+
+	column BusinessUnitGroup
+		dataType: string
+		sourceColumn: BusinessUnitGroup
+
+	partition Query = query
+		dataView: full
+		source
+			query = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_BusinessUnit
+			dataSource: 'SqlServer ToursBI martEvaluation'
+
+		annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_BusinessUnit</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_BusinessUnit
+
+	annotation _TM_ExtProp_DbTableName = Query
+
+	annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_BusinessUnit</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+

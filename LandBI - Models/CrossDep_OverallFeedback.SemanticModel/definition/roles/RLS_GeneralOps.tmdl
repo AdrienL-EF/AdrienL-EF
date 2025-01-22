@@ -1,0 +1,14 @@
+/// Individuals with general operations-related permissions (General Ops)
+role RLS_GeneralOps
+	modelPermission: read
+
+	tablePermission xCountry = xCountry[Country_Link]=LOOKUPVALUE(RLS_Dos[Country_Link],RLS_Dos[EmailAddress],USERNAME(),RLS_Dos[Country_Link],xCountry[Country_Link])
+
+	tablePermission xCompType = xCompType[CompTypeCode]=LOOKUPVALUE(RLS_Dos[CompTypeCode],RLS_Dos[EmailAddress],USERNAME(),RLS_Dos[CompTypeCode],xCompType[CompTypeCode])
+
+	tablePermission xTourCode = xTourCode[TourCode]=LOOKUPVALUE(RLS_Tres[TourCode],RLS_Tres[EmailAddress],USERNAME(),RLS_Tres[TourCode],xTourCode[TourCode])
+
+	tablePermission xProductionMarket_Overall = xProductionMarket_Overall[ProductionMarketCode]=LOOKUPVALUE(RLS_Dos[ProductionMarketCode],RLS_Dos[EmailAddress],USERNAME(),RLS_Dos[ProductionMarketCode],xProductionMarket_Overall[ProductionMarketCode])
+
+	tablePermission xProductionMarket_Comp = xProductionMarket_Comp[ProductionMarketCode]=LOOKUPVALUE(RLS_Dos[ProductionMarketCode],RLS_Dos[EmailAddress],USERNAME(),RLS_Dos[ProductionMarketCode],xProductionMarket_Comp[ProductionMarketCode])
+

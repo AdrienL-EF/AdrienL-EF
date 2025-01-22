@@ -1,0 +1,6 @@
+/// Individuals with territory-related permissions (Sales)
+role RLS_Territory
+	modelPermission: read
+
+	tablePermission xTerritory = xTerritory[Territory_id] = LOOKUPVALUE(RLS[Territory_id],RLS[EmailAddress],USERNAME(),RLS[Territory_id],xTerritory[Territory_id])
+

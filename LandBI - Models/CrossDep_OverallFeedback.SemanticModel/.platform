@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CrossDep_OverallFeedback"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "ecb3663d-30b3-4ae2-9af5-d4e8d8b54231"
+  }
+}

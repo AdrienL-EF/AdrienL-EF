@@ -1,0 +1,17 @@
+table 'Last Refreshed Time'
+
+	measure 'Last Model Refresh Time' = ```
+			 CONCATENATE(MAX(OverallQuestionGroups[Last Refresh Time]), " (UTC)")
+			```
+		formatString: yyyy-MM-dd h:mm:ss AM/PM
+
+		annotation Format = <Format Format="DateTimeCustom"><DateTimes><DateTime LCID="1033" Group="GeneralLongDateTime" FormatString="yyyy-MM-dd h:mm:ss tt" /></DateTimes></Format>
+
+	column dummy
+		isHidden
+		isNameInferred
+		sourceColumn: [dummy]
+
+	partition 'CalculatedTable 1' = calculated
+		source = SELECTCOLUMNS( {"dummy"}, "dummy", [Value])
+

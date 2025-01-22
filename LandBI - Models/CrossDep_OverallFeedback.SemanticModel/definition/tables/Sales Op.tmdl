@@ -1,0 +1,186 @@
+table 'Sales Op'
+
+	column SalesOp_id
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: SalesOp_id
+
+	column Organization_Id
+		dataType: int64
+		isHidden
+		sourceProviderType: Integer
+		sourceColumn: Organization_Id
+
+	column 'Sales Year'
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: Sales Year
+
+	column 'AC Received Date'
+		dataType: dateTime
+		formatString: Short Date
+		sourceProviderType: Date
+		sourceColumn: AC Received Date
+
+		annotation Format = <Format Format="DateTimeShortDatePattern" />
+
+	column 'AC Date'
+		dataType: dateTime
+		formatString: Short Date
+		sourceProviderType: Date
+		sourceColumn: AC Date
+
+		annotation Format = <Format Format="DateTimeShortDatePattern" />
+
+	column IsNewLead
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: Boolean
+		sourceColumn: IsNewLead
+
+	column TrackingCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: TrackingCode
+
+	column 'Competition Company'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: Competition Company
+
+	column 'Competition Status'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: Competition Status
+
+	column 'Cancelled Enter Date'
+		dataType: dateTime
+		sourceColumn: Cancelled Enter Date
+
+	column 'App Expected Date'
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: Date
+		sourceColumn: App Expected Date
+
+	column 'Rec. Meeting Date'
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: Date
+		sourceColumn: Rec. Meeting Date
+
+	column 'Last GL Travel Year'
+		dataType: int64
+		sourceProviderType: SmallInt
+		sourceColumn: Last GL Travel Year
+
+	column 'Last Org Travel Year'
+		dataType: int64
+		sourceProviderType: SmallInt
+		sourceColumn: Last Org Travel Year
+
+	column TourConsultant_Id
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: TourConsultant_Id
+
+	column 'Tour Consultant'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: Tour Consultant
+
+	column 'Tracking Name'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: Tracking Name
+
+	column OrgLoyalty_Key
+		dataType: int64
+		sourceColumn: OrgLoyalty_Key
+
+	column 'Org Loyalty'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: Org Loyalty
+
+	column GLLoyalty_Key
+		dataType: int64
+		sourceColumn: GLLoyalty_Key
+
+	column 'GL Loyalty'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: GL Loyalty
+
+	column 'Lead Type'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: Lead Type
+
+	column 'Lead Group'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: Lead Group
+
+	column Campaign
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: Campaign
+
+	column Channel
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: Channel
+
+	column 'Current Status Code'
+		dataType: string
+		sourceColumn: Current Status Code
+
+	column 'Current Status'
+		dataType: string
+		sourceColumn: Current Status
+
+	column 'Current Resolution'
+		dataType: string
+		sourceColumn: Current Resolution
+
+	column 'Last Attempt'
+		dataType: dateTime
+		sourceColumn: Last Attempt
+
+	column 'Last Contact'
+		dataType: dateTime
+		sourceColumn: Last Contact
+
+	column 'Followup Status'
+		dataType: string
+		sourceColumn: Followup Status
+
+	column 'Business Development'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: Boolean
+		sourceColumn: Business Development
+
+	column PrivateBusCode
+		dataType: string
+		sourceColumn: PrivateBusCode
+
+	column Language
+		dataType: string
+		sourceColumn: Language
+
+	partition 'Sales Op' = query
+		dataView: full
+		source
+			query = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_SalesOp
+			dataSource: 'SqlServer ToursBI martEvaluation'
+
+		annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_SalesOp</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_SalesOp
+
+	annotation _TM_ExtProp_DbTableName = Sales Op
+
+	annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_SalesOp</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+

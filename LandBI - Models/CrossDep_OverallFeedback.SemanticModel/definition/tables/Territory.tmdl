@@ -1,0 +1,80 @@
+table Territory
+
+	column Territory_id
+		dataType: int64
+		sourceColumn: Territory_id
+
+	column ProductMarket
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: ProductMarket
+
+	column BusinessUnitGroupName
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: BusinessUnitGroupName
+
+	column BusinessUnitName
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: BusinessUnitName
+
+	column OfficeCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: OfficeCode
+
+	column OfficeName
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: OfficeName
+
+	column TeamGroup
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: TeamGroup
+
+	column TeamCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: TeamCode
+
+	column TeamName
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: TeamName
+
+	column TeammanagerName
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: TeammanagerName
+
+	column TerritoryName
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: TerritoryName
+
+	column TerritoryOwnerName
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: TerritoryOwnerName
+
+	column RMName
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: RMName
+
+	partition TerritoryNew = query
+		dataView: full
+		source
+			query = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_Territory
+			dataSource: 'SqlServer ToursBI martEvaluation'
+
+		annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_Territory</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_Territory
+
+	annotation _TM_ExtProp_DbTableName = TerritoryNew
+
+	annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_Territory</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+

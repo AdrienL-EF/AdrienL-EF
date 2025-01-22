@@ -1,0 +1,98 @@
+table _mStayRatings
+
+	measure 'Avg Stay Rating' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				CALCULATE(DIVIDE(SUM(StayRatingResponses[AnswerValue]), COUNT(StayRatingResponses[AnswerValue])), 
+				OR(
+					StayRatingResponses[IsCurrentYear] = TRUE(), 
+					StayRatingResponses[IsYearToDate] = TRUE())), 
+			DIVIDE(SUM(StayRatingResponses[AnswerValue]), COUNT(StayRatingResponses[AnswerValue])))
+			```
+
+	measure 'Avg Stay Rating Comparison' = ```
+			 CALCULATE(
+				[Avg Stay Rating], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+
+	measure 'Count Total Stay Ratings' = ```
+			
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				CALCULATE(COUNT(StayRatingResponses[AnswerValue]), 
+				OR(
+					StayRatingResponses[IsCurrentYear] = TRUE(), 
+					StayRatingResponses[IsYearToDate] = TRUE())), 
+			COUNT(StayRatingResponses[AnswerValue]))
+			```
+		formatString: #,0
+
+	measure 'Count Total Stay Ratings Comparison' = ```
+			 CALCULATE(
+				[Count Total Stay Ratings], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+		formatString: #,0
+
+	measure 'Avg Stay Rating Δ' = ```
+			 IF(
+				[Count Total Stay Ratings] = 0 || [Count Total Stay Ratings Comparison] = 0, 
+				BLANK(), 
+				ROUND([Avg Stay Rating], 2) - ROUND([Avg Stay Rating Comparison], 2))
+			```
+
+	measure 'Avg Stay Rating Δ %' = ```
+			 DIVIDE([Avg Stay Rating Δ], [Avg Stay Rating Comparison])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Formatting_Avg Stay Rating' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				SELECTEDVALUE(OverallQuestionGroups[SalesYearNumber]) & " YTD Avg Stay Rating", 
+				SELECTEDVALUE(OverallQuestionGroups[SalesYearNumber]) & " EOY Avg Stay Rating")
+			```
+
+	measure 'Formatting_Avg Stay Rating Comparison' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				SELECTEDVALUE('Sales Years'[SalesYear_Compare]) & " YTD Avg Stay Rating", 
+				SELECTEDVALUE('Sales Years'[SalesYear_Compare]) & " EOY Avg Stay Rating")
+			```
+
+	measure 'Formatting_Stay Rating Responses' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				SELECTEDVALUE(OverallQuestionGroups[SalesYearNumber]) & " YTD Stay Rating Responses", 
+				SELECTEDVALUE(OverallQuestionGroups[SalesYearNumber]) & " EOY Stay Rating Responses")
+			```
+
+	measure 'Formatting_Stay Rating Responses Comparison' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				SELECTEDVALUE('Sales Years'[SalesYear_Compare]) & " YTD Stay Rating Responses", 
+				SELECTEDVALUE('Sales Years'[SalesYear_Compare]) & " EOY Stay Rating Responses")
+			```
+
+	measure 'Formatting_Avg Stay Rating Δ' = ```
+			
+			IF([Count Total Stay Ratings] = 0 || [Count Total Stay Ratings Comparison] = 0, BLANK(), 
+			IF([Avg Stay Rating Δ] >= 0.005, 1, 
+			IF([Avg Stay Rating Δ] <= -0.005, -1, 
+			0)))
+			```
+
+	column dummy
+		isHidden
+		isNameInferred
+		sourceColumn: [dummy]
+
+	partition 'CalculatedTable 1' = calculated
+		source = SELECTCOLUMNS( {"dummy"}, "dummy", [Value])
+

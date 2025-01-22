@@ -1,0 +1,94 @@
+table _mResponseProgress
+
+	measure CountResponses_Complete = ```
+			 SUM(ResponseProgress[Complete])
+			```
+		formatString: #,0
+
+	measure CountResponses_InProgress = ```
+			 SUM(ResponseProgress[InProgress])
+			```
+		formatString: #,0
+
+	measure CountResponses_Overdue = ```
+			 SUM(ResponseProgress[Overdue])
+			```
+		formatString: #,0
+
+	measure RatioResponses_Complete = ```
+			 DIVIDE([CountResponses_Complete], [CountResponses_Total])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure RatioResponses_InProgress = ```
+			 DIVIDE([CountResponses_InProgress], [CountResponses_Total])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure RatioResponses_Overdue = ```
+			 DIVIDE([CountResponses_Overdue], [CountResponses_Total])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure CountEvals_Incomplete = ```
+			 CALCULATE([CountEvals_Total], ResponseProgress[CompleteStatus] = "Incomplete")
+			```
+		formatString: #,0
+
+	measure RatioEvals_Incomplete = ```
+			 DIVIDE([CountEvals_Incomplete], [CountEvals_Total])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure CountEvals_Total = ```
+			 DISTINCTCOUNT(ResponseProgress[SalesOp_id])
+			```
+		formatString: #,0
+
+	measure CountEvals_Complete = ```
+			 CALCULATE([CountEvals_Total], ResponseProgress[CompleteStatus] = "Complete")
+			```
+		formatString: #,0
+
+	measure CountEvals_InProgress = ```
+			 CALCULATE([CountEvals_Total], ResponseProgress[CompleteStatus] = "In Progress")
+			```
+		formatString: #,0
+
+	measure RatioEvals_Complete = ```
+			 DIVIDE([CountEvals_Complete], [CountEvals_Total])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure RatioEvals_InProgress = ```
+			 DIVIDE([CountEvals_InProgress], [CountEvals_Total])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure CountResponses_Total = ```
+			 SUM(ResponseProgress[Total])
+			```
+		formatString: #,0
+
+	measure AvgDaysOverdue = ```
+			 AVERAGEX(SUMMARIZE(ResponseProgress, ResponseProgress[SalesOp_id], "DaysOverdue", MAX(ResponseProgress[DaysOverdue])), [DaysOverdue])
+			```
+
+	measure CountNPS_Complete = ```
+			 CALCULATE([CountResponses_Complete], ResponseProgress[QuestionType] = "NPS")
+			```
+		formatString: #,0
+
+	measure RatioNPS_Complete = ```
+			 CALCULATE([RatioResponses_Complete], ResponseProgress[QuestionType] = "NPS")
+			```
+		formatString: 0.0%;-0.0%;0.0%
+
+	column dummy
+		isHidden
+		isNameInferred
+		sourceColumn: [dummy]
+
+	partition 'CalculatedTable 1' = calculated
+		source = SELECTCOLUMNS( {"dummy"}, "dummy", [Value])
+

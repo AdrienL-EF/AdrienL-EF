@@ -1,0 +1,12 @@
+dataSource 'SqlServer BIStaging' = provider
+	connectionString: Provider=SQLNCLI11;Data Source=va-bistgdbnode1.eftsd.com;Persist Security Info=false;Integrated Security=SSPI;User ID=BOSTON\svc.svc.tg.bi.ssas;Initial Catalog=ReportPrototypes
+	impersonationMode: impersonateServiceAccount
+
+	annotation ConnectionEditUISource = SqlServer
+
+dataSource 'SqlServer ToursBI martEvaluation' = provider
+	connectionString: Provider=SQLNCLI11;Data Source=va-bidbnode1.eftsd.com;Persist Security Info=false;Integrated Security=SSPI;User ID=BOSTON\svc.svc.tg.bi.ssas;Initial Catalog=martEvaluation
+	impersonationMode: impersonateServiceAccount
+
+	annotation ConnectionEditUISource = SqlServer
+
