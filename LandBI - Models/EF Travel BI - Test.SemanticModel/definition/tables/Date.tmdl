@@ -1,0 +1,89 @@
+table Date
+	lineageTag: f74f428e-78ab-4f41-b510-62e1df3a2b25
+
+	column Date
+		dataType: dateTime
+		isNullable: false
+		formatString: Long Date
+		lineageTag: 6d858e28-f456-40a3-b5d8-6d8b4258ce84
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column DateKey
+		dataType: int64
+		isNullable: false
+		lineageTag: 8b93225f-ea49-4f40-9619-f3b5871e00f9
+		summarizeBy: count
+		sourceColumn: DateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Calendar Year'
+		dataType: string
+		lineageTag: 502cfd03-e81e-4c36-9002-df0350c8d2d7
+		summarizeBy: none
+		sourceColumn: Calendar Year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Month Number'
+		dataType: int64
+		lineageTag: b01dc871-53d0-4631-a89b-11dce248ad2f
+		summarizeBy: sum
+		sourceColumn: Month Number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Month
+		dataType: string
+		lineageTag: 3ee71f69-02a4-49f8-92d4-0a0e24dbec63
+		summarizeBy: none
+		sourceColumn: Month
+		sortByColumn: 'Month Number'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'DaxBook Date' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("Demo", "ContosoRetailDW"),
+				    DaxBook_Date = Source{[Schema="DaxBook",Item="Date"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(DaxBook_Date,{"Calendar Year Number", "Calendar Year Quarter Number", "Calendar Year Quarter", "Calendar Year Month Number", "Calendar Year Month", "Day of Week Number", "Day of Week", "Fiscal Year Number", "Fiscal Year", "Fiscal Quarter Number", "Fiscal Quarter", "Fiscal Year Quarter Number", "Fiscal Year Quarter", "Fiscal Month Number", "Fiscal Month", "Working Day", "Is Holiday", "Holiday Name", "Europe Season", "North America Season", "Asia Season"})
+				in
+				    #"Removed Columns"
+
+		annotation IsQueryEditorUsed = False
+
+		annotation QueryEditorSerialization
+
+		annotation TableWidgetSerialization
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT * FROM [Date]
+
+	annotation _TM_ExtProp_DbTableName = 290
+
+	annotation IsQueryEditorUsed = False
+
+	annotation QueryEditorSerialization
+
+	annotation TableWidgetSerialization
+
+	annotation DataMarketWebBaseUrl
+
+	annotation DataMarketWebQueryUrl
+
+	annotation PBI_ResultType = Table
+

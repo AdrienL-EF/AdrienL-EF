@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "EF Travel BI - Test"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "a2f28c23-d1e8-a62d-42a3-5287025cf15a"
+  }
+}
