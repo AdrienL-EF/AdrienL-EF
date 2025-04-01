@@ -1,0 +1,22 @@
+table CostMeasures
+
+	measure BudgetTotalUSD = sum(BudgetCommittedCost[BU_TotalUSD])
+		formatString: #,0.00
+
+	measure CommittedTotalUSD = sum(BudgetCommittedCost[CC_TotalUSD])
+		formatString: #,0.00
+
+	measure ReferenceTotalUSD = sum(BudgetCommittedCost[REF_TotalUSD])
+		formatString: #,0.00
+
+	measure ProjectionsTotalUSD = sum(BudgetCommittedCost[CostProjectionUSD])
+		formatString: #,0.00
+
+	column dummy
+		isHidden
+		isNameInferred
+		sourceColumn: [dummy]
+
+	partition 'CalculatedTable 1' = calculated
+		source = SELECTCOLUMNS( {"dummy"}, "dummy", [Value])
+
