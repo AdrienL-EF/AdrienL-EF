@@ -1,0 +1,108 @@
+table Product
+	lineageTag: ec8d807b-9643-4425-8b78-36bb2b0b13c4
+
+	column ProductKey
+		dataType: int64
+		isNullable: false
+		lineageTag: fb08e52e-352e-4920-bd60-579114d9c56d
+		summarizeBy: count
+		sourceColumn: ProductKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Product Name'
+		dataType: string
+		lineageTag: 7ec32440-7983-4292-8e5b-25a5cf09d5ed
+		summarizeBy: none
+		sourceColumn: Product Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Brand
+		dataType: string
+		lineageTag: 0cd60047-5576-4437-aecf-e880b27cd8f4
+		summarizeBy: none
+		sourceColumn: Brand
+
+		annotation SummarizationSetBy = Automatic
+
+	column Color
+		dataType: string
+		lineageTag: 52e176ed-e356-44d8-abe9-1bdedd82a6be
+		summarizeBy: none
+		sourceColumn: Color
+
+		annotation SummarizationSetBy = Automatic
+
+	column Subcategory
+		dataType: string
+		lineageTag: 4a4ff455-ffe2-44b5-ab95-d095b91c5766
+		summarizeBy: none
+		sourceColumn: Subcategory
+
+		annotation SummarizationSetBy = Automatic
+
+	column Category
+		dataType: string
+		lineageTag: 45d9aaa0-1934-45a7-b92b-e0e5f92864aa
+		summarizeBy: none
+		sourceColumn: Category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Unit Cost'
+		dataType: decimal
+		formatString: \$#,0.###############;(\$#,0.###############);\$#,0.###############
+		lineageTag: 013ced96-9855-4076-9ff7-88e74ca5237d
+		summarizeBy: sum
+		sourceColumn: Unit Cost
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"currencyCulture":"en-US"}
+
+	partition 'DaxBook Product' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("Demo", "ContosoRetailDW"),
+				    DaxBook_Product = Source{[Schema="DaxBook",Item="Product"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(DaxBook_Product,{"Manufacturer", "Class", "Style", "Size", "Weight", "Weight Unit Measure", "Stock Type Code", "Stock Type", "Status", "Available Date", "Product Description"}),
+				    #"Merged Queries" = Table.NestedJoin(#"Removed Columns",{"ProductSubcategoryKey"},#"Product Subcategory",{"ProductSubcategoryKey"},"NewColumn",JoinKind.LeftOuter),
+				    #"Expanded NewColumn" = Table.ExpandTableColumn(#"Merged Queries", "NewColumn", {"Subcategory", "ProductCategoryKey"}, {"Subcategory", "ProductCategoryKey"}),
+				    #"Merged Queries1" = Table.NestedJoin(#"Expanded NewColumn",{"ProductCategoryKey"},#"Product Category",{"ProductCategoryKey"},"NewColumn",JoinKind.LeftOuter),
+				    #"Expanded NewColumn1" = Table.ExpandTableColumn(#"Merged Queries1", "NewColumn", {"Category"}, {"Category"}),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Expanded NewColumn1",{"ProductCategoryKey", "ProductSubcategoryKey", "Product Code", "Unit Price"})
+				in
+				    #"Removed Columns1"
+
+		annotation IsQueryEditorUsed = False
+
+		annotation QueryEditorSerialization
+
+		annotation TableWidgetSerialization
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT * FROM [Product]
+
+	annotation _TM_ExtProp_DbTableName = 525
+
+	annotation IsQueryEditorUsed = False
+
+	annotation QueryEditorSerialization
+
+	annotation TableWidgetSerialization
+
+	annotation DataMarketWebBaseUrl
+
+	annotation DataMarketWebQueryUrl
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,56 @@
+table _mGroupDynamic
+
+	measure GroupDynamic = ```
+			
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				CALCULATE(AVERAGE(GroupDynamicResponses[GroupDynamicResponse]), OR(
+					GroupDynamicResponses[IsCurrentYear] = TRUE(), 
+					GroupDynamicResponses[IsYearToDate] = TRUE())), 
+			AVERAGE(GroupDynamicResponses[GroupDynamicResponse]))
+			```
+
+	measure 'GroupDynamic Comparison' = ```
+			 CALCULATE(
+				_mGroupDynamic[GroupDynamic], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+
+	measure 'Count GroupDynamic Responses' = ```
+			
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				CALCULATE(COUNT(GroupDynamicResponses[GroupDynamicResponse]), OR(
+					GroupDynamicResponses[IsCurrentYear] = TRUE(), 
+					GroupDynamicResponses[IsYearToDate] = TRUE())), 
+			COUNT(GroupDynamicResponses[GroupDynamicResponse]))
+			```
+		formatString: #,0
+
+	measure 'Count GroupDynamic Responses Comparison' = ```
+			 CALCULATE(
+				_mGroupDynamic[Count GroupDynamic Responses], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+		formatString: #,0
+
+	measure 'GroupDynamic Δ' = ```
+			 IF(
+				[Count GroupDynamic Responses] = 0 || [Count GroupDynamic Responses Comparison] = 0, 
+				BLANK(), 
+				ROUND(_mGroupDynamic[GroupDynamic], 2) - ROUND(_mGroupDynamic[GroupDynamic Comparison], 2))
+			```
+
+	measure 'GroupDynamic Δ %' = ```
+			 DIVIDE(_mGroupDynamic[GroupDynamic Δ], _mGroupDynamic[GroupDynamic Comparison])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	column dummy
+		isHidden
+		isNameInferred
+		sourceColumn: [dummy]
+
+	partition 'CalculatedTable 1' = calculated
+		source = SELECTCOLUMNS( {"dummy"}, "dummy", [Value])
+

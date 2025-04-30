@@ -1,0 +1,66 @@
+table ResponseProgress
+
+	column SalesOp_id
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: SalesOp_id
+
+	column Total
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: Total
+
+	column Complete
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: Complete
+
+	column InProgress
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: InProgress
+
+	column Overdue
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: Overdue
+
+	column QuestionType
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: QuestionType
+		sortByColumn: QuestionType_id
+
+	column QuestionType_id
+		dataType: int64
+		isHidden
+		sourceColumn: QuestionType_id
+
+	column DaysOverdue
+		dataType: int64
+		sourceColumn: DaysOverdue
+
+	column CompleteStatus_id
+		dataType: int64
+		isHidden
+		sourceColumn: CompleteStatus_id
+
+	column CompleteStatus
+		dataType: string
+		sourceColumn: CompleteStatus
+		sortByColumn: CompleteStatus_id
+
+	partition ResponseProgress = query
+		dataView: full
+		source
+			query = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_ResponseProgress
+			dataSource: 'SqlServer ToursBI martEvaluation'
+
+		annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_ResponseProgress</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_ResponseProgress
+
+	annotation _TM_ExtProp_DbTableName = ResponseProgress
+
+	annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_ResponseProgress</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+

@@ -1,0 +1,58 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+
+annotation ClientCompatibilityLevel = 400
+
+ref table BusinessUnit
+ref table Territory
+ref table OverallQuestionGroups
+ref table 'NPS Response'
+ref table 'TD Response'
+ref table 'TC Response'
+ref table 'Tour Experience Response'
+ref table 'Current TEM'
+ref table OverallQuestionCurrentYearGroups
+ref table 'Tour Spec'
+ref table xTerritory
+ref table RLS
+ref table xTourCode
+ref table 'NPS Measures'
+ref table 'Market Area Office Mapping'
+ref table 'Stay Rating Measures'
+ref table ComponentResponses
+ref table StayRatingResponses
+ref table 'Component Measures'
+ref table xCountry
+ref table xCompType
+ref table RLS_Dos
+ref table RLS_Tres
+ref table xProductionMarket_Overall
+ref table xProductionMarket_Comp
+ref table 'Market Development Owner'
+ref table 'Tour Experience Measures'
+ref table 'NPS Spr v Sum Measures'
+ref table 'Sales Op'
+ref table Organization
+ref table 'Last Refreshed Time'
+ref table 'Sales Years'
+ref table _mNPS
+ref table _mComponents
+ref table _mTourExperience
+ref table _mStayRatings
+ref table _mTD
+ref table ResponseProgress
+ref table _mResponseProgress
+ref table dimDates
+ref table _mTC
+ref table GroupDynamicResponses
+ref table LearningOutcomeResponses
+ref table _mGroupDynamic
+ref table _mLearningOutcomes
+ref table OverallQuestionGroups_HasStaffTour
+ref table _mVolume
+
+ref role RLS_Territory
+ref role RLS_TourCode
+ref role RLS_GeneralOps
+

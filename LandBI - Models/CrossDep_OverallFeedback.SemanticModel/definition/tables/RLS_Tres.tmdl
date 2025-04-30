@@ -1,0 +1,26 @@
+table RLS_Tres
+	isHidden
+
+	column TourCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: TourCode
+
+	column EmailAddress
+		dataType: string
+		sourceColumn: EmailAddress
+
+	partition RLS_tres = query
+		dataView: full
+		source
+			query = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_RLS_Tres
+			dataSource: 'SqlServer ToursBI martEvaluation'
+
+		annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_RLS_Tres</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_RLS_Tres
+
+	annotation _TM_ExtProp_DbTableName = RLS_tres
+
+	annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_RLS_Tres</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+

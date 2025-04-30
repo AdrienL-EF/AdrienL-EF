@@ -1,0 +1,64 @@
+table 'Current TEM'
+
+	column TourSpec_id
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: TourSpec_id
+
+	column TourCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: TourCode
+
+	column CurrentTourManagerUserId
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: CurrentTourManagerUserId
+
+	column CurrentTourManagerName
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: CurrentTourManagerName
+
+	column TourFamilyCode
+		dataType: string
+		sourceColumn: TourFamilyCode
+
+	column TourTypeCode
+		dataType: string
+		sourceColumn: TourTypeCode
+
+	column TourRegionName
+		dataType: string
+		sourceColumn: TourRegionName
+
+	column TourRegionCode
+		dataType: string
+		sourceColumn: TourRegionCode
+
+	column AreaMapping
+		dataType: string
+		sourceColumn: AreaMapping
+
+	hierarchy TourFamCodeHierachy
+
+		level TourFamilyCode
+			column: TourFamilyCode
+
+		level TourCode
+			column: TourCode
+
+	partition 'Current TEM' = query
+		dataView: full
+		source
+			query = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_CurrentTEM
+			dataSource: 'SqlServer ToursBI martEvaluation'
+
+		annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_CurrentTEM</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_CurrentTEM
+
+	annotation _TM_ExtProp_DbTableName = Current TEM
+
+	annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_CurrentTEM</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
