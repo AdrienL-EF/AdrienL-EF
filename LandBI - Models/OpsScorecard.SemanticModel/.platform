@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "OpsScorecard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "dac4e42c-a062-4e6e-a0fd-3457ee568581"
+  }
+}
