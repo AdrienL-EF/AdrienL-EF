@@ -1,0 +1,80 @@
+table 'Sales Years'
+
+	column SalesYear_Compare
+		dataType: int64
+		sourceColumn: SalesYear_Compare
+
+	column ViewType
+		dataType: string
+		sourceColumn: ViewType
+
+	column Legend
+		dataType: string
+		sourceColumn: Legend
+
+	partition Query = query
+		dataView: full
+		source
+			query =
+				SELECT DISTINCT
+					O.SalesYearNumber AS SalesYear_Compare
+				,	'YTD' AS ViewType
+				,	CONCAT(O.SalesYearNumber, ' YTD') AS Legend
+				FROM martEvaluation.dbo.OverallQuestionGroups_v AS O (NOLOCK)
+				
+				UNION
+				
+				SELECT DISTINCT
+					O.SalesYearNumber AS SalesYear_Compare
+				,	'EOY' AS ViewType
+				,	CONCAT(O.SalesYearNumber, ' EOY') AS Legend
+				FROM martEvaluation.dbo.OverallQuestionGroups_v AS O (NOLOCK)
+			dataSource: 'SqlServer ToursBI martEvaluation'
+
+		annotation QueryEditorSerialization =
+				<?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT DISTINCT
+					O.SalesYearNumber AS SalesYear_Compare
+				,	'YTD' AS ViewType
+				,	CONCAT(O.SalesYearNumber, ' YTD') AS Legend
+				FROM martEvaluation.dbo.OverallQuestionGroups_v AS O (NOLOCK)
+				
+				UNION
+				
+				SELECT DISTINCT
+					O.SalesYearNumber AS SalesYear_Compare
+				,	'EOY' AS ViewType
+				,	CONCAT(O.SalesYearNumber, ' EOY') AS Legend
+				FROM martEvaluation.dbo.OverallQuestionGroups_v AS O (NOLOCK)</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
+	annotation _TM_ExtProp_QueryDefinition =
+			SELECT DISTINCT
+				O.SalesYearNumber AS SalesYear_Compare
+			,	'YTD' AS ViewType
+			,	CONCAT(O.SalesYearNumber, ' YTD') AS Legend
+			FROM martEvaluation.dbo.OverallQuestionGroups_v AS O (NOLOCK)
+			
+			UNION
+			
+			SELECT DISTINCT
+				O.SalesYearNumber AS SalesYear_Compare
+			,	'EOY' AS ViewType
+			,	CONCAT(O.SalesYearNumber, ' EOY') AS Legend
+			FROM martEvaluation.dbo.OverallQuestionGroups_v AS O (NOLOCK)
+
+	annotation _TM_ExtProp_DbTableName = Query
+
+	annotation QueryEditorSerialization =
+			<?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT DISTINCT
+				O.SalesYearNumber AS SalesYear_Compare
+			,	'YTD' AS ViewType
+			,	CONCAT(O.SalesYearNumber, ' YTD') AS Legend
+			FROM martEvaluation.dbo.OverallQuestionGroups_v AS O (NOLOCK)
+			
+			UNION
+			
+			SELECT DISTINCT
+				O.SalesYearNumber AS SalesYear_Compare
+			,	'EOY' AS ViewType
+			,	CONCAT(O.SalesYearNumber, ' EOY') AS Legend
+			FROM martEvaluation.dbo.OverallQuestionGroups_v AS O (NOLOCK)</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+

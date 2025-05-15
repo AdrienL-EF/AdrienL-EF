@@ -1,0 +1,292 @@
+table ComponentResponses
+
+	column GroupTrip_id
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: GroupTrip_id
+
+	column ProdTour_id
+		dataType: string
+		sourceProviderType: Integer
+		sourceColumn: ProdTour_id
+
+	column EvaluatorId
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: EvaluatorId
+
+	column SalesYearNumber
+		dataType: int64
+		sourceProviderType: SmallInt
+		sourceColumn: SalesYearNumber
+
+	column StayComponentAnswerId
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: StayComponentAnswerId
+
+	column CompTypeCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: CompTypeCode
+
+	column LookupCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: LookupCode
+
+	column Supplier_Id
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: Supplier_Id
+
+	column ProdComp_Id
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: ProdComp_Id
+
+	column AllocComp_Id
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: AllocComp_Id
+
+	column SurveyDisplayName
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: SurveyDisplayName
+
+	column AnswerRating
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: AnswerRating
+
+	column AnswerComment
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: AnswerComment
+
+	column AnswerDate
+		dataType: dateTime
+		formatString: M/d/yyyy
+		sourceProviderType: Date
+		sourceColumn: AnswerDate
+
+		annotation Format = <Format Format="DateTimeCustom"><DateTimes><DateTime LCID="1033" Group="ShortDate" FormatString="M/d/yyyy" /></DateTimes></Format>
+
+	column IsDidNotRun
+		dataType: int64
+		sourceProviderType: UnsignedTinyInt
+		sourceColumn: IsDidNotRun
+
+	column IsDislike
+		dataType: int64
+		sourceProviderType: UnsignedTinyInt
+		sourceColumn: IsDislike
+
+	column IsLike
+		dataType: int64
+		sourceProviderType: UnsignedTinyInt
+		sourceColumn: IsLike
+
+	column IsLove
+		dataType: int64
+		sourceProviderType: UnsignedTinyInt
+		sourceColumn: IsLove
+
+	column IsComponentRating
+		dataType: int64
+		sourceProviderType: UnsignedTinyInt
+		sourceColumn: IsComponentRating
+
+	column IsYearToDate
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: Boolean
+		sourceColumn: IsYearToDate
+
+	column IsCurrentYear
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: Boolean
+		sourceColumn: IsCurrentYear
+
+	column EvalLink
+		dataType: string
+		sourceProviderType: VarChar
+		dataCategory: WebUrl
+		sourceColumn: EvalLink
+
+	column SupplierName
+		dataType: string
+		sourceColumn: SupplierName
+
+	column SupplierShortName
+		dataType: string
+		sourceColumn: SupplierShortName
+
+	column StayName
+		dataType: string
+		sourceColumn: StayName
+
+	column StayRating
+		dataType: int64
+		sourceColumn: StayRating
+
+	column City
+		dataType: string
+		sourceColumn: City
+
+	column Country
+		dataType: string
+		sourceColumn: Country
+
+	column ProductionMarketCode
+		dataType: string
+		sourceColumn: ProductionMarketCode
+
+	column IsPreviousYear
+		dataType: boolean
+		sourceColumn: IsPreviousYear
+
+	column MainCourse
+		dataType: string
+		sourceColumn: MainCourse
+
+	column AgentName
+		dataType: string
+		sourceColumn: AgentName
+
+	column ComponentOwner
+		dataType: string
+		sourceColumn: ComponentOwner
+
+	column RequiresAttentionCode
+		dataType: string
+		sourceColumn: RequiresAttentionCode
+
+	column IsPrevious2Years
+		dataType: boolean
+		sourceColumn: IsPrevious2Years
+
+	column CompTypeCategoryName
+		dataType: string
+		sourceColumn: CompTypeCategoryName
+
+	column Market
+		dataType: string
+		sourceColumn: Market
+
+	column EndLocationCityName
+		dataType: string
+		sourceColumn: EndLocationCityName
+
+	column EndLocationCountryName
+		dataType: string
+		sourceColumn: EndLocationCountryName
+
+	column AnswerDate_Short
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		sourceColumn: AnswerDate_Short
+
+		annotation Format = <Format Format="DateTimeCustom"><DateTimes><DateTime LCID="1033" Group="ShortDate" FormatString="yyyy-MM-dd" /></DateTimes></Format>
+
+	column TourDate
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		sourceColumn: TourDate
+
+		annotation Format = <Format Format="DateTimeCustom"><DateTimes><DateTime LCID="1033" Group="ShortDate" FormatString="yyyy-MM-dd" /></DateTimes></Format>
+
+	column TourMonth_Name
+		dataType: string
+		sourceColumn: TourMonth_Name
+		sortByColumn: TourMonth_Sort
+
+	column TourMonth_Sort
+		dataType: int64
+		isHidden
+		sourceColumn: TourMonth_Sort
+
+	column SupplierCode
+		dataType: string
+		sourceColumn: SupplierCode
+
+	column IsFirstStayRating
+		dataType: boolean
+		sourceColumn: IsFirstStayRating
+
+	column IsLastStayRating
+		dataType: boolean
+		sourceColumn: IsLastStayRating
+
+	column ComponentStartDate
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		sourceColumn: ComponentStartDate
+
+		annotation Format = <Format Format="DateTimeCustom"><DateTimes><DateTime LCID="1033" Group="ShortDate" FormatString="yyyy-MM-dd" /></DateTimes></Format>
+
+	column ComponentEndDate
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		sourceColumn: ComponentEndDate
+
+		annotation Format = <Format Format="DateTimeCustom"><DateTimes><DateTime LCID="1033" Group="ShortDate" FormatString="yyyy-MM-dd" /></DateTimes></Format>
+
+	column CountryClusterCode
+		dataType: string
+		sourceColumn: CountryClusterCode
+
+	column CountryClusterName
+		dataType: string
+		sourceColumn: CountryClusterName
+
+	hierarchy CountryCityCompSupplier
+
+		level Country
+			column: Country
+
+		level City
+			column: City
+
+		level 'Component Type'
+			column: CompTypeCode
+
+		level 'Lookup Code'
+			column: LookupCode
+
+		level 'Supplier Name'
+			column: SupplierShortName
+
+	hierarchy CountryStayCompSupplier
+
+		level Country
+			column: Country
+
+		level 'Stay Name'
+			column: StayName
+
+		level 'Component Type'
+			column: CompTypeCode
+
+		level 'Lookup Code'
+			column: LookupCode
+
+		level 'Supplier Name'
+			column: SupplierShortName
+
+	partition ComponentResponses = query
+		dataView: full
+		source
+			query = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_ComponentResponses
+			dataSource: 'SqlServer ToursBI martEvaluation'
+
+		annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_ComponentResponses</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_ComponentResponses
+
+	annotation _TM_ExtProp_DbTableName = ComponentResponses
+
+	annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_ComponentResponses</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+

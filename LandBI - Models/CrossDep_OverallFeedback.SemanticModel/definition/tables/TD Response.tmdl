@@ -1,0 +1,131 @@
+table 'TD Response'
+
+	column GroupTrip_id
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: GroupTrip_id
+
+	column QuestionType
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: QuestionType
+
+	column QuestionText
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: QuestionText
+
+	column MaxAnswerValue
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: MaxAnswerValue
+
+	column AnswerDate
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: Date
+		sourceColumn: AnswerDate
+
+	column TourDirector_Supplier_id
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: TourDirector_Supplier_id
+
+	column IsTD
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: Boolean
+		sourceColumn: IsTD
+
+	column IsYearToDate
+		dataType: boolean
+		sourceColumn: IsYearToDate
+
+	column IsCurrentYear
+		dataType: boolean
+		sourceColumn: IsCurrentYear
+
+	column TDResponse
+		dataType: int64
+		sourceColumn: TDResponse
+
+	column TDComment
+		dataType: string
+		sourceColumn: TDComment
+
+	column EvalLink
+		dataType: string
+		dataCategory: WebUrl
+		sourceColumn: EvalLink
+
+	column IsPreviousYear
+		dataType: boolean
+		sourceColumn: IsPreviousYear
+
+	column IsPrevious2Years
+		dataType: boolean
+		sourceColumn: IsPrevious2Years
+
+	column AnswerMonth_Name
+		dataType: string
+		sourceColumn: AnswerMonth_Name
+		sortByColumn: AnswerMonth_Sort
+
+	column AnswerMonth_Sort
+		dataType: int64
+		isHidden
+		summarizeBy: none
+		sourceColumn: AnswerMonth_Sort
+
+	column AnswerDate_Short
+		dataType: dateTime
+		formatString: yyyy-MM-dd
+		sourceColumn: AnswerDate_Short
+
+		annotation Format = <Format Format="DateTimeCustom"><DateTimes><DateTime LCID="1033" Group="ShortDate" FormatString="yyyy-MM-dd" /></DateTimes></Format>
+
+	column TDResponse_100
+		dataType: double
+		sourceColumn: TDResponse_100
+
+	column TourDate
+		dataType: dateTime
+		sourceColumn: TourDate
+
+	column TourMonth_Name
+		dataType: string
+		sourceColumn: TourMonth_Name
+		sortByColumn: TourMonth_Sort
+
+	column TourMonth_Sort
+		dataType: int64
+		isHidden
+		sourceColumn: TourMonth_Sort
+
+	column TourDirector_Name
+		dataType: string
+		sourceColumn: TourDirector_Name
+
+	column TourDirector_SupplierCode
+		dataType: string
+		sourceColumn: TourDirector_SupplierCode
+
+	column TourDirector_IsNew
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceColumn: TourDirector_IsNew
+
+	partition 'TD Response' = query
+		dataView: full
+		source
+			query = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_TdResponse
+			dataSource: 'SqlServer ToursBI martEvaluation'
+
+		annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_TdResponse</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_TdResponse
+
+	annotation _TM_ExtProp_DbTableName = TD Response
+
+	annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_TdResponse</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+

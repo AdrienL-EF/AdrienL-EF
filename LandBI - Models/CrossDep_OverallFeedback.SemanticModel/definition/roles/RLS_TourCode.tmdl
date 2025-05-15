@@ -1,0 +1,6 @@
+/// Individuals with tour code-related permissions (TEM)
+role RLS_TourCode
+	modelPermission: read
+
+	tablePermission xTourCode = xTourCode[TourCode]=LOOKUPVALUE(RLS[TourCode],RLS[EmailAddress],USERNAME(),RLS[TourCode],xTourCode[TourCode])
+

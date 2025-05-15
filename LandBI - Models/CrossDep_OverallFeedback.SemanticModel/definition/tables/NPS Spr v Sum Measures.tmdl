@@ -1,0 +1,117 @@
+table 'NPS Spr v Sum Measures'
+
+	measure 'NPS 2017 Spring Measure' = ```
+			 CALCULATE(
+				DIVIDE(SUM('NPS Response'[NPSCalculate]), COUNT('NPS Response'[NPSCalculate]))*100
+				,'NPS Response'[SalesYearNumber]=2017
+				,'NPS Response'[Season]="Spring"
+			)
+			```
+
+	measure 'NPS 2017 Summer Measure' = ```
+			 CALCULATE(
+				DIVIDE(SUM('NPS Response'[NPSCalculate]), COUNT('NPS Response'[NPSCalculate]))*100
+				,'NPS Response'[SalesYearNumber]=2017
+				,'NPS Response'[Season]="Summer"
+			)
+			```
+
+	measure 'NPS 2018 Spring' = ```
+			 CALCULATE(
+				DIVIDE(SUM('NPS Response'[NPSCalculate]), COUNT('NPS Response'[NPSCalculate]))*100
+				,'NPS Response'[SalesYearNumber]=2018
+				,'NPS Response'[Season]="Spring"
+			)
+			```
+
+	measure 'NPS 2018 Summer' = ```
+			 CALCULATE(
+				DIVIDE(SUM('NPS Response'[NPSCalculate]), COUNT('NPS Response'[NPSCalculate]))*100
+				,'NPS Response'[SalesYearNumber]=2018
+				,'NPS Response'[Season]="Summer"
+			)
+			```
+
+	measure 'NPS 2016 Spring' = ```
+			 CALCULATE(
+				DIVIDE(SUM('NPS Response'[NPSCalculate]), COUNT('NPS Response'[NPSCalculate]))*100
+				,'NPS Response'[SalesYearNumber]=2016
+				,'NPS Response'[Season]="Spring"
+			)
+			```
+
+	measure 'NPS 2016 Summer' = ```
+			 CALCULATE(
+				DIVIDE(SUM('NPS Response'[NPSCalculate]), COUNT('NPS Response'[NPSCalculate]))*100
+				,'NPS Response'[SalesYearNumber]=2016
+				,'NPS Response'[Season]="Summer"
+			)
+			```
+
+	measure 'Eval Submissions 2017 Spring' = ```
+			 CALCULATE(COUNT('NPS Response'[GroupTrip_id]), 'NPS Response'[NPSResponse] <> BLANK(),  'NPS Response'[SalesYearNumber]=2017, 'NPS Response'[Season]="Spring")
+			```
+
+	measure 'Eval Submissions 2017 Summer' = ```
+			 CALCULATE(COUNT('NPS Response'[GroupTrip_id]), 'NPS Response'[NPSResponse] <> BLANK(),  'NPS Response'[SalesYearNumber]=2017, 'NPS Response'[Season]="Summer")
+			```
+
+	measure 'Eval Submissions 2018 Spring' = ```
+			 CALCULATE(COUNT('NPS Response'[GroupTrip_id]), 'NPS Response'[NPSResponse] <> BLANK(),  'NPS Response'[SalesYearNumber]=2018, 'NPS Response'[Season]="Spring")
+			```
+
+	measure 'Eval Submissions 2016 Spring' = ```
+			 CALCULATE(COUNT('NPS Response'[GroupTrip_id]), 'NPS Response'[NPSResponse] <> BLANK(),  'NPS Response'[SalesYearNumber]=2016, 'NPS Response'[Season]="Spring")
+			```
+
+	measure 'Eval Submissions 2018 Summer' = ```
+			 CALCULATE(COUNT('NPS Response'[GroupTrip_id]), 'NPS Response'[NPSResponse] <> BLANK(),  'NPS Response'[SalesYearNumber]=2018, 'NPS Response'[Season]="Summer")
+			```
+
+	measure 'Eval Submissions 2016 Summer' = ```
+			 CALCULATE(COUNT('NPS Response'[GroupTrip_id]), 'NPS Response'[NPSResponse] <> BLANK(),  'NPS Response'[SalesYearNumber]=2016, 'NPS Response'[Season]="Summer")
+			```
+
+	measure 'NPS 2017 Off Peak Measure' = ```
+			 CALCULATE(
+				DIVIDE(SUM('NPS Response'[NPSCalculate]), COUNT('NPS Response'[NPSCalculate]))*100
+				,'NPS Response'[SalesYearNumber]=2017
+				,'NPS Response'[Season]="Outside of Peak"
+			)
+			```
+
+	measure 'NPS 2018 Off Peak Measure' = ```
+			 CALCULATE(
+				DIVIDE(SUM('NPS Response'[NPSCalculate]), COUNT('NPS Response'[NPSCalculate]))*100
+				,'NPS Response'[SalesYearNumber]=2018
+				,'NPS Response'[Season]="Outside of Peak"
+			)
+			```
+
+	measure 'NPS 2016 Off Peak Measure' = ```
+			 CALCULATE(
+				DIVIDE(SUM('NPS Response'[NPSCalculate]), COUNT('NPS Response'[NPSCalculate]))*100
+				,'NPS Response'[SalesYearNumber]=2016
+				,'NPS Response'[Season]="Outside of Peak"
+			)
+			```
+
+	measure 'Eval Submissions 2017 Off Peak' = ```
+			 CALCULATE(COUNT('NPS Response'[GroupTrip_id]), 'NPS Response'[NPSResponse] <> BLANK(),  'NPS Response'[SalesYearNumber]=2017, 'NPS Response'[Season]="Outside of Peak")
+			```
+
+	measure 'Eval Submissions 2018 Off Peak' = ```
+			 CALCULATE(COUNT('NPS Response'[GroupTrip_id]), 'NPS Response'[NPSResponse] <> BLANK(),  'NPS Response'[SalesYearNumber]=2018, 'NPS Response'[Season]="Outside of Peak")
+			```
+
+	measure 'Eval Submissions 2016 Off Peak' = ```
+			 CALCULATE(COUNT('NPS Response'[GroupTrip_id]), 'NPS Response'[NPSResponse] <> BLANK(),  'NPS Response'[SalesYearNumber]=2016, 'NPS Response'[Season]="Outside of Peak")
+			```
+
+	column 'NPS Measures: Spring v Summer'
+		isNameInferred
+		sourceColumn: [NPS Measures: Spring v Summer]
+
+	partition 'CalculatedTable 1' = calculated
+		source = DATATABLE("NPS Measures: Spring v Summer",INTEGER,{{}})
+

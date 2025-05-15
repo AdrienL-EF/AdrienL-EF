@@ -1,0 +1,27 @@
+table xTourCode
+	isHidden
+
+	column TourCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: TourCode
+
+	column TourCode_Key
+		dataType: int64
+		sourceProviderType: BigInt
+		sourceColumn: TourCode_Key
+
+	partition xTourCode = query
+		dataView: full
+		source
+			query = SELECT * FROM ReportPrototypes.dbo.LU_LandOps_TourCodeKey_lkp_v (NOLOCK)
+			dataSource: 'SqlServer BIStaging'
+
+		annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM ReportPrototypes.dbo.LU_LandOps_TourCodeKey_lkp_v (NOLOCK)</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT * FROM ReportPrototypes.dbo.LU_LandOps_TourCodeKey_lkp_v (NOLOCK)
+
+	annotation _TM_ExtProp_DbTableName = xTourCode
+
+	annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM ReportPrototypes.dbo.LU_LandOps_TourCodeKey_lkp_v (NOLOCK)</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+

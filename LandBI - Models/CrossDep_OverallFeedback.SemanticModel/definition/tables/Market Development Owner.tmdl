@@ -1,0 +1,39 @@
+table 'Market Development Owner'
+
+	column TourDivisionSpec_id
+		dataType: int64
+		isHidden
+		sourceProviderType: Integer
+		sourceColumn: TourDivisionSpec_id
+
+	column OwnerName
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: OwnerName
+
+	column DivisionName
+		dataType: string
+		isHidden
+		sourceProviderType: VarChar
+		sourceColumn: DivisionName
+
+	column StatusCode
+		dataType: string
+		isHidden
+		sourceProviderType: VarChar
+		sourceColumn: StatusCode
+
+	partition 'Market Development Owner' = query
+		dataView: full
+		source
+			query = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_MarketDevelopmentOwner
+			dataSource: 'SqlServer ToursBI martEvaluation'
+
+		annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_MarketDevelopmentOwner</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_MarketDevelopmentOwner
+
+	annotation _TM_ExtProp_DbTableName = Market Development Owner
+
+	annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_MarketDevelopmentOwner</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
