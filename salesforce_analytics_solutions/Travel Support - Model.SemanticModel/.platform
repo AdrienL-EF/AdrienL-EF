@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Travel Support - Model"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "bb5b82d7-20ee-8269-4352-c38157338311"
+  }
+}

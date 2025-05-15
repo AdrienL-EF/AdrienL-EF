@@ -1,0 +1,55 @@
+expression SF_WAREHOUSE = "REPORTING_WH" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 16647136-ad69-4d0b-87ef-b5dea6b37366
+	queryGroup: setup_parameters
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression SF_DATABASE = "ANALYTICS" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: aaf4654e-1a75-4d64-8356-7123a0d96fe4
+	queryGroup: setup_parameters
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression AZURE_SQL = "tours-travel-bi.database.windows.net" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 26f063d8-25f6-4e8e-8a05-181b3ad828a8
+	queryGroup: setup_parameters
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression REPORT_NAME = "Travel Support Model" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: c2729a04-0e66-4733-8a42-52f08cebf090
+	queryGroup: setup_parameters
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression Product =
+		let
+		    Source = Snowflake.Databases("eftours_us.us-east-1.snowflakecomputing.com",SF_WAREHOUSE),
+		    QA_ANALYTICS_Database = Source{[Name=SF_DATABASE,Kind="Database"]}[Data],
+		    REPORTING_TRAVELBI_Schema = QA_ANALYTICS_Database{[Name="REPORTING_TRAVELBI",Kind="Schema"]}[Data],
+		    PRODUCT = REPORTING_TRAVELBI_Schema{[Name="VW_DIM_PRODUCT",Kind="View"]}[Data]
+		in
+		    PRODUCT
+	lineageTag: 2ed63764-4cdc-41ef-a28a-10cab09aa95d
+	queryGroup: rls
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression SF_ROLE = "REPORTER" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 2c67910a-0492-4366-abe2-8073ab40df53
+	queryGroup: setup_parameters
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

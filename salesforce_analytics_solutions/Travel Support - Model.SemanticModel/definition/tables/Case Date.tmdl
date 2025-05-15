@@ -1,0 +1,239 @@
+table 'Case Date'
+	lineageTag: b6a8ecd8-880d-4816-9a1e-9942b1fcde65
+	dataCategory: Time
+
+	column DATE_KEY
+		dataType: double
+		isHidden
+		sourceProviderType: decimal(11, 0)
+		lineageTag: ad3f4a72-985b-4282-9d27-401769d13bab
+		summarizeBy: none
+		sourceColumn: DATE_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Case date'
+		dataType: dateTime
+		isKey
+		formatString: Short Date
+		sourceProviderType: date
+		lineageTag: ba9004bc-4b39-4269-93d3-86b75ffe9c8c
+		summarizeBy: none
+		sourceColumn: Case date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Case year'
+		dataType: double
+		formatString: 0
+		sourceProviderType: decimal(4, 0)
+		lineageTag: eadcd429-8c09-48e0-a4c5-7a0b18f40e01
+		summarizeBy: none
+		sourceColumn: Case year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Case quarter'
+		dataType: double
+		formatString: 0
+		sourceProviderType: decimal(2, 0)
+		lineageTag: 92f5a237-3341-4776-be7a-d4a5162bed3b
+		summarizeBy: none
+		sourceColumn: Case quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Case month'
+		dataType: double
+		sourceProviderType: decimal(2, 0)
+		lineageTag: 6a651c1c-bd5a-4da8-b230-a85bf23d56cd
+		summarizeBy: none
+		sourceColumn: Case month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Case Month name'
+		dataType: string
+		sourceProviderType: nvarchar(16777216)
+		lineageTag: afc3799f-b8ec-43a1-8e87-0a16f76e426e
+		summarizeBy: none
+		sourceColumn: Case Month name
+		sortByColumn: 'Case month'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Name day'
+		dataType: string
+		sourceProviderType: nvarchar(16777216)
+		lineageTag: cac846fc-9b1c-4ff2-b10f-19de00179dae
+		summarizeBy: none
+		sourceColumn: Name day
+		sortByColumn: 'Day of the week'
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of the week'
+		dataType: double
+		sourceProviderType: decimal(2, 0)
+		lineageTag: 978807fb-6aac-4b67-ae9d-b034a4097791
+		summarizeBy: none
+		sourceColumn: Day of the week
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Week of year'
+		dataType: double
+		sourceProviderType: decimal(2, 0)
+		lineageTag: f08b15d2-ba23-44a5-a900-037d8e321139
+		summarizeBy: none
+		sourceColumn: Week of year
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Day of year'
+		dataType: double
+		sourceProviderType: decimal(4, 0)
+		lineageTag: af9f0841-e964-4c71-a638-73abae5b51e0
+		summarizeBy: none
+		sourceColumn: Day of year
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Fiscal year'
+		dataType: double
+		formatString: 0
+		sourceProviderType: decimal(5, 0)
+		lineageTag: 02783453-a1c8-4aee-992b-21c57e390097
+		summarizeBy: none
+		sourceColumn: Fiscal year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Case Fiscal quarter'
+		dataType: string
+		sourceProviderType: nvarchar(16777216)
+		lineageTag: 262fb69e-bb8d-4ee5-b91d-5196442571fc
+		summarizeBy: none
+		sourceColumn: Case Fiscal quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is today'
+		dataType: string
+		sourceProviderType: nvarchar(3)
+		lineageTag: 61af9f76-41f8-4a22-9511-43c173efa12d
+		summarizeBy: none
+		sourceColumn: Is today
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is current week'
+		dataType: string
+		sourceProviderType: nvarchar(3)
+		lineageTag: 14ed123a-b873-4634-a5ca-d0fa3ded5abf
+		summarizeBy: none
+		sourceColumn: Is current week
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is current month'
+		dataType: string
+		sourceProviderType: nvarchar(3)
+		lineageTag: 7fe2e55b-b0da-48bd-9cdd-ea7389a8952c
+		summarizeBy: none
+		sourceColumn: Is current month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is weekday'
+		dataType: string
+		sourceProviderType: nvarchar(3)
+		lineageTag: 7a367d48-2cae-4b3e-bcdc-db0ce5d9b129
+		summarizeBy: none
+		sourceColumn: Is weekday
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Date with case opened'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 530ed61e-9acd-47ae-a0b8-55855bc3ba7a
+		summarizeBy: none
+		sourceColumn: Date with case opened
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Case Calendar Date Hierarchy'
+		lineageTag: 82208dfa-7a0a-4bd2-b3f0-94c71c588a18
+
+		level 'Case year'
+			lineageTag: 83006d01-7ba0-4432-a1e4-e2f8c2cb46b4
+			column: 'Case year'
+
+		level 'Case quarter'
+			lineageTag: 54c6bc7f-c6af-488d-bc27-96d08854ae24
+			column: 'Case quarter'
+
+		level 'Case Month name'
+			lineageTag: 2d8c428f-6f21-4b8e-bc82-944e4af19387
+			column: 'Case Month name'
+
+		level 'Case date'
+			lineageTag: 4ab15aaf-3cf3-4899-8352-090063fc05b0
+			column: 'Case date'
+
+	hierarchy 'Case Fiscal Year Hierarchy'
+		lineageTag: 15235ad2-159c-47c4-8deb-8ee2f67966e8
+
+		level 'Fiscal year'
+			lineageTag: 891bc096-4744-4955-8e4e-4b719feaf64c
+			column: 'Fiscal year'
+
+		level 'Case quarter'
+			lineageTag: ce785c4b-42d6-4c24-a5bf-6930e027c6c8
+			column: 'Case quarter'
+
+		level 'Case Month name'
+			lineageTag: 587e5670-236f-4d5d-b0df-f0086029c60f
+			column: 'Case Month name'
+
+		level 'Day of the week'
+			lineageTag: 9bc3ad4b-a7b4-4050-8f2e-23c22f4fd11b
+			column: 'Day of the week'
+
+	partition 'Case Date' = m
+		mode: import
+		queryGroup: dim_model
+		source =
+				let
+				    Source = Snowflake.Databases("eftours_us.us-east-1.snowflakecomputing.com",#"SF_WAREHOUSE",[Role=SF_ROLE]),
+				    ANALYTICS_Database = Source{[Name=SF_DATABASE,Kind="Database"]}[Data],
+				    MART_TRAVEL_Schema = ANALYTICS_Database{[Name="MART_TRAVEL",Kind="Schema"]}[Data],
+				    TRAVEL_SUPPORT_CASE_DATE_View = MART_TRAVEL_Schema{[Name="TRAVEL_SUPPORT_CASE_DATE",Kind="View"]}[Data],
+				    #"Filtered Rows" = Table.SelectRows(TRAVEL_SUPPORT_CASE_DATE_View, each [Date with case opened] <> null and [Date with case opened] <> "")
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

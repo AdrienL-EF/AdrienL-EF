@@ -1,0 +1,152 @@
+table 'Sales tour'
+	lineageTag: aa46841e-a50a-481e-9eca-dbe723cf2c83
+
+	column SALES_TOUR_KEY
+		dataType: string
+		isHidden
+		sourceProviderType: nvarchar(32)
+		lineageTag: e68ae3b1-d010-47fe-83c2-cc367f3f103f
+		summarizeBy: none
+		sourceColumn: SALES_TOUR_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Group Trip Sales Tour ID'
+		dataType: string
+		sourceProviderType: nvarchar(16777216)
+		lineageTag: 099b7bfd-1272-4e68-9250-6bb57e0b0a5c
+		summarizeBy: none
+		sourceColumn: Group Trip Sales Tour ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Sales Tour ID'
+		dataType: string
+		sourceProviderType: nvarchar(25)
+		lineageTag: abcfb6ec-c0fe-411f-b287-9f8573362510
+		summarizeBy: none
+		sourceColumn: Sales Tour ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Group Trip ID'
+		dataType: double
+		sourceProviderType: decimal(38, 0)
+		lineageTag: decaf63c-a36d-43ec-a073-45b1c218efe8
+		summarizeBy: none
+		sourceColumn: Group Trip ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Trip SYS ID'
+		dataType: double
+		sourceProviderType: decimal(38, 0)
+		lineageTag: 43b10159-a711-4910-ade1-176dc64a613f
+		summarizeBy: none
+		sourceColumn: Trip SYS ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'In TP scope'
+		dataType: double
+		sourceProviderType: decimal(38, 0)
+		lineageTag: d3548465-0ad1-4f0b-b40d-055e389db327
+		summarizeBy: none
+		sourceColumn: In TP scope
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Sales system code'
+		dataType: string
+		sourceProviderType: nvarchar(30)
+		lineageTag: c55f7f5a-a55d-4ec9-982e-bdf2f71f09c8
+		summarizeBy: none
+		sourceColumn: Sales system code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tour Fiscal Year'
+		dataType: double
+		sourceProviderType: decimal(5, 0)
+		lineageTag: ad7703c4-f09c-4b99-87c0-70ec2b3f4f3d
+		summarizeBy: none
+		sourceColumn: Tour Fiscal Year
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Tranport mode'
+		dataType: string
+		sourceProviderType: nvarchar(16777216)
+		lineageTag: 22f8c066-9b2b-49b3-ab1b-fe839ad758c8
+		summarizeBy: none
+		sourceColumn: Tranport mode
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Private bus code'
+		dataType: string
+		sourceProviderType: nvarchar(10)
+		lineageTag: b872ee88-5e7a-4ef9-865f-49c4bfaea8da
+		summarizeBy: none
+		sourceColumn: Private bus code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Prod Tour ID'
+		dataType: double
+		sourceProviderType: decimal(38, 0)
+		lineageTag: e61bf9c1-7125-48e8-bb50-790cc762cfdf
+		summarizeBy: none
+		sourceColumn: Prod Tour ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Tour director prod_component id'
+		dataType: double
+		sourceProviderType: decimal(38, 0)
+		lineageTag: ba6e201b-854d-409e-ac37-803595333f5a
+		summarizeBy: none
+		sourceColumn: Tour director prod_component id
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Loaded at UTC'
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 27d48684-1c37-44df-b266-0e7fd973f9fc
+		summarizeBy: none
+		sourceColumn: Loaded at UTC
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Sales tour' = m
+		mode: import
+		queryGroup: dim_model
+		source =
+				let
+				    Source = Snowflake.Databases("eftours_us.us-east-1.snowflakecomputing.com",#"SF_WAREHOUSE",[Role=SF_ROLE]),
+				    ANALYTICS_Database = Source{[Name=SF_DATABASE,Kind="Database"]}[Data],
+				    MART_TRAVEL_Schema = ANALYTICS_Database{[Name="MART_TRAVEL",Kind="Schema"]}[Data],
+				    TRAVEL_SUPPORT_CASES_View = MART_TRAVEL_Schema{[Name="TRAVEL_SUPPORT_SALES_TOUR",Kind="View"]}[Data]
+				in
+				    TRAVEL_SUPPORT_CASES_View
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

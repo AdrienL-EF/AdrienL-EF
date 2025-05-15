@@ -1,0 +1,157 @@
+table 'Core measures'
+	lineageTag: 8303a5f8-f8ab-4f92-a523-42cabef3a182
+
+	measure 'Model refreshed UTC' = UTCNOW()
+		formatString: General Date
+		displayFolder: System
+		lineageTag: b58d12f9-e794-4869-9907-ab76c6836818
+
+	measure 'Data refreshed UTC' = max('Cases'[Loaded at UTC])
+		formatString: General Date
+		displayFolder: System
+		lineageTag: 35676c28-137a-4923-81b1-4b3d08d80a1d
+
+	measure 'System refreshed UTC' = max('Cases'[Case Closed Date at UTC])
+		formatString: General Date
+		displayFolder: System
+		lineageTag: f093f5c6-f76a-4e56-a5b1-14118221b5dc
+
+	measure 'Number of cases' = COUNTROWS('Cases')
+		formatString: #,0
+		lineageTag: 514b2fcc-08f9-4939-8567-0792348faee8
+
+	measure 'Accumulated total days in New Status' = sum('Cases'[Time in New Status in Days])
+		lineageTag: 3316e8d1-5326-4234-9ade-7afeb218df22
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Accumulated total days to Close' = sum('Cases'[Time to Close in Days])
+		lineageTag: 54a3af23-eccd-43b4-ac7b-9ad0ea14e173
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average days to Close for cases open outside of business hours' =
+			
+			CALCULATE (
+			    [Average days to Close],
+			    FILTER ( 'Cases', 'Cases'[Has Been Open Outside of Business Hours] = "Yes" )
+			)
+		lineageTag: d86730ed-7483-4b95-aa36-17a2e05a1e76
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Number of cases opened outside of business hours' =
+			
+			CALCULATE (
+			    [Number of cases],
+			    FILTER ( 'Cases', 'Cases'[Has Been Open Outside of Business Hours] = "Yes" )
+			)
+		formatString: #,0
+		lineageTag: cfb87f74-b140-4606-b06c-1543aeace399
+
+	measure '(PY) Number of Cases' =
+			
+			CALCULATE (
+			    [Number of cases],
+			    CALCULATETABLE(SAMEPERIODLASTYEAR ( 'Case Date'[Case date] ),
+			     'Case Date', 'Case Date'[Date with case opened] = TRUE )
+			)
+		formatString: 0
+		lineageTag: 7e0d6744-06fe-45da-aafe-5f5b0886143f
+
+	measure 'Number of Cases YoY (%)' =
+			
+			var _current_year = [Number of cases]
+			
+			var _previous_year = [(PY) Number of Cases]
+			
+			var _difference = [Number of cases] - [(PY) Number of Cases]
+			
+			return
+			
+			divide(_difference, _previous_year, 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 80b41fea-2df2-462d-bb4c-86517cfd913e
+
+	measure '(PY) Average days to Close' =
+			
+			CALCULATE (
+			    [Average days to Close for cases open outside of business hours],
+			    CALCULATETABLE(SAMEPERIODLASTYEAR ( 'Case Date'[Case date] ),
+			     'Case Date', 'Case Date'[Date with case opened] = TRUE )
+			)
+		lineageTag: a47362f1-07a9-438d-af54-a639fe7087c9
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Average of Cases YoY (%)' =
+			
+			
+			var _current_avg = [Average days to Close for cases open outside of business hours]
+			
+			var _previous_year = [(PY) Average days to Close]
+			
+			var _difference = _current_avg - _previous_year
+			
+			return
+			
+			divide(_difference, _previous_year, 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: c0d45734-2507-4705-a658-00c8b5ac71cb
+
+	measure 'Number of cases (YTD)' =
+			
+			var maxDate = max('Case Date'[Case date])
+			Return
+			CALCULATE([Number of cases], 'Case Date'[Case date] <= maxDate, All( 'Case Date'[Case date]), FILTER('Case Date', 'Case Date'[Date with case opened] = TRUE))
+		formatString: 0
+		lineageTag: dc9403b8-eb84-4585-9f86-bb53e4031c83
+
+	measure '(PY) Number of cases opened outside of business hours' =
+			
+			CALCULATE (
+			    [Number of cases opened outside of business hours],
+			    CALCULATETABLE(SAMEPERIODLASTYEAR ( 'Case Date'[Case date] ),
+			     'Case Date', 'Case Date'[Date with case opened] = TRUE )
+			)
+		formatString: 0
+		lineageTag: e45992ae-6dd2-48b3-a632-56c201fa235c
+
+	measure 'Average days to Close' = AVERAGE('Cases'[Time to Close in Days])
+		formatString: 0.00
+		lineageTag: d4c7cc09-3de3-4075-b932-6e19804932b0
+
+	measure 'Ratio of cases open obh' = DIVIDE([Number of cases opened outside of business hours], [Number of cases], 0)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 7c1ee168-27be-44de-9303-42324c4520d3
+
+	measure 'Title sub Category' = IF(ISFILTERED('Case context'[Case sub category]), CONCATENATE("Focused on: ", LASTNONBLANK('Case context'[Case sub category], 0)), "Case sub category not filtered")
+		lineageTag: aeeb7886-ecb1-4403-92e3-3b9a5743780f
+
+	measure myUsername = USERPRINCIPALNAME()
+		lineageTag: 4850d611-ad50-4f03-bf89-593b1c02d9f4
+
+	column 'Core measures'
+		dataType: string
+		isHidden
+		lineageTag: 7dfd50fa-a509-48b6-9767-ee5faf450df3
+		summarizeBy: none
+		sourceColumn: Core measures
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Core measures-cdd3b242-d570-46fe-bf47-043b3637a0af' = m
+		mode: import
+		queryGroup: dax
+		source =
+				let
+				    Source = ""
+				in
+				    Source
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

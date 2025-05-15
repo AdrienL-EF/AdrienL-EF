@@ -1,0 +1,131 @@
+table 'Prod tours'
+	lineageTag: 27671b98-bd0e-4e04-ac38-4e53cd40c002
+
+	column PROD_TOUR_KEY
+		dataType: string
+		isHidden
+		sourceProviderType: nvarchar(32)
+		lineageTag: 6bf28ecf-e50f-4654-baae-c12ff6074383
+		summarizeBy: none
+		sourceColumn: PROD_TOUR_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Prod Tour ID'
+		dataType: double
+		formatString: 0
+		sourceProviderType: decimal(38, 0)
+		lineageTag: 2fea515a-fe3b-441e-a35f-7af18bf141ff
+		summarizeBy: none
+		sourceColumn: Prod Tour ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Prod Tour Owner ID'
+		dataType: double
+		sourceProviderType: decimal(38, 0)
+		lineageTag: 5f5bacee-d686-42f1-ab7a-daa277328e29
+		summarizeBy: none
+		sourceColumn: Prod Tour Owner ID
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Prod Status Code'
+		dataType: string
+		sourceProviderType: nvarchar(16777216)
+		lineageTag: 6dc1dfd2-fbee-4cc3-a221-f4a37afc0bc7
+		summarizeBy: none
+		sourceColumn: Prod Status Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Production Language Code'
+		dataType: string
+		sourceProviderType: nvarchar(16777216)
+		lineageTag: f32d8332-3c2a-4968-9858-8b3179cc43e9
+		summarizeBy: none
+		sourceColumn: Production Language Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Production Language Name'
+		dataType: string
+		sourceProviderType: nvarchar(50)
+		lineageTag: 4c3995c7-43e5-4b15-890b-0ddf1735fc82
+		summarizeBy: none
+		sourceColumn: Production Language Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tour Start Date'
+		dataType: string
+		sourceProviderType: nvarchar(16777216)
+		lineageTag: dcb26353-b726-4829-bd6b-aa60286947de
+		summarizeBy: none
+		sourceColumn: Tour Start Date
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tour End Date'
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: 35e3e43a-615e-4323-8bd7-eaabb0f2a280
+		summarizeBy: none
+		sourceColumn: Tour End Date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Is Prod Tour owner assigned'
+		dataType: double
+		sourceProviderType: decimal(1, 0)
+		lineageTag: 9c979165-d416-4720-805f-e5e1d9237698
+		summarizeBy: none
+		sourceColumn: Is Prod Tour owner assigned
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Bus Count'
+		dataType: double
+		sourceProviderType: decimal(18, 0)
+		lineageTag: 2de4bbd1-8a84-4fd2-9f64-a6097593b216
+		summarizeBy: none
+		sourceColumn: Bus Count
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Capacity
+		dataType: string
+		sourceProviderType: nvarchar(16777216)
+		lineageTag: f5f863fb-e6be-4716-bbf2-a80ec70cae67
+		summarizeBy: none
+		sourceColumn: Capacity
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Prod tours' = m
+		mode: import
+		queryGroup: dim_model
+		source =
+				let
+				    Source = Snowflake.Databases("eftours_us.us-east-1.snowflakecomputing.com",#"SF_WAREHOUSE",[Role=SF_ROLE]),
+				    ANALYTICS_Database = Source{[Name=SF_DATABASE,Kind="Database"]}[Data],
+				    MART_TRAVEL_Schema = ANALYTICS_Database{[Name="MART_TRAVEL",Kind="Schema"]}[Data],
+				    TRAVEL_SUPPORT_CASES_View = MART_TRAVEL_Schema{[Name="TRAVEL_SUPPORT_PROD_TOUR",Kind="View"]}[Data]
+				in
+				    TRAVEL_SUPPORT_CASES_View
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

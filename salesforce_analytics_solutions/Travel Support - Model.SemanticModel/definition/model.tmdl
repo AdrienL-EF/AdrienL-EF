@@ -1,0 +1,50 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-US
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup dax
+
+	annotation PBI_QueryGroupOrder = 5
+
+queryGroup setup_parameters
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup rls
+
+	annotation PBI_QueryGroupOrder = 4
+
+queryGroup dim_model
+
+	annotation PBI_QueryGroupOrder = 2
+
+queryGroup direct_queries
+
+	annotation PBI_QueryGroupOrder = 3
+
+queryGroup page_parameters
+
+	annotation PBI_QueryGroupOrder = 1
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBIDesktopVersion = 2.140.1078.0 (25.02)+2cce24fb16e8b71ba835921d23e7ffc1fab909df
+
+annotation PBI_QueryOrder = ["Core measures","SF_WAREHOUSE","SF_DATABASE","AZURE_SQL","REPORT_NAME","SF_ROLE","Product","Cases","Case context","Prod tours","Case Date","Sales tour","Tour Date"]
+
+ref table 'Core measures'
+ref table Cases
+ref table 'Case context'
+ref table 'Prod tours'
+ref table 'Case Date'
+ref table 'Sales tour'
+ref table 'Tour Date'
+
+ref role allusers
+
+ref cultureInfo en-US
+

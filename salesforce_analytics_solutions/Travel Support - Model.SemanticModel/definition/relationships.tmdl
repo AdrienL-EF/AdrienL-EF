@@ -1,0 +1,25 @@
+relationship 1edca650-1a7b-1893-0ae7-2274a38098aa
+	fromColumn: Cases.CASE_OPENED_KEY
+	toColumn: 'Case Date'.DATE_KEY
+
+relationship 17453fa8-e614-79b9-b3bb-5d462d02246f
+	fromColumn: Cases.PROD_TOUR_KEY
+	toColumn: 'Prod tours'.PROD_TOUR_KEY
+
+relationship bb3b38dc-15a7-e091-2478-095a2d9a583e
+	fromColumn: Cases.PROD_TOUR_KEY
+	toColumn: 'Sales tour'.SALES_TOUR_KEY
+
+relationship 3cf2fda7-6aee-223e-9632-cba2354d8be2
+	fromColumn: Cases.CASE_CONTEXT_KEY
+	toColumn: 'Case context'.CASE_CONTEXT_KEY
+
+relationship 79b3a9fb-749d-1fe6-0410-fe93d63e1d3f
+	isActive: false
+	fromColumn: Cases.CASE_CLOSED_KEY
+	toColumn: 'Case Date'.DATE_KEY
+
+relationship 31e09b5c-2b9b-83b1-e5c1-7d39cdcecc62
+	fromColumn: Cases.TOUR_DATE_KEY
+	toColumn: 'Tour Date'.DATE_KEY
+
