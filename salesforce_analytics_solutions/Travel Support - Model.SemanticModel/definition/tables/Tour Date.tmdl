@@ -1,0 +1,184 @@
+table 'Tour Date'
+	lineageTag: 6b5a40f9-56af-428c-89d6-66064a49aaed
+
+	column DATE_KEY
+		dataType: double
+		isHidden
+		sourceProviderType: decimal(11, 0)
+		lineageTag: 5d0e83c8-21c4-4407-b6fd-0f1f531b65f4
+		summarizeBy: none
+		sourceColumn: DATE_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Tour date'
+		dataType: dateTime
+		formatString: Long Date
+		sourceProviderType: date
+		lineageTag: 33b4cc28-c887-4cef-8649-75c968284802
+		summarizeBy: none
+		sourceColumn: Tour date
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column 'Tour year'
+		dataType: double
+		sourceProviderType: decimal(4, 0)
+		lineageTag: eebe4330-88fa-44dc-a398-f69cbbc653a6
+		summarizeBy: none
+		sourceColumn: Tour year
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Tour quarter'
+		dataType: double
+		sourceProviderType: decimal(2, 0)
+		lineageTag: fc9b5bda-2002-4bee-a10c-009c01d42b4b
+		summarizeBy: none
+		sourceColumn: Tour quarter
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Tour month'
+		dataType: double
+		sourceProviderType: decimal(2, 0)
+		lineageTag: 59893b55-5f9b-4e5f-8948-450dede04cb7
+		summarizeBy: none
+		sourceColumn: Tour month
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Tour Month name'
+		dataType: string
+		sourceProviderType: nvarchar(16777216)
+		lineageTag: f0426e33-3367-4871-a437-5d474704288f
+		summarizeBy: none
+		sourceColumn: Tour Month name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Name day'
+		dataType: string
+		sourceProviderType: nvarchar(16777216)
+		lineageTag: f864fc55-6048-4159-a2a5-547a51fca693
+		summarizeBy: none
+		sourceColumn: Name day
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Day of the week'
+		dataType: double
+		sourceProviderType: decimal(2, 0)
+		lineageTag: 3c35a203-faef-4d5b-a1fa-0a8b9c32c3c1
+		summarizeBy: none
+		sourceColumn: Day of the week
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Week of year'
+		dataType: double
+		sourceProviderType: decimal(2, 0)
+		lineageTag: 2746ea77-f26c-46ba-8888-331fb108bfc2
+		summarizeBy: none
+		sourceColumn: Week of year
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Day of year'
+		dataType: double
+		sourceProviderType: decimal(4, 0)
+		lineageTag: a1c3e310-f69b-4403-b1c6-3e189beae735
+		summarizeBy: none
+		sourceColumn: Day of year
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Fiscal year'
+		dataType: double
+		formatString: 0
+		sourceProviderType: decimal(5, 0)
+		lineageTag: 47c63a4a-fb35-4d0c-a561-4e70f2e69d2a
+		summarizeBy: none
+		sourceColumn: Fiscal year
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Tour Fiscal quarter'
+		dataType: string
+		sourceProviderType: nvarchar(16777216)
+		lineageTag: 76f01bfb-899c-4344-8669-f3123c0c3358
+		summarizeBy: none
+		sourceColumn: Tour Fiscal quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is today'
+		dataType: string
+		sourceProviderType: nvarchar(3)
+		lineageTag: ae904346-7d0d-4c45-9556-2cc69e23f4a0
+		summarizeBy: none
+		sourceColumn: Is today
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is current week'
+		dataType: string
+		sourceProviderType: nvarchar(3)
+		lineageTag: 2681ca57-bce8-4490-a09a-aca8363cb2b2
+		summarizeBy: none
+		sourceColumn: Is current week
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is current month'
+		dataType: string
+		sourceProviderType: nvarchar(3)
+		lineageTag: 1ad636e2-2268-4d9e-9650-f0c184551b42
+		summarizeBy: none
+		sourceColumn: Is current month
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is weekday'
+		dataType: string
+		sourceProviderType: nvarchar(3)
+		lineageTag: caf1c656-2018-4bff-88ed-b883a6066edd
+		summarizeBy: none
+		sourceColumn: Is weekday
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Tour Date' = m
+		mode: import
+		queryGroup: dim_model
+		source =
+				let
+				    Source = Snowflake.Databases("eftours_us.us-east-1.snowflakecomputing.com",#"SF_WAREHOUSE",[Role=SF_ROLE]),
+				    ANALYTICS_Database = Source{[Name=SF_DATABASE,Kind="Database"]}[Data],
+				    MART_TRAVEL_Schema = ANALYTICS_Database{[Name="MART_TRAVEL",Kind="Schema"]}[Data],
+				    TRAVEL_SUPPORT_CASE_DATE_View = MART_TRAVEL_Schema{[Name="TRAVEL_SUPPORT_TOUR_DATE",Kind="View"]}[Data]
+				in
+				    TRAVEL_SUPPORT_CASE_DATE_View
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

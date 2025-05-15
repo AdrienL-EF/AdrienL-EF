@@ -1,0 +1,79 @@
+table 'Case context'
+	lineageTag: 1af33c04-a947-40a3-9cdc-285613bab297
+
+	column CASE_CONTEXT_KEY
+		dataType: string
+		isHidden
+		isNullable: false
+		sourceProviderType: nvarchar(32)
+		lineageTag: 97e0d316-e622-49de-9cf7-44e0bdc4f503
+		summarizeBy: none
+		sourceColumn: CASE_CONTEXT_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Case sub category'
+		dataType: string
+		sourceProviderType: nvarchar(765)
+		lineageTag: b14b787b-7625-4077-8da8-81774e134156
+		summarizeBy: none
+		sourceColumn: Case sub category
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Case current status'
+		dataType: string
+		sourceProviderType: nvarchar(765)
+		lineageTag: d8d090df-6286-4d65-b16f-caf6d78b2a55
+		summarizeBy: none
+		sourceColumn: Case current status
+
+		annotation SummarizationSetBy = Automatic
+
+	column Severity
+		dataType: string
+		sourceProviderType: nvarchar(765)
+		lineageTag: f71038f9-ea11-400c-8032-61933ed90914
+		summarizeBy: none
+		sourceColumn: Severity
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Level of Impact'
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(765)
+		lineageTag: 465ef8f9-7f38-4282-88a5-ebbd1eb6d8ef
+		summarizeBy: none
+		sourceColumn: Level of Impact
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Loaded at UTC'
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: c6d0e8b0-c5ae-4129-b868-ef97335a5277
+		summarizeBy: none
+		sourceColumn: Loaded at UTC
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Case context' = m
+		mode: import
+		queryGroup: dim_model
+		source =
+				let
+				    Source = Snowflake.Databases("eftours_us.us-east-1.snowflakecomputing.com",#"SF_WAREHOUSE",[Role=SF_ROLE]),
+				    ANALYTICS_Database = Source{[Name=SF_DATABASE,Kind="Database"]}[Data],
+				    MART_TRAVEL_Schema = ANALYTICS_Database{[Name="MART_TRAVEL",Kind="Schema"]}[Data],
+				    TRAVEL_SUPPORT_CASES_View = MART_TRAVEL_Schema{[Name="TRAVEL_SUPPORT_CASE_CONTEXT",Kind="View"]}[Data]
+				in
+				    TRAVEL_SUPPORT_CASES_View
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

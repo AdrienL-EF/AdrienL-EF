@@ -1,0 +1,353 @@
+table Cases
+	lineageTag: 4b50fc67-ce03-4524-9fa7-4e9bbb713d28
+
+	column ON_TOUR_CASE_KEY
+		dataType: string
+		isHidden
+		sourceProviderType: nvarchar(32)
+		lineageTag: 5bde2cc8-2010-4b32-aec4-63683637db08
+		summarizeBy: none
+		sourceColumn: ON_TOUR_CASE_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SALESFORCE_CASE_ID
+		dataType: string
+		sourceProviderType: nvarchar(18)
+		lineageTag: 1a49bbf2-05db-4009-81c6-9ada1829a287
+		summarizeBy: none
+		sourceColumn: SALESFORCE_CASE_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROD_COMPONENT_KEY
+		dataType: string
+		isHidden
+		sourceProviderType: nvarchar(32)
+		lineageTag: 1b7ed24b-eb2b-44f0-894c-1d6d2015b797
+		summarizeBy: none
+		sourceColumn: PROD_COMPONENT_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column PROD_TOUR_KEY
+		dataType: string
+		isHidden
+		sourceProviderType: nvarchar(32)
+		lineageTag: 56c9c04a-3449-40a0-948a-873d2ad7bce3
+		summarizeBy: none
+		sourceColumn: PROD_TOUR_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column SALES_TOUR_KEY
+		dataType: string
+		isHidden
+		sourceProviderType: nvarchar(32)
+		lineageTag: 672a9889-5b33-4441-8254-39ed9479d28c
+		summarizeBy: none
+		sourceColumn: SALES_TOUR_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column TOUR_DATE_KEY
+		dataType: double
+		isHidden
+		sourceProviderType: decimal(11, 0)
+		lineageTag: 4d0113f6-f85a-453b-ba2a-d4ca3e5d5ad6
+		summarizeBy: none
+		sourceColumn: TOUR_DATE_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CASE_OPENED_KEY
+		dataType: double
+		isHidden
+		sourceProviderType: decimal(11, 0)
+		lineageTag: 3507ffb1-cf19-4300-95ef-2cbc817c4113
+		summarizeBy: none
+		sourceColumn: CASE_OPENED_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CASE_CLOSED_KEY
+		dataType: double
+		isHidden
+		sourceProviderType: decimal(11, 0)
+		lineageTag: bf58d707-a40e-44ab-9aaa-3640e4af2a4a
+		summarizeBy: sum
+		sourceColumn: CASE_CLOSED_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CASE_CONTEXT_KEY
+		dataType: string
+		isHidden
+		isNullable: false
+		sourceProviderType: nvarchar(32)
+		lineageTag: f0b5ccb1-4718-464d-8aa0-c07b3aef6962
+		summarizeBy: none
+		sourceColumn: CASE_CONTEXT_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column GEOGRAPHY_KEY
+		dataType: string
+		isHidden
+		isNullable: false
+		sourceProviderType: nvarchar(32)
+		lineageTag: dca8cf0d-b774-42a4-9c5d-3bb1de7a033f
+		summarizeBy: none
+		sourceColumn: GEOGRAPHY_KEY
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Case Opened Date at UTC'
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: eaf42939-a50c-413b-b1ad-7039d8f81172
+		summarizeBy: none
+		sourceColumn: Case Opened Date at UTC
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Case Changed to Working Status at UTC'
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 01701601-f8af-4450-96db-49d5026ee511
+		summarizeBy: none
+		sourceColumn: Case Changed to Working Status at UTC
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Case Closed Date at UTC'
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 5d054e47-f2db-4074-a275-adac2001b797
+		summarizeBy: none
+		sourceColumn: Case Closed Date at UTC
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Time to Close in Hours'
+		dataType: double
+		isHidden
+		sourceProviderType: decimal(9, 0)
+		lineageTag: fd7f12b4-6cdd-4e1b-8d66-048c52ad2037
+		summarizeBy: sum
+		sourceColumn: Time to Close in Hours
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Time to Close in Days'
+		dataType: double
+		isHidden
+		sourceProviderType: decimal(9, 0)
+		lineageTag: 97161bbc-c1cc-43ef-89a2-58ddc0e4bb62
+		summarizeBy: sum
+		sourceColumn: Time to Close in Days
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Time in New Status in Hours'
+		dataType: double
+		isHidden
+		sourceProviderType: decimal(9, 0)
+		lineageTag: 7be610bf-f10d-41e4-822e-37b61340fc38
+		summarizeBy: sum
+		sourceColumn: Time in New Status in Hours
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Time in New Status in Days'
+		dataType: double
+		isHidden
+		sourceProviderType: decimal(9, 0)
+		lineageTag: a72f16a9-9050-4571-bd08-60d58de754fa
+		summarizeBy: sum
+		sourceColumn: Time in New Status in Days
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Time in Progress in Hours'
+		dataType: double
+		isHidden
+		sourceProviderType: decimal(9, 0)
+		lineageTag: 8a8299d9-3a90-4ecb-bfe4-ed14441f53c1
+		summarizeBy: sum
+		sourceColumn: Time in Progress in Hours
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Time in Progress in Days'
+		dataType: double
+		isHidden
+		sourceProviderType: decimal(9, 0)
+		lineageTag: 2bf72796-a678-43c5-9b4c-10a047b7e0d5
+		summarizeBy: sum
+		sourceColumn: Time in Progress in Days
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Has Been Open Outside of Business Hours'
+		dataType: string
+		isNullable: false
+		sourceProviderType: nvarchar(3)
+		lineageTag: 4e03d2bf-00a2-4eef-8102-ca93d55c9a19
+		summarizeBy: none
+		sourceColumn: Has Been Open Outside of Business Hours
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Case number'
+		dataType: string
+		sourceProviderType: nvarchar(90)
+		lineageTag: 36d6428f-ecc1-4c5f-9369-98d696c6f339
+		summarizeBy: none
+		sourceColumn: Case number
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Case Closed'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 6e0d4032-bf70-400b-a518-1f17ab213be3
+		summarizeBy: none
+		sourceColumn: Is Case Closed
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Case Deleted'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: 7c684bcd-ae69-4d64-8e4e-afeef226a4cc
+		summarizeBy: none
+		sourceColumn: Is Case Deleted
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Is Case Escalated'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		sourceProviderType: bit
+		lineageTag: b02c0bba-bf35-4b0f-8251-845e0a1259dc
+		summarizeBy: none
+		sourceColumn: Is Case Escalated
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Created at UTC'
+		dataType: dateTime
+		isHidden
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: eb01b75b-fac1-4add-b3b5-a72989ebefa9
+		summarizeBy: none
+		sourceColumn: Created at UTC
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Loaded at UTC'
+		dataType: dateTime
+		formatString: General Date
+		sourceProviderType: datetime2
+		lineageTag: 1073af0b-d590-4cab-9f0a-9d7475b598a0
+		summarizeBy: none
+		sourceColumn: Loaded at UTC
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Cases = m
+		mode: import
+		queryGroup: dim_model
+		source =
+				let
+				    Source = Snowflake.Databases("eftours_us.us-east-1.snowflakecomputing.com",#"SF_WAREHOUSE",[Role=SF_ROLE]),
+				    ANALYTICS_Database = Source{[Name=SF_DATABASE,Kind="Database"]}[Data],
+				    MART_TRAVEL_Schema = ANALYTICS_Database{[Name="MART_TRAVEL",Kind="Schema"]}[Data],
+				    TRAVEL_SUPPORT_CASES_View = MART_TRAVEL_Schema{[Name="TRAVEL_SUPPORT_CASES",Kind="View"]}[Data]
+				in
+				    TRAVEL_SUPPORT_CASES_View
+
+	changedProperty = IsHidden
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Exception
+

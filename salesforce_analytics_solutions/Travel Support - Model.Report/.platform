@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Travel Support - Model"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "161c304f-b2c7-8e03-4e36-323e40294159"
+  }
+}
