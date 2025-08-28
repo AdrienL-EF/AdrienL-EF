@@ -1,0 +1,106 @@
+table Organization
+
+	column Organization_id
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: Organization_id
+
+	column 'Organization Name'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: Organization Name
+
+	column 'Topmost Org Name'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: Topmost Org Name
+
+	column 'Open Date Name'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: Open Date Name
+
+	column 'Close Date Name'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: Close Date Name
+
+	column 'Org Type'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: Org Type
+
+	column 'Org SubType'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: Org SubType
+
+	column 'School Code Desc'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: School Code Desc
+
+	column 'Household Income'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: Household Income
+
+	column Enrollment
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: Enrollment
+
+	column 'Lowest Grade'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: Lowest Grade
+
+	column 'Highest Grade'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: Highest Grade
+
+	column Tuition
+		dataType: int64
+		sourceProviderType: Integer
+		sourceColumn: Tuition
+
+	column City
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: City
+
+	column 'State Code'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: State Code
+
+	column 'State Name'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: State Name
+
+	column 'Postal Code'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: Postal Code
+
+	column 'District Enrollment'
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: District Enrollment
+
+	partition Organization = query
+		dataView: full
+		source
+			query = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_Organization
+			dataSource: 'SqlServer ToursBI martEvaluation'
+
+		annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_Organization</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_Organization
+
+	annotation _TM_ExtProp_DbTableName = Organization
+
+	annotation QueryEditorSerialization = <?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT * FROM martEvaluation.dbo.DM_OverallQuestionResponses_Organization</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+

@@ -1,0 +1,261 @@
+table _mComponents
+
+	measure 'Count Loves' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD",
+				CALCULATE(SUM(ComponentResponses[IsLove]), OR(
+					ComponentResponses[IsCurrentYear] = TRUE(), 
+					ComponentResponses[IsYearToDate] = TRUE())), 
+			SUM(ComponentResponses[IsLove]))
+			```
+		formatString: #,0
+
+	measure 'Count Likes' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD",
+				CALCULATE(SUM(ComponentResponses[IsLike]), OR(
+					ComponentResponses[IsCurrentYear] = TRUE(), 
+					ComponentResponses[IsYearToDate] = TRUE())), 
+			SUM(ComponentResponses[IsLike]))
+			```
+		formatString: #,0
+
+	measure 'Count Dislikes' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD",
+				CALCULATE(SUM(ComponentResponses[IsDislike]), OR(
+					ComponentResponses[IsCurrentYear] = TRUE(), 
+					ComponentResponses[IsYearToDate] = TRUE())), 
+			SUM(ComponentResponses[IsDislike]))
+			```
+		formatString: #,0
+
+	measure 'Count Total Component Ratings' = ```
+			 [Count Loves] + [Count Likes] + [Count Dislikes] + [Count DidNotRun]
+			```
+		formatString: #,0
+
+	measure 'Count Loves Comparison' = ```
+			 CALCULATE([Count Loves], FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+		formatString: #,0
+
+	measure 'Count Likes Comparison' = ```
+			 CALCULATE([Count Likes], FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+		formatString: #,0
+
+	measure 'Count Dislikes Comparison' = ```
+			 CALCULATE([Count Dislikes], FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+		formatString: #,0
+
+	measure 'Count Total Component Ratings Comparison' = ```
+			 CALCULATE([Count Total Component Ratings], FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+		formatString: #,0
+
+	measure 'Supplier Score' = ```
+			 DIVIDE([Count Loves] + ([Count Likes] * 0.5), [Count Total Component Ratings]) * 100
+			```
+
+	measure 'Supplier Score Comparison' = ```
+			 DIVIDE([Count Loves Comparison] + ([Count Likes Comparison] * 0.5), [Count Total Component Ratings Comparison]) * 100
+			```
+
+	measure '% Loves' = ```
+			 DIVIDE([Count Loves], [Count Total Component Ratings])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure '% Likes' = ```
+			 DIVIDE([Count Likes], [Count Total Component Ratings])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure '% Dislikes' = ```
+			 DIVIDE([Count Dislikes], [Count Total Component Ratings])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure '% Loves Comparison' = ```
+			 DIVIDE([Count Loves Comparison], [Count Total Component Ratings Comparison])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure '% Likes Comparison' = ```
+			 DIVIDE([Count Likes Comparison], [Count Total Component Ratings Comparison])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure '% Dislikes Comparison' = ```
+			 DIVIDE([Count Dislikes Comparison], [Count Total Component Ratings Comparison])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Supplier Score Δ' = ```
+			 IF(
+				OR([Count Total Component Ratings] = 0, [Count Total Component Ratings Comparison] = 0), BLANK(), 
+				ROUND([Supplier Score], 1) - ROUND([Supplier Score Comparison], 1))
+			```
+
+	measure 'Supplier Score Δ %' = ```
+			 DIVIDE([Supplier Score Δ], [Supplier Score Comparison])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Supplier Score Formatting' = ```
+			 IF(
+				OR(_mComponents[Count Total Component Ratings] = 0, [Count Total Component Ratings Comparison] = 0), BLANK(), 
+				IF([Supplier Score Δ] >= 0.05, 1, 
+				IF([Supplier Score Δ] <= -0.05, -1, 0)))
+			```
+		isHidden
+
+	measure 'Formatting_Supplier Score' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				SELECTEDVALUE(OverallQuestionGroups[SalesYearNumber]) & " YTD Supplier Score", 
+				SELECTEDVALUE(OverallQuestionGroups[SalesYearNumber]) & " EOY Supplier Score")
+			```
+
+	measure 'Formatting_Supplier Score Comparison' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				SELECTEDVALUE('Sales Years'[SalesYear_Compare]) & " YTD Supplier Score", 
+				SELECTEDVALUE('Sales Years'[SalesYear_Compare]) & " EOY Supplier Score")
+			```
+
+	measure 'Formatting_Component Rating Responses' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				SELECTEDVALUE(OverallQuestionGroups[SalesYearNumber]) & " YTD Component Rating Responses", 
+				SELECTEDVALUE(OverallQuestionGroups[SalesYearNumber]) & " EOY Component Rating Responses")
+			```
+
+	measure 'Formatting_Component Rating Responses Comparison' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				SELECTEDVALUE('Sales Years'[SalesYear_Compare]) & " YTD Component Rating Responses", 
+				SELECTEDVALUE('Sales Years'[SalesYear_Compare]) & " EOY Component Rating Responses")
+			```
+
+	measure 'Formatting_Supplier Score Δ' = ```
+			
+			IF([Count Total Component Ratings] = 0 || [Count Total Component Ratings Comparison] = 0, BLANK(), 
+			IF([Supplier Score Δ] >= 0.05, 1, 
+			IF([Supplier Score Δ] <= -0.05, -1, 
+			0)))
+			```
+
+	measure Score_Flights = ```
+			 CALCULATE([Supplier Score], ComponentResponses[CompTypeCategoryName] = "Flight")
+			```
+
+	measure 'Score_Flights Comparison' = ```
+			 CALCULATE(
+				[Score_Flights], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+
+	measure Score_Non-Flights = ```
+			 CALCULATE(
+				[Supplier Score], 
+				ComponentResponses[CompTypeCategoryName] <> "Flight")
+			```
+
+	measure 'Score-Non-Flights Comparison' = ```
+			 CALCULATE(
+				[Score_Non-Flights], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+
+	measure Score_Hotels = ```
+			 CALCULATE(
+				[Supplier Score], 
+				ComponentResponses[CompTypeCategoryName] = "Accomodation")
+			```
+
+	measure 'Score_Hotels Comparison' = ```
+			 CALCULATE(
+				[Score_Hotels], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+
+	measure Score_Meals = ```
+			 CALCULATE(
+				[Supplier Score], 
+				ComponentResponses[CompTypeCategoryName] = "Meal")
+			```
+
+	measure 'Score_Meals Comparison' = ```
+			 CALCULATE(
+				[Score_Meals], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+
+	measure Score_Activities = ```
+			 CALCULATE(
+				[Supplier Score], 
+				ComponentResponses[CompTypeCategoryName] = "Activity")
+			```
+
+	measure 'Score_Activities Comparison' = ```
+			 CALCULATE(
+				[Score_Activities], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+
+	measure Score_Transport = ```
+			 CALCULATE(
+				[Supplier Score], 
+				ComponentResponses[CompTypeCategoryName] = "Transport")
+			```
+
+	measure 'Score_Transport Comparison' = ```
+			 CALCULATE(
+				[Score_Transport], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+
+	measure 'Count DidNotRun' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD",
+				CALCULATE(SUM(ComponentResponses[IsDidNotRun]), OR(
+					ComponentResponses[IsCurrentYear] = TRUE(), 
+					ComponentResponses[IsYearToDate] = TRUE())), 
+			SUM(ComponentResponses[IsDidNotRun]))
+			```
+		formatString: #,0
+
+	measure 'Count DidNotRun Comparison' = ```
+			 CALCULATE([Count DidNotRun], FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+		formatString: #,0
+
+	measure '% DidNotRun' = ```
+			 DIVIDE([Count DidNotRun], [Count Total Component Ratings])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure '% DidNotRun Comparison' = ```
+			 DIVIDE([Count DidNotRun Comparison], [Count Total Component Ratings Comparison])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	column dummy
+		isHidden
+		isNameInferred
+		sourceColumn: [dummy]
+
+	partition 'CalculatedTable 1' = calculated
+		source = SELECTCOLUMNS( {"dummy"}, "dummy", [Value])
+

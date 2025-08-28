@@ -1,0 +1,31 @@
+table _mVolume
+	isHidden
+
+	measure Count_ProdBuses = ```
+			 SUMX(SUMMARIZE(OverallQuestionGroups, OverallQuestionGroups[ProdTour_id], OverallQuestionGroups[ProdBusCount]), OverallQuestionGroups[ProdBusCount])
+			```
+		formatString: #,0
+
+	measure Count_ACTravelers = ```
+			 SUM(OverallQuestionGroups[AC_Travelers])
+			```
+		formatString: #,0
+
+	measure Count_GroupsTrips = ```
+			 DISTINCTCOUNTNOBLANK(OverallQuestionGroups[GroupTrip_id])
+			```
+		formatString: #,0
+
+	measure Count_VIPGroups = ```
+			 SUM(OverallQuestionGroups[IsVIP])
+			```
+		formatString: #,0
+
+	column dummy
+		isHidden
+		isNameInferred
+		sourceColumn: [dummy]
+
+	partition 'CalculatedTable 1' = calculated
+		source = SELECTCOLUMNS( {"dummy"}, "dummy", [Value])
+

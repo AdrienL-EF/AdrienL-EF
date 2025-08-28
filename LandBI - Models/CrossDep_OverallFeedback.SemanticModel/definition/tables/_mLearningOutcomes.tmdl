@@ -1,0 +1,61 @@
+table _mLearningOutcomes
+
+	measure 'Count LearningOutcome Responses' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				CALCULATE(COUNT(LearningOutcomeResponses[LearningOutcomeResponse]), OR(
+					'TD Response'[IsCurrentYear] = TRUE(), 
+					'TD Response'[IsYearToDate] = TRUE())), 
+			COUNT(LearningOutcomeResponses[LearningOutcomeResponse]))
+			```
+		formatString: #,0
+
+	measure 'Count LearningOutcome Responses Comparison' = ```
+			 CALCULATE(
+				_mLearningOutcomes[Count LearningOutcome Responses], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+		formatString: #,0
+
+	measure 'LearningOutcomes Score' = ```
+			
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+			CALCULATE(DIVIDE(
+				SUMX(LearningOutcomeResponses, LearningOutcomeResponses[LearningOutcomeResponse] * [Count LearningOutcome Responses]), 
+				[Count LearningOutcome Responses]), 
+				OR(
+					LearningOutcomeResponses[IsCurrentYear] = TRUE(), 
+					LearningOutcomeResponses[IsYearToDate] = TRUE())),
+			DIVIDE(
+				SUMX(LearningOutcomeResponses, LearningOutcomeResponses[LearningOutcomeResponse] * [Count LearningOutcome Responses]), 
+				[Count LearningOutcome Responses]))
+			```
+
+	measure 'LearningOutcomes Score Comparison' = ```
+			 CALCULATE(
+				_mLearningOutcomes[LearningOutcomes Score], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+
+	measure 'LearningOutcomes Score Δ' = ```
+			 IF(
+				OR(_mLearningOutcomes[Count LearningOutcome Responses] = 0, [Count LearningOutcome Responses Comparison] = 0), 
+				BLANK(), 
+				ROUND(_mLearningOutcomes[LearningOutcomes Score], 2) - ROUND(_mLearningOutcomes[LearningOutcomes Score Comparison], 2))
+			```
+
+	measure 'LearningOutcomes Score Δ %' = ```
+			 DIVIDE(_mLearningOutcomes[LearningOutcomes Score Δ], _mLearningOutcomes[LearningOutcomes Score Comparison])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	column dummy
+		isHidden
+		isNameInferred
+		sourceColumn: [dummy]
+
+	partition 'CalculatedTable 1' = calculated
+		source = SELECTCOLUMNS( {"dummy"}, "dummy", [Value])
+

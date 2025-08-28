@@ -1,0 +1,127 @@
+relationship e2d6d856-fcca-4ebb-854f-082eec54f588
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'TD Response'.GroupTrip_id
+	toColumn: OverallQuestionGroups.GroupTrip_id
+
+relationship 00b928ca-262b-4a2a-81ad-7ccb98761dc8
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'Tour Experience Response'.GroupTrip_id
+	toColumn: OverallQuestionGroups.GroupTrip_id
+
+relationship 6696c390-fd1d-4372-a73c-dce08d258b44
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'TC Response'.GroupTrip_id
+	toColumn: OverallQuestionGroups.GroupTrip_id
+
+relationship 06010932-dbc9-4a8e-8fcc-c283c4d879e7
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: 'NPS Response'.GroupTrip_id
+	toColumn: OverallQuestionGroups.GroupTrip_id
+
+relationship 6660e9cb-75c9-4d06-9a4c-bb92b54380a9
+	crossFilteringBehavior: bothDirections
+	fromColumn: OverallQuestionGroups.TourSpec_id
+	toColumn: 'Current TEM'.TourSpec_id
+
+relationship 7a299e0c-b914-4c21-b5ba-2af022545af6
+	crossFilteringBehavior: bothDirections
+	fromColumn: OverallQuestionCurrentYearGroups.GroupTrip_id
+	toColumn: OverallQuestionGroups.GroupTrip_id
+
+relationship 934e3f1d-d7ff-4fb1-b87d-9e0638f0e940
+	fromColumn: OverallQuestionGroups.Territory_id
+	toColumn: xTerritory.Territory_id
+
+relationship a32c23ee-53c2-4c0c-992b-19da04889527
+	fromColumn: OverallQuestionGroups.TourCode
+	toColumn: xTourCode.TourCode
+
+relationship bb4eb749-c1f9-4ee0-b42f-e41b4fb64331
+	crossFilteringBehavior: bothDirections
+	fromColumn: OverallQuestionGroups.BusinessUnit_id
+	toColumn: BusinessUnit.BusinessUnit_id
+
+relationship f894c748-5bfa-424a-bfbf-d0505508c3b7
+	crossFilteringBehavior: bothDirections
+	fromColumn: OverallQuestionGroups.Territory_id
+	toColumn: Territory.Territory_id
+
+relationship d747c48a-8e7e-417f-b6f0-32a590b6acd0
+	crossFilteringBehavior: bothDirections
+	fromColumn: OverallQuestionGroups.ProdTour_id
+	toColumn: 'Market Area Office Mapping'.ProdTour_id
+
+relationship 95b9f7f7-35a2-47cc-a25b-69db510fb72a
+	crossFilteringBehavior: bothDirections
+	fromColumn: ComponentResponses.GroupTrip_id
+	toColumn: OverallQuestionGroups.GroupTrip_id
+
+relationship 8ed2f553-c5b0-4bb6-909c-c84ca87103e2
+	crossFilteringBehavior: bothDirections
+	fromColumn: StayRatingResponses.GroupTrip_id
+	toColumn: OverallQuestionGroups.GroupTrip_id
+
+relationship 893b36f7-ae1f-46ff-9195-f85f0e41ed06
+	fromColumn: ComponentResponses.Country
+	toColumn: xCountry.Country_Link
+
+relationship 9cfadf32-5c02-45f4-8191-62bb5b1448e4
+	fromColumn: ComponentResponses.CompTypeCode
+	toColumn: xCompType.CompTypeCode
+
+relationship 4f21109d-be47-4fc6-a807-d29182a6fadc
+	fromColumn: OverallQuestionGroups.ProductionMarketCode
+	toColumn: xProductionMarket_Overall.ProductionMarketCode
+
+relationship 01e9a1ef-4277-4ac0-a3c2-b21e2129a52a
+	fromColumn: ComponentResponses.ProductionMarketCode
+	toColumn: xProductionMarket_Comp.ProductionMarketCode
+
+relationship 37ebfb90-145f-4dc3-b03c-aee50e7da79a
+	crossFilteringBehavior: bothDirections
+	fromColumn: OverallQuestionGroups.TourSpec_id
+	toColumn: 'Tour Spec'.TourSpec_id
+
+relationship 750d46e5-d3b8-4f9b-9a8f-504f50974eeb
+	crossFilteringBehavior: bothDirections
+	fromColumn: OverallQuestionGroups.TourDivisionSpec_id
+	toColumn: 'Market Development Owner'.TourDivisionSpec_id
+
+relationship 01092e91-bd33-4660-94b4-be6ca4d1b0ce
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Sales Op'.SalesOp_id
+	toColumn: OverallQuestionGroups.SalesOp_id
+
+relationship 556c6c97-d4d6-499e-bc65-a941795329e6
+	crossFilteringBehavior: bothDirections
+	fromColumn: 'Sales Op'.Organization_Id
+	toColumn: Organization.Organization_id
+
+relationship 43522b6f-338c-4769-9e86-83cdedd28377
+	crossFilteringBehavior: bothDirections
+	fromColumn: ResponseProgress.SalesOp_id
+	toColumn: OverallQuestionGroups.SalesOp_id
+
+relationship 46d64e2e-1e4c-4126-b33f-ffdbf406a1e6
+	crossFilteringBehavior: bothDirections
+	fromColumn: OverallQuestionGroups.TourDate
+	toColumn: dimDates.Date
+
+relationship 84a48410-1749-427d-b7fa-6b3d74c84c40
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: OverallQuestionGroups.GroupTrip_id
+	toColumn: GroupDynamicResponses.GroupTrip_id
+
+relationship 1fd33164-4c27-4152-bfcb-6f31b8d5708b
+	fromColumn: LearningOutcomeResponses.GroupTrip_id
+	toColumn: OverallQuestionGroups.GroupTrip_id
+
+relationship 1b1ef072-0c02-4679-8015-9b5ae5e147e7
+	crossFilteringBehavior: bothDirections
+	fromColumn: OverallQuestionGroups.ProdTour_id
+	toColumn: OverallQuestionGroups_HasStaffTour.ProdTour_id
+

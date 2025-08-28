@@ -1,0 +1,165 @@
+table 'Component Measures'
+
+	measure 'Count of Dislikes' = CALCULATE(SUM(ComponentResponses[IsDislike]))
+		formatString: #,0
+
+	measure 'Count of Likes' = CALCULATE(SUM(ComponentResponses[IsLike]))
+		formatString: #,0
+
+	measure 'Count of Loves' = CALCULATE(SUM(ComponentResponses[IsLove]))
+		formatString: #,0
+
+	measure 'Count of Component Ratings' = [Count of Dislikes]+[Count of Likes]+[Count of Loves]
+		formatString: #,0
+
+	measure 'Ratio Dislikes over Total Component Ratings' = ```
+			 DIVIDE([Count of Dislikes], [Count of Component Ratings])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Ratio Loves over Total Component Ratings' = ```
+			 DIVIDE([Count of Loves], [Count of Component Ratings])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Ratio Likes over Total Component Ratings' = ```
+			 DIVIDE([Count of Likes], [Count of Component Ratings])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Count of Dislikes - Current Year' = CALCULATE(SUM(ComponentResponses[IsDislike]),ComponentResponses[IsYearToDate]=TRUE(), ComponentResponses[IsCurrentYear]=TRUE())
+		formatString: #,0
+
+	measure 'Count of Likes -  Current Year' = CALCULATE(SUM('ComponentResponses'[IsLike]),ComponentResponses[IsYearToDate]=TRUE(), ComponentResponses[IsCurrentYear]=TRUE())
+		formatString: #,0
+
+	measure 'Count of Loves - Current Year' = CALCULATE(SUM('ComponentResponses'[IsLove]),ComponentResponses[IsYearToDate]=TRUE(), ComponentResponses[IsCurrentYear]=TRUE())
+		formatString: #,0
+
+	measure 'Count of Component Ratings - Current Year' = [Count of Dislikes - Current Year]+[Count of Likes -  Current Year]+[Count of Loves - Current Year]
+		formatString: #,0
+
+	measure 'Ratio Dislikes over Total Component Ratings - Current Year' = ```
+			 IF([Count of Component Ratings]=BLANK()
+				,BLANK()
+				,DIVIDE([Count of Dislikes - Current Year], [Count of Component Ratings - Current Year])
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Ratio Loves over Total Component Ratings - Current Year' = ```
+			 IF([Count of Component Ratings]=BLANK()
+				,BLANK()
+				,DIVIDE([Count of Loves - Current Year], [Count of Component Ratings - Current Year])
+			)
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Ratio Likes over Total Component Ratings - Current Year' =
+			IF([Count of Component Ratings]=BLANK()
+				,BLANK()
+				,DIVIDE([Count of Likes -  Current Year], [Count of Component Ratings - Current Year])
+			)
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Count of Dislikes - 2018 YTD' = CALCULATE(SUM(ComponentResponses[IsDislike]),ComponentResponses[IsYearToDate]=TRUE(), ComponentResponses[SalesYearNumber]=2018)
+
+	measure 'Count of Likes - Previous YTD' = CALCULATE(SUM(ComponentResponses[IsLike]),ComponentResponses[IsYearToDate]=TRUE(), ComponentResponses[IsPreviousYear]=TRUE())
+
+	measure 'Count of Loves - Previous YTD' = CALCULATE(SUM(ComponentResponses[IsLove]),ComponentResponses[IsYearToDate]=TRUE(), ComponentResponses[IsPreviousYear]=TRUE())
+
+	measure 'Count of Component Ratings - Previous YTD' = ```
+			 [Count of Dislikes - Previous YTD]+[Count of Likes - Previous YTD]+[Count of Loves - Previous YTD]
+			```
+
+	measure 'Ratio Dislikes over Total Component Ratings - Previous YTD' = ```
+			 DIVIDE([Count of Dislikes - Previous YTD], [Count of Component Ratings - Previous YTD])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Count of Dislikes - Previous YTD' = CALCULATE(SUM(ComponentResponses[IsDislike]),ComponentResponses[IsYearToDate]=TRUE(), ComponentResponses[IsPreviousYear]=TRUE())
+
+	measure 'Ratio Loves over Total Component Ratings - Previous YTD' = ```
+			 DIVIDE([Count of Loves - Previous YTD],[Count of Component Ratings - Previous YTD])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Ratio Dislikes difference - Current Year' = ```
+			 IF([Count of Component Ratings - Current Year]=BLANK(), BLANK(), IF([Count of Component Ratings - Previous YTD]=BLANK(), BLANK(), ([Ratio Dislikes over Total Component Ratings - Current Year] - [Ratio Dislikes over Total Component Ratings - Previous YTD])))
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Previous Year EOY - Count of Dislikes' = CALCULATE(SUM(ComponentResponses[IsDislike]), ComponentResponses[IsPreviousYear]=TRUE())
+		formatString: #,0
+
+	measure 'Previous Year EOY - Count of Likes' = CALCULATE(SUM(ComponentResponses[IsLike]), ComponentResponses[IsPreviousYear]=TRUE())
+		formatString: #,0
+
+	measure 'Previous Year EOY - Count of Loves' = CALCULATE(SUM(ComponentResponses[IsLove]), ComponentResponses[IsPreviousYear]=TRUE())
+		formatString: #,0
+
+	measure 'Previous Year EOY - Ratio Dislikes over Total Component Ratings' = ```
+			 DIVIDE([Previous Year EOY - Count of Dislikes],[Previous Year EOY - Total Ratings])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Previous Year EOY - Total Ratings' = ```
+			 [Previous Year EOY - Count of Dislikes] + [Previous Year EOY - Count of Likes] + [Previous Year EOY - Count of Loves]
+			```
+		formatString: #,0
+
+	measure 'Previous Year EOY - Ratio Loves over Total Component Ratings' = ```
+			 DIVIDE([Previous Year EOY - Count of Loves], [Previous Year EOY - Total Ratings])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Previous 2 Years EOY - Count of Dislikes' = CALCULATE(SUM(ComponentResponses[IsDislike]), ComponentResponses[IsPrevious2Years]=TRUE())
+		formatString: #,0
+
+	measure 'Previous 2 Years EOY - Count of Likes' = CALCULATE(SUM(ComponentResponses[IsLike]), ComponentResponses[IsPrevious2Years]=TRUE())
+		formatString: #,0
+
+	measure 'Previous 2 Years EOY - Count of Loves' = CALCULATE(SUM(ComponentResponses[IsLove]), ComponentResponses[IsPrevious2Years]=TRUE())
+		formatString: #,0
+
+	measure 'Previous 2 Years EOY - Total Ratings' = ```
+			 [Previous 2 Years EOY - Count of Dislikes] + [Previous 2 Years EOY - Count of Likes] + [Previous 2 Years EOY - Count of Loves]
+			```
+		formatString: #,0
+
+	measure 'Previous 2 Years EOY - Ratio Dislikes over Total Component Ratings' = ```
+			 DIVIDE([Previous 2 Years EOY - Count of Dislikes], [Previous 2 Years EOY - Total Ratings])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Previous 2 Years EOY - Ratio Loves over Total Component Ratings' = ```
+			 DIVIDE([Previous 2 Years EOY - Count of Loves], [Previous 2 Years EOY - Total Ratings])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Count of Dislikes - 2019 YTD' = CALCULATE(SUM(ComponentResponses[IsDislike]),ComponentResponses[IsYearToDate]=TRUE(), ComponentResponses[SalesYearNumber]=2019)
+
+	measure 'Count of Likes - 2019 YTD' = CALCULATE(SUM(ComponentResponses[IsLike]),ComponentResponses[IsYearToDate]=TRUE(), ComponentResponses[SalesYearNumber]=2019)
+
+	measure 'Count of Loves - 2019 YTD' = CALCULATE(SUM(ComponentResponses[IsLove]),ComponentResponses[IsYearToDate]=TRUE(), ComponentResponses[SalesYearNumber]=2019)
+
+	measure 'Count of Component Ratings - 2019 YTD' = ```
+			 [Count of Dislikes - 2019 YTD] +[Count of Likes - 2019 YTD]+[Count of Loves - 2019 YTD]
+			```
+
+	measure 'Ratio Dislikes over Total Component Ratings - 2019 YTD' = DIVIDE([Count of Dislikes - 2019 YTD],[Count of Component Ratings - 2019 YTD])
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure 'Ratio Loves over Total Component Ratings - 2019 YTD' = ```
+			 DIVIDE([Count of Loves - 2019 YTD],[Count of Component Ratings - 2019 YTD])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	column 'Component Rating Measures'
+		isHidden
+		isNameInferred
+		sourceColumn: [Component Rating Measures]
+
+	partition 'CalculatedTable 1' = calculated
+		source = DATATABLE("Component Rating Measures",INTEGER,{{}})
+

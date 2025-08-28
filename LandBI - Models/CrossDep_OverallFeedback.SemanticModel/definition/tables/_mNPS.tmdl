@@ -1,0 +1,186 @@
+table _mNPS
+
+	measure NPS = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				CALCULATE(DIVIDE(SUM('NPS Response'[NPSCalculate]), COUNT('NPS Response'[NPSCalculate])) * 100, OR(
+					'NPS Response'[IsCurrentYear] = TRUE(), 
+					'NPS Response'[IsYearToDate] = TRUE())), 
+			DIVIDE(SUM('NPS Response'[NPSCalculate]), COUNT('NPS Response'[NPSCalculate])) * 100)
+			```
+
+	measure 'NPS Comparison' = ```
+			 CALCULATE(
+				_mNPS[NPS], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+				
+			```
+
+	measure 'Count Promoters' = ```
+			 
+				
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				CALCULATE(COUNT(OverallQuestionGroups[GroupTrip_id]), 
+					'NPS Response'[NPSCategory] = "Promoter", 
+					OR(
+						'NPS Response'[IsCurrentYear] = TRUE(), 
+						'NPS Response'[IsYearToDate] = TRUE())),
+			CALCULATE(COUNT(OverallQuestionGroups[GroupTrip_id]), 'NPS Response'[NPSCategory] = "Promoter"))
+			```
+		formatString: #,0
+
+	measure 'Count Passive' = ```
+			 
+				
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				CALCULATE(COUNT(OverallQuestionGroups[GroupTrip_id]), 
+					'NPS Response'[NPSCategory] = "Passive", 
+					OR(
+						'NPS Response'[IsCurrentYear] = TRUE(), 
+						'NPS Response'[IsYearToDate] = TRUE())),
+			CALCULATE(COUNT(OverallQuestionGroups[GroupTrip_id]), 'NPS Response'[NPSCategory] = "Passive"))
+			```
+		formatString: #,0
+
+	measure 'Count Detractors' = ```
+			 
+				
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				CALCULATE(COUNT(OverallQuestionGroups[GroupTrip_id]), 
+					'NPS Response'[NPSCategory] = "Detractor", 
+					OR(
+						'NPS Response'[IsCurrentYear] = TRUE(), 
+						'NPS Response'[IsYearToDate] = TRUE())),
+			CALCULATE(COUNT(OverallQuestionGroups[GroupTrip_id]), 'NPS Response'[NPSCategory] = "Detractor"))
+			```
+		formatString: #,0
+
+	measure 'Count Total NPS Responses' =
+			 IF(
+				SELECTEDVALUE('Sales Years'[ViewType]) = "YTD",
+				CALCULATE(COUNT('NPS Response'[NPSResponse]),
+					OR(
+						'NPS Response'[IsCurrentYear] = TRUE(),
+						'NPS Response'[IsYearToDate] = TRUE())),
+				CALCULATE(COUNT('NPS Response'[NPSResponse])))
+		formatString: #,0
+
+	measure 'Count Total NPS Responses Comparison' = ```
+			 CALCULATE(
+				[Count Total NPS Responses], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+		formatString: #,0
+
+	measure 'NPS Δ' = ```
+			 IF(
+				[Count Total NPS Responses] = 0 || [Count Total NPS Responses Comparison] = 0, 
+				BLANK(), 
+				ROUND(_mNPS[NPS], 1) - ROUND([NPS Comparison], 1))
+			```
+
+	measure 'NPS Δ %' = ```
+			 DIVIDE(_mNPS[NPS Δ], [NPS Comparison])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure Formatting_NPS = ```
+			
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD",
+				SELECTEDVALUE(OverallQuestionGroups[SalesYearNumber]) & " YTD NPS", 
+				SELECTEDVALUE(OverallQuestionGroups[SalesYearNumber]) & " EOY NPS")
+			```
+
+	measure 'Formatting_NPS Comparison' = ```
+			
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD",
+				SELECTEDVALUE('Sales Years'[SalesYear_Compare]) & " YTD NPS", 
+				SELECTEDVALUE('Sales Years'[SalesYear_Compare]) & " EOY NPS")
+			```
+
+	measure 'Formatting_NPS Responses' = ```
+			
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD",
+				SELECTEDVALUE(OverallQuestionGroups[SalesYearNumber]) & " YTD NPS Responses", 
+				SELECTEDVALUE(OverallQuestionGroups[SalesYearNumber]) & " EOY NPS Responses")
+			```
+
+	measure 'Formatting_NPS Responses Comparison' = ```
+			
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD",
+				SELECTEDVALUE('Sales Years'[SalesYear_Compare]) & " YTD NPS Responses", 
+				SELECTEDVALUE('Sales Years'[SalesYear_Compare]) & " EOY NPS Responses")
+			```
+
+	measure 'Formatting_NPS Δ' = ```
+			 
+			IF([Count Total NPS Responses] = 0 || [Count Total NPS Responses Comparison] = 0, BLANK(), 	
+			IF(_mNPS[NPS Δ] >= 0.05, 1, 
+			IF(_mNPS[NPS Δ] <= -0.05, -1, 
+			0)))
+			```
+
+	measure 'Formatting_All Eval Responses' = ```
+			 SELECTEDVALUE(OverallQuestionGroups[SalesYearNumber]) & " " & SELECTEDVALUE('Sales Years'[ViewType]) & " Evaluation Responses"
+			```
+
+	measure NPS_Factor = ```
+			 DIVIDE([Count_ACTravelers], CALCULATE([Count_ACTravelers], FILTER(ALLSELECTED(OverallQuestionGroups), RELATED('NPS Response'[NPSCalculate]) IN {1, 0, -1})))
+			```
+		isHidden
+
+	measure NPS_Weight = ```
+			 MAX('NPS Response'[NPSCalculate]) * [NPS_Factor] * 100
+			```
+		isHidden
+
+	measure NPS_WeightedAvg = ```
+			 SUMX(VALUES(OverallQuestionGroups[GroupTrip_id]), [NPS_Weight])
+			```
+		isHidden
+
+	measure 'Weighted NPS' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				CALCULATE([NPS_WeightedAvg], OR(
+					'NPS Response'[IsCurrentYear] = TRUE(), 
+					'NPS Response'[IsYearToDate] = TRUE())), 
+			[NPS_WeightedAvg])
+			```
+
+	measure 'Weighted NPS Comparison' = ```
+			 CALCULATE(
+				[Weighted NPS], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+				
+			```
+
+	measure '% Detractors' = ```
+			 DIVIDE([Count Detractors], [Count Total NPS Responses])
+			```
+		formatString: 0.0%;-0.0%;0.0%
+
+	measure '% Passive' = ```
+			 DIVIDE([Count Passive], [Count Total NPS Responses])
+			```
+		formatString: 0.0%;-0.0%;0.0%
+
+	measure '% Promoters' = ```
+			 DIVIDE([Count Promoters], [Count Total NPS Responses])
+			```
+		formatString: 0.0%;-0.0%;0.0%
+
+	column dummy
+		isHidden
+		isNameInferred
+		sourceColumn: [dummy]
+
+	partition 'CalculatedTable 1' = calculated
+		source = SELECTCOLUMNS( {"dummy"}, "dummy", [Value])
+

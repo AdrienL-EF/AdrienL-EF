@@ -1,0 +1,99 @@
+table Sales
+	lineageTag: ebf895a5-1c3b-432e-9866-bbb8c76504f5
+
+	column ProductKey
+		dataType: int64
+		lineageTag: df3ab95c-03d4-49ab-9fb1-cec3d95fb065
+		summarizeBy: count
+		sourceColumn: ProductKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CustomerKey
+		dataType: int64
+		lineageTag: 00175d27-3ee0-4c7c-b302-45b0d6aef189
+		summarizeBy: count
+		sourceColumn: CustomerKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column OrderDateKey
+		dataType: int64
+		lineageTag: 9b5663a0-7b4e-422e-b850-ff88fc2e3d3d
+		summarizeBy: count
+		sourceColumn: OrderDateKey
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Quantity
+		dataType: int64
+		lineageTag: 024698e1-da37-4197-acfa-3c86065d490c
+		summarizeBy: sum
+		sourceColumn: Quantity
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Net Price'
+		dataType: decimal
+		lineageTag: 0b342618-e3cc-4294-8cf1-382acdffd253
+		summarizeBy: sum
+		sourceColumn: Net Price
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition 'DaxBook Sales' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("Demo", "ContosoRetailDW"),
+				    DaxBook_Sales = Source{[Schema="DaxBook",Item="Sales"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(DaxBook_Sales,{"CurrencyKey", "Order Date", "Due Date", "Delivery Date", "Order Number", "Order Line Number", "PromotionKey", "StoreKey"}),
+				    #"Merged Queries" = Table.NestedJoin(#"Removed Columns", {"CustomerKey"}, Customer, {"CustomerKey"}, "NewColumn", JoinKind.Inner),
+				    #"Removed Columns1" = Table.RemoveColumns(#"Merged Queries",{"NewColumn", "DueDateKey", "DeliveryDateKey", "Unit Discount", "Unit Cost", "Unit Price", "OnlineSalesKey"})
+				in
+				    #"Removed Columns1"
+
+		annotation IsQueryEditorUsed = False
+
+		annotation QueryEditorSerialization
+
+		annotation TableWidgetSerialization
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT * FROM [Sales]
+
+	annotation _TM_ExtProp_DbTableName = 905
+
+	annotation IsQueryEditorUsed = False
+
+	annotation QueryEditorSerialization
+
+	annotation TableWidgetSerialization
+
+	annotation DataMarketWebBaseUrl
+
+	annotation DataMarketWebQueryUrl
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

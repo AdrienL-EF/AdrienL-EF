@@ -1,0 +1,96 @@
+table _mTourExperience
+
+	measure TES = ```
+			
+				
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				CALCULATE(AVERAGE('Tour Experience Response'[TourExpResponse]), OR(
+					'Tour Experience Response'[IsCurrentYear] = TRUE(), 
+					'Tour Experience Response'[IsYearToDate] = TRUE())), 
+			AVERAGE('Tour Experience Response'[TourExpResponse]))
+			```
+
+	measure 'TES Comparison' = ```
+			 CALCULATE(
+				[TES], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+
+	measure 'Count Total TES Responses' = ```
+			
+				
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				CALCULATE(COUNT('Tour Experience Response'[TourExpResponse]), OR(
+					'Tour Experience Response'[IsCurrentYear] = TRUE(), 
+					'Tour Experience Response'[IsYearToDate] = TRUE())), 
+			COUNT('Tour Experience Response'[TourExpResponse]))
+			```
+		formatString: #,0
+
+	measure 'Count Total TES Responses Comparison' = ```
+			 CALCULATE(
+				[Count Total TES Responses], 
+				FILTER(ALL(OverallQuestionGroups[SalesYearNumber]), OverallQuestionGroups[SalesYearNumber] = SELECTEDVALUE('Sales Years'[SalesYear_Compare])))
+			```
+		formatString: #,0
+
+	measure 'TES Δ' = ```
+			 IF(
+				[Count Total TES Responses] = 0 || [Count Total TES Responses Comparison] = 0, 
+				BLANK(), 
+				ROUND([TES], 2) - ROUND([TES Comparison], 2))
+			```
+
+	measure 'TES Δ %' = ```
+			 DIVIDE([TES Δ], [TES Comparison])
+			```
+		formatString: 0.00%;-0.00%;0.00%
+
+	measure Formatting_TES = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				SELECTEDVALUE(OverallQuestionGroups[SalesYearNumber]) & " YTD TES", 
+				SELECTEDVALUE(OverallQuestionGroups[SalesYearNumber]) & " EOY TES")
+			```
+
+	measure 'Formatting_TES Comparison' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				SELECTEDVALUE('Sales Years'[SalesYear_Compare]) & " YTD TES", 
+				SELECTEDVALUE('Sales Years'[SalesYear_Compare]) & " EOY TES")
+			```
+
+	measure 'Formatting_TES Responses' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				SELECTEDVALUE(OverallQuestionGroups[SalesYearNumber]) & " YTD TES Responses", 
+				SELECTEDVALUE(OverallQuestionGroups[SalesYearNumber]) & " EOY TES Responses")
+			```
+
+	measure 'Formatting_TES Responses Comparison' = ```
+			 
+			
+			IF(SELECTEDVALUE('Sales Years'[ViewType]) = "YTD", 
+				SELECTEDVALUE('Sales Years'[SalesYear_Compare]) & " YTD TES Responses", 
+				SELECTEDVALUE('Sales Years'[SalesYear_Compare]) & " EOY TES Responses")
+			```
+
+	measure 'Formatting_TES Δ' = ```
+			
+			IF([Count Total TES Responses] = 0 || [Count Total TES Responses Comparison] = 0, BLANK(), 
+			IF([TES Δ] >= 0.005, 1, 
+			IF([TES Δ] <= -0.005, -1, 
+			0)))
+			```
+
+	column dummy
+		isHidden
+		isNameInferred
+		sourceColumn: [dummy]
+
+	partition 'CalculatedTable 1' = calculated
+		source = SELECTCOLUMNS( {"dummy"}, "dummy", [Value])
+

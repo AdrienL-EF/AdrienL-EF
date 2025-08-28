@@ -1,0 +1,56 @@
+table OverallQuestionGroups_HasStaffTour
+
+	column ProdTour_id
+		dataType: int64
+		isHidden
+		sourceProviderType: Integer
+		sourceColumn: ProdTour_id
+
+	column HasStaffTour
+		dataType: int64
+		sourceProviderType: Boolean
+		summarizeBy: none
+		sourceColumn: HasStaffTour
+
+	partition ProdTour_HasStaff = query
+		dataView: full
+		source
+			query =
+				SELECT ProdTour_id, CAST(HasStaffTour AS TINYINT) AS HasStaffTour
+				FROM ProcessedReports_LandOps.dbo.factProdTours
+				
+				UNION
+				
+				SELECT ProdTour_id, CAST(HasStaffTour AS TINYINT) AS HasStaffTour
+				FROM ProcessedReports_LandOps.dbo.factProdTours_History
+			dataSource: 'SqlServer BIStaging'
+
+		annotation QueryEditorSerialization =
+				<?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT ProdTour_id, CAST(HasStaffTour AS TINYINT) AS HasStaffTour
+				FROM ProcessedReports_LandOps.dbo.factProdTours
+				
+				UNION
+				
+				SELECT ProdTour_id, CAST(HasStaffTour AS TINYINT) AS HasStaffTour
+				FROM ProcessedReports_LandOps.dbo.factProdTours_History</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
+	annotation _TM_ExtProp_QueryDefinition =
+			SELECT ProdTour_id, CAST(HasStaffTour AS TINYINT) AS HasStaffTour
+			FROM ProcessedReports_LandOps.dbo.factProdTours
+			
+			UNION
+			
+			SELECT ProdTour_id, CAST(HasStaffTour AS TINYINT) AS HasStaffTour
+			FROM ProcessedReports_LandOps.dbo.factProdTours_History
+
+	annotation _TM_ExtProp_DbTableName = ProdTour_HasStaff
+
+	annotation QueryEditorSerialization =
+			<?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT ProdTour_id, CAST(HasStaffTour AS TINYINT) AS HasStaffTour
+			FROM ProcessedReports_LandOps.dbo.factProdTours
+			
+			UNION
+			
+			SELECT ProdTour_id, CAST(HasStaffTour AS TINYINT) AS HasStaffTour
+			FROM ProcessedReports_LandOps.dbo.factProdTours_History</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+

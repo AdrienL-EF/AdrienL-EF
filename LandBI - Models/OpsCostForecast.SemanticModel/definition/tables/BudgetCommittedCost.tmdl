@@ -1,0 +1,127 @@
+table BudgetCommittedCost
+
+	column Date
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: Date
+
+	column BU_TotalUSD
+		dataType: double
+		sourceProviderType: Decimal
+		sourceColumn: BU_TotalUSD
+
+	column CostProjectionUSD
+		dataType: double
+		sourceProviderType: Decimal
+		sourceColumn: CostProjectionUSD
+
+	column CC_TotalUSD
+		dataType: double
+		sourceProviderType: Decimal
+		sourceColumn: CC_TotalUSD
+
+	column REF_TotalUSD
+		dataType: double
+		sourceProviderType: Decimal
+		sourceColumn: REF_TotalUSD
+
+	column CompTypeCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: CompTypeCode
+
+	column CompLookupCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: CompLookupCode
+
+	column Country
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: Country
+
+	column City
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: City
+
+	column ProductionMarketCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: ProductionMarketCode
+
+	column TourCode
+		dataType: string
+		sourceProviderType: VarChar
+		sourceColumn: TourCode
+
+	partition BudgetCommittedCost = query
+		dataView: full
+		source
+			query =
+				SELECT
+				Date,
+				BU_TotalUSD,
+				CostProjectionUSD,
+				CC_TotalUSD,
+				REF_TotalUSD,
+				CompTypeCode,
+				CompLookupCode,
+				Country,
+				City,
+				ProductionMarketCode,
+				TourCode
+				
+				FROM martLandOps.dbo.BudgetCommittedCostByDate;
+			dataSource: 'ToursBIStagingNode2 '
+
+		annotation QueryEditorSerialization =
+				<?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT
+				Date,
+				BU_TotalUSD,
+				CostProjectionUSD,
+				CC_TotalUSD,
+				REF_TotalUSD,
+				CompTypeCode,
+				CompLookupCode,
+				Country,
+				City,
+				ProductionMarketCode,
+				TourCode
+				
+				FROM martLandOps.dbo.BudgetCommittedCostByDate;</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+
+	annotation _TM_ExtProp_QueryDefinition =
+			SELECT
+			Date,
+			BU_TotalUSD,
+			CostProjectionUSD,
+			CC_TotalUSD,
+			REF_TotalUSD,
+			CompTypeCode,
+			CompLookupCode,
+			Country,
+			City,
+			ProductionMarketCode,
+			TourCode
+			
+			FROM martLandOps.dbo.BudgetCommittedCostByDate;
+
+	annotation _TM_ExtProp_DbTableName = BudgetCommittedCost
+
+	annotation QueryEditorSerialization =
+			<?xml version="1.0" encoding="UTF-16"?><Gemini xmlns="QueryEditorSerialization"><AnnotationContent><![CDATA[<RSQueryCommandText>SELECT
+			Date,
+			BU_TotalUSD,
+			CostProjectionUSD,
+			CC_TotalUSD,
+			REF_TotalUSD,
+			CompTypeCode,
+			CompLookupCode,
+			Country,
+			City,
+			ProductionMarketCode,
+			TourCode
+			
+			FROM martLandOps.dbo.BudgetCommittedCostByDate;</RSQueryCommandText><RSQueryCommandType>Text</RSQueryCommandType><RSQueryDesignState></RSQueryDesignState>]]></AnnotationContent></Gemini>
+

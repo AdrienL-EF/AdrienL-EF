@@ -1,0 +1,113 @@
+table Customer
+	lineageTag: 4756c6be-eca9-46df-8fa3-e8d87f1d5f6b
+
+	column CustomerKey
+		dataType: int64
+		isNullable: false
+		lineageTag: d4b46608-281d-4d66-b556-161bb97a0e39
+		summarizeBy: count
+		sourceColumn: CustomerKey
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Customer Code'
+		dataType: string
+		lineageTag: b8b119f9-a4c9-4fee-af84-775125275e1f
+		summarizeBy: none
+		sourceColumn: Customer Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Name
+		dataType: string
+		lineageTag: d88e8453-c6f7-4dea-a7fb-3d7bf808ae53
+		summarizeBy: none
+		sourceColumn: Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Education
+		dataType: string
+		lineageTag: dc8cabfb-9efc-4340-aae3-d4112ca449d5
+		summarizeBy: none
+		sourceColumn: Education
+
+		annotation SummarizationSetBy = Automatic
+
+	column Occupation
+		dataType: string
+		lineageTag: 5a8e6fd2-bd51-407a-bc0e-cd1d54c48563
+		summarizeBy: none
+		sourceColumn: Occupation
+
+		annotation SummarizationSetBy = Automatic
+
+	column Continent
+		dataType: string
+		lineageTag: 426ad621-715c-432e-9816-a5c83e81782d
+		summarizeBy: none
+		sourceColumn: Continent
+
+		annotation SummarizationSetBy = Automatic
+
+	column City
+		dataType: string
+		lineageTag: 653e52b1-dbc2-4cba-9e51-c3c60241213e
+		summarizeBy: none
+		sourceColumn: City
+
+		annotation SummarizationSetBy = Automatic
+
+	column State
+		dataType: string
+		lineageTag: d40fef96-5830-4601-9787-71a9689a661d
+		summarizeBy: none
+		sourceColumn: State
+
+		annotation SummarizationSetBy = Automatic
+
+	column CountryRegion
+		dataType: string
+		lineageTag: e1a72ebd-eb29-4073-9e8d-b1df0d7d5f6a
+		summarizeBy: none
+		sourceColumn: CountryRegion
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'DaxBook Customer' = m
+		mode: import
+		source =
+				let
+				    Source = Sql.Database("Demo", "ContosoRetailDW"),
+				    DaxBook_Customer = Source{[Schema="DaxBook",Item="Customer"]}[Data],
+				    #"Removed Columns" = Table.RemoveColumns(DaxBook_Customer,{"Phone", "Address Line 2", "Title", "GeographyKey", "Birth Date", "Marital Status", "Cars Owned", "Children At Home", "Total Children", "Address Line 1", "Date First Purchase", "Customer Type", "Company Name", "House Ownership", "Yearly Income", "Gender"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Columns", each [CountryRegion] = "United States" or [CountryRegion] = "Germany" or [CountryRegion] = "China")
+				in
+				    #"Filtered Rows"
+
+		annotation IsQueryEditorUsed = False
+
+		annotation QueryEditorSerialization
+
+		annotation TableWidgetSerialization
+
+	annotation _TM_ExtProp_QueryDefinition = SELECT * FROM [Customer]
+
+	annotation _TM_ExtProp_DbTableName = 63
+
+	annotation IsQueryEditorUsed = False
+
+	annotation QueryEditorSerialization
+
+	annotation TableWidgetSerialization
+
+	annotation DataMarketWebBaseUrl
+
+	annotation DataMarketWebQueryUrl
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

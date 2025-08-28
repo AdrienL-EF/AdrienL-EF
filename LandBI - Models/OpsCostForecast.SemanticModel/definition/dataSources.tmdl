@@ -1,0 +1,7 @@
+dataSource 'ToursBIStagingNode2 ' = provider
+	connectionString: Provider=SQLOLEDB;Data Source=va-bistgdbnode2.eftsd.com;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=martLandOps
+	impersonationMode: impersonateAccount
+	account: BOSTON\svc.svc.tg.bi.ssas
+
+	annotation ConnectionEditUISource = SqlServer
+
